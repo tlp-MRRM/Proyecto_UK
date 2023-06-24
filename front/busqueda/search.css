@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+body {
+  font-family: "Alegreya Sans", sans-serif;
+}
+.logo {
+  background-image: url(/home/img/logo.png);
+  width: 45px;
+  height: 45px;
+  background-size: cover;
+  transition: 0.1s ease-in-out;
+}
+.logo:hover {
+  transform: scale(1.2);
+  background-image: url(/home/img/logo_hover.png);
+}
+#cabecera {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  background-color: rgb(237, 237, 237);
+}
+
+header li {
+  font-size: 30px;
+}
+main {
+  display: flex;
+  height: 100vh;
+}
+
+section {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.busquedaCuadro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  padding: 2%;
+}
+.busquedaCuadro input, button {
+  width: 80%;
+  margin: 2%;
+  border: 1px rgba(0, 0, 0, 0.221) solid;
+  border-radius: 5px;
+}
+
+aside {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2%;
+}
+.carrusel {
+  width: 50%;
+  border: 5px rgba(0, 0, 0, 0.061) solid;
+  border-radius: 5px;
+}
+section .carrusel .btn-next {
+  background-color: rgba(0, 0, 0, 0.158);
+  height: 10%;
+  width: fit-content;
+  border-radius: 10px;
+}
+
+.universidadesDestacadas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(237, 237, 237);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.universidadesDestacadas h1 {
+  text-align: center;
+  width: 80%;
+}
+.universidadDestacada {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carreraDestacada {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(217, 217, 217);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.049);
+}
+.btn-verMas {
+  width: fit-content;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 15px;
+  border-radius: 5px;
+  border-color: aliceblue;
+}
+
+.verMasUniv {
+  text-decoration: none;
+  color: black;
+  background-color: aliceblue;
+  border: 1px rgba(0, 0, 0, 0.221) solid;
+  border-radius: 5px;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}

@@ -1,0 +1,49 @@
+body {
+  color: rgb(255, 255, 255);
+  background: radial-gradient(rgb(188, 226, 113), #5fbfff);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.Register {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 25%;
+  background-color: white;
+  border: 22px solid;
+  border-radius: 2rem;
+  border-color: white;
+  color: black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+transition: 0.2s ease-in-out;
+background-color: #4b95c7 !important ;  
+border-color: #4b95c7 !important;
+}
+
+.boton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  padding-bottom: 1%;
+}
+
+@media screen and (max-width: 768px) {
+    .Register {
+        width: 70%;
+    }
+}
+.Registrar {
+    padding-bottom: 5%;
+}

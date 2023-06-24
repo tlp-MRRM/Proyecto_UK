@@ -1,0 +1,86 @@
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  background: radial-gradient(#eeec79, #b8eb76);
+  font-family: 'Alegreya Sans', sans-serif;
+  
+
+}
+
+
+.logo {
+  background-image: url(img/logo.png);
+  width: 45px;
+  height: 45px;
+  background-size: cover;
+  transition: 0.1s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.2);
+  background-image: url(img/logo_hover.png);
+}
+
+#cabecera {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  background-color: rgb(237, 237, 237);
+  width: 100%;
+}
+
+header li {
+  font-size: 30px;
+}
+
+
+.boton {
+  background-color: #fff;
+  border-color: #fff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: 0.1s ease-in-out;
+}
+
+.boton:hover {
+  background-color: #fff;
+  transform: scale(1.2);
+}
+
+.boton span {
+  text-decoration: none;
+}
+
+.perfil img {
+  background-color: rgb(255, 255, 255);
+  border-radius: 15%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  width: 700px;
+}
+
+.config {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editar {
+  background-image: url(img/editar.png);
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  transition: 0.1s ease-in-out;
+}
+
+.editar:hover {
+  transform: scale(2);
+  background-image: url(img/editar.png);
+}

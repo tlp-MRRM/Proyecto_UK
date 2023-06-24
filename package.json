@@ -1,0 +1,31 @@
+{
+  "name": "proyecto_mrrm",
+  "version": "1.0.0",
+  "description": "PROYECTO UK",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tlp-MRRM/proyecto-1.git#develop"
+  },
+  "author": "Meyer Hector y Rios Facundo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tlp-MRRM/proyecto-1/issues"
+  },
+  "homepage": "https://github.com/tlp-MRRM/proyecto-1/tree/develop#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.0",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "mariadb": "^3.2.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.4.0",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.32.1",
+    "sqlite3": "^5.1.6"
+  }
+}

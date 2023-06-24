@@ -1,0 +1,57 @@
+body {
+  background: radial-gradient(#ffd16f, rgb(214, 255, 133));
+}
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.iniciarS {
+  padding-bottom: 15px;
+}
+.boton:hover {
+  background-color: rgb(137, 184, 45) !important;
+  transition: 0.2s ease-in-out;
+  border-color: yellowgreen !important;
+}
+.login {
+  width: 35%;
+  margin: 10px;
+  background-color: white;
+  border: 25px solid;
+  border-radius: 3%;
+  border-color: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.botones {
+  display: flex;
+  justify-content: space-between;
+}
+.boton {
+  width: 30%;
+  background-color: yellowgreen !important;
+  color: white !important;
+}
+.form-check {
+  padding-top: 3%;
+}
+
+@media screen and (max-width: 1000px) {
+  .login {
+    width: 60%;
+    height: 46%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .login {
+    width: 80%;
+    height: 46%;
+  }
+}
+.aqui {
+  color: yellowgreen;
+  font-weight: bold;
+}
