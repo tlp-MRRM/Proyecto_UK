@@ -3,7 +3,7 @@ body {
   font-family: 'Alegreya Sans', sans-serif;
 }
 .logo {
-  background-image: url(../img/logo.png);
+  background-image: url(../img/home/logo.png);
   width: 45px;
   height: 45px;
   background-size: cover;
@@ -11,7 +11,7 @@ body {
 }
 .logo:hover {
   transform: scale(1.2);
-  background-image: url(../img/logo_hover.png);
+  background-image: url(../img/home/logo_hover.png);
 }
 
 .busqueda {
