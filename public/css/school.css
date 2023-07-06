@@ -3,14 +3,30 @@
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   color: #000;
   background: radial-gradient(#eeec79, #b8eb76);
   font-family: 'Alegreya Sans', sans-serif;
-  
 
 }
 
+.ubi {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #fff;
+  width: 90%;
+  height: 310px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+#info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
 
 .logo {
   background-image: url(img/logo.png);
@@ -61,15 +77,17 @@ header li {
 }
 
 .card {
+  display: flex;
+  justify-content: space-between;
   border-radius: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  width: 700px;
+  width: 600px;
 }
 
 .config {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .editar {
@@ -83,4 +101,41 @@ header li {
 .editar:hover {
   transform: scale(2);
   background-image: url(img/editar.png);
+}
+
+article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: auto;
+  height: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.listadocarrera {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 2px;
+}
+
+.carrera {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+
+}
+
+.listadocarrera button {
+  display: flex;
+  justify-content: end;
+}
+
+main div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
 }
