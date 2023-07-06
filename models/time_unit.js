@@ -1,6 +1,6 @@
 const {sequelize, DataTypes} = require('../db/connection')
 
-const TimeUnit = sequelize.define('TimeUnit', {
+const time_unit = sequelize.define('time_unit', {
     id:{
         type: DataTypes.INTEGER(1),
         autoIncrement: true,
@@ -9,4 +9,6 @@ const TimeUnit = sequelize.define('TimeUnit', {
     unit_time: DataTypes.STRING('50')
 })
 
-TimeUnit.sync()
+time_unit.sync({ force: false }).then(() => {
+    console.log('Tabla de unidad de tiempo creada');
+});
