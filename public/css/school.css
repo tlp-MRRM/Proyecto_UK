@@ -29,7 +29,7 @@ body {
 }
 
 .logo {
-  background-image: url(img/logo.png);
+  background-image: url(../img/home/logo.png);
   width: 45px;
   height: 45px;
   background-size: cover;
@@ -38,7 +38,7 @@ body {
 
 .logo:hover {
   transform: scale(1.2);
-  background-image: url(img/logo_hover.png);
+  background-image: url(../img//home/logo_hover.png);
 }
 
 #cabecera {
@@ -52,15 +52,23 @@ body {
 header li {
   font-size: 30px;
 }
-
+.cuadroCarreras {
+  background-color: #fff;
+  border-radius: 15px;
+}
 
 .boton {
   background-color: #fff;
   border-color: #fff;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   transition: 0.1s ease-in-out;
+  width: fit-content;
 }
-
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
 .boton:hover {
   background-color: #fff;
   transform: scale(1.2);
@@ -106,7 +114,7 @@ header li {
 article {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   width: auto;
   height: auto;
   padding-left: 20px;

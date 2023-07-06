@@ -16,13 +16,13 @@
             <h1>Agrega una nueva carrera</h1>
             <div class="mb-3">
                 <label for="facultad" class="form-label">Facultad de la carrera</label>
-                <input type="text" placeholder="Facultad de biologia " class="form-control" id="facultad">
+                <input type="text" placeholder="Facultad de **** " class="form-control" id="facultad">
             </div>
             <label for="name" class="form-label">Nombre de la carrera</label>
             <div class="d-flex">
                 <div class="mb-3 w-100 h-100 me-3">
                     
-                    <input type="text" class="form-control inputNombreCarrera" placeholder="Tecnicatura en desarrollo de software multiplataforma" id="name">
+                    <input type="text" class="form-control inputNombreCarrera" placeholder="Tecnicatura en *****" id="name">
                 </div>
                 <select class="form-select selectTipoCarrera">
                     <option selected>Seleccione el tipo de carrera</option>
@@ -60,11 +60,10 @@
 
             <div class="mb-3">
                 <label for="finalTitle" class="form-label">Titulo final</label>
-                <input type="text" placeholder="Tecnico en desarrollo de software" class="form-control" id="finalTitle">
+                <input type="text" placeholder="Tecnico en ****" class="form-control" id="finalTitle">
             </div>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-danger me-2"
-                    onclick="location.href='/register-career'">Cancelar</button>
+                <a class="btn btn-danger me-2" href='/instituto/:id'>Cancelar</a>
                 <button type="submit" class="btn btn-success">Agregar</button>
             </div>
 
