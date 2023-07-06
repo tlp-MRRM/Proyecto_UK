@@ -2,9 +2,13 @@ const router = require('express').Router();
 
 const {
     renderRegisterInstitute,
-    renderRegisterCareers
-} = require("../controllers/register.controllers");
+    renderRegisterCareers,
+    renderInstituteProfile
+} = require('../controllers/register.controllers');
 
-router.get("/registrar-instituto", renderRegisterInstitute);
+router.get('/registrar-instituto', renderRegisterInstitute);
 
+router.get('/agregar-carrera', renderRegisterCareers)
+
+router.get('/instituto/:id', renderInstituteProfile);
 module.exports = router;
