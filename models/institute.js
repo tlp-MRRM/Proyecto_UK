@@ -1,6 +1,6 @@
 const {sequelize, DataTypes} = require('../db/connection')
 
-const Institute = sequelize.define('Institute', {
+const institute = sequelize.define('institute', {
     id: {
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -39,4 +39,6 @@ const Institute = sequelize.define('Institute', {
     year_fundation: DataTypes.INTEGER
 });
 
-Institute.sync();
+institute.sync({ force: false }).then(() => {
+    console.log('Tabla de instituto creada');
+});

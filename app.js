@@ -33,7 +33,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //     console.log('Conexión a base de datos exitosa');
 //  })
 //   .catch((error) => console.log('Error al conectar a base de datos', error));
-app.use(require('./routes/home.routes.js')) 
+
+app.use (require('./routes/form.insti.routes.js'));
+app.use(require('./routes/home.routes.js'));
 
 connection.getConnection()
   .then(conn => {

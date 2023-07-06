@@ -1,5 +1,10 @@
-const express = require('express')
-const Route = express.Router();
-const form = require("../controllers/form.controllers")
+const router = require('express').Router();
 
-Route.post("/agregar-instituto", form.post)
+const {
+    renderRegisterInstitute,
+    renderRegisterCareers
+} = require("../controllers/register.controllers");
+
+router.get("/registrar-instituto", renderRegisterInstitute);
+
+module.exports = router;

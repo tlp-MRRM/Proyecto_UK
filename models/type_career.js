@@ -1,6 +1,6 @@
 const {sequelize, DataTypes} = require('../db/connection')
 
-const TypeCareer = sequelize.define('TypeCareer', {
+const type_career = sequelize.define('type_career', {
     id:{
         type: DataTypes.INTEGER(1),
         autoIncrement: true,
@@ -9,4 +9,6 @@ const TypeCareer = sequelize.define('TypeCareer', {
     type: DataTypes.STRING
 });
 
-TypeCareer.sync()
+type_career.sync({ force: false }).then(() => {
+    console.log('Tabla de tipo de carrera creada');
+});

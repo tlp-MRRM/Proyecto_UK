@@ -1,7 +1,7 @@
 const {sequelize, DataTypes} = require('../db/connection');
 
 
-const Modality = sequelize.define('Modality', {
+const modality = sequelize.define('modality', {
     id:{
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -10,4 +10,6 @@ const Modality = sequelize.define('Modality', {
     modality: DataTypes.STRING(30)
 });
 
-Modality.sync()
+modality.sync({ force: false }).then(() => {
+    console.log('Tabla de modalidad creada');
+});

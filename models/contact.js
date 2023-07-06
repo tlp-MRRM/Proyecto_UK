@@ -1,6 +1,6 @@
 const {sequelize, DataTypes} = require('../db/connection');
 
-const Contact = sequelize.define('Contact', {
+const contact = sequelize.define('contact', {
     id:{
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -11,4 +11,6 @@ const Contact = sequelize.define('Contact', {
     weblink: DataTypes.STRING(500)
 });
 
-Contact.sync();
+contact.sync({ force: false }).then(() => {
+    console.log('Tabla de contacto creada');
+});

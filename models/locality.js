@@ -1,7 +1,7 @@
 const {sequelize, DataTypes} = require('../db/connection');
 
 
-const Locality = sequelize.define('Locality', {
+const locality = sequelize.define('locality', {
     id:{
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -14,7 +14,9 @@ const Locality = sequelize.define('Locality', {
             key: 'id'
         }
     }, 
-    localitie: DataTypes.STRING(255)
+    locality: DataTypes.STRING(255)
 });
 
-Locality.sync();
+locality.sync({ force: false }).then(() => {
+    console.log('Tabla de localidad creada');
+});

@@ -1,6 +1,6 @@
 const {sequelize, DataTypes} = require('../db/connection')
 
-const Ubication = sequelize.define('Ubication', {
+const ubication = sequelize.define('ubication', {
     id:{
         type: DataTypes.INTEGER(5),
         autoIncrement: true,
@@ -20,4 +20,6 @@ const Ubication = sequelize.define('Ubication', {
 
 })
 
-Ubication.sync();
+ubication.sync({ force: false }).then(() => {
+    console.log('Tabla de ubicacion creada');
+});
