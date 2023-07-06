@@ -7,7 +7,7 @@
   <title>Register</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
-  <link rel="stylesheet" href="register.css" />
+  <link rel="stylesheet" href="/public/css/register.css" />
 </head>
 
 <body>
@@ -15,44 +15,51 @@
     <div class="Register">
       <h1 class="Registrar">Registrate aquí</h1>
       <form action="/home/home.html">
-        <p>Nombre</p>
+        <p>Nombre de la institución</p>
         <div class="input-group mb-3">
           <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
-            required />
+            required placeholder="Nombre, °Número." />
         </div>
 
-        <p>Apellido</p>
+        <p>Categoria</p>
+        <div class="input-group mb-2">
+          <select name="categoria" id="categoria" value="categoria">
+            <option id="1" value="">Publica</option>
+            <option id="2" value="">Privada</option>
+            <option id="3" value="">Semi-privada</option>
+          </select>
+        </div>
+
+        <p>Ubicación </p>
         <div class="input-group mb-3">
           <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
-            required />
+            required placeholder="Localidad, Provincia." />
         </div>
 
         <p>Correo electrónico</p>
         <div class="input-group mb-3">
           <input type="email" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
-            required />
+            required placeholder="correoelectronico@gmail.com" />
         </div>
 
-        <p>Contraseña</p>
+        <p>Telefono de contacto</p>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
-            required />
+          <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
+            required placeholder="+54 XXXXXXXXXX" />
         </div>
 
+
+        <p>Sitio web (opcional) </p>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
+            required placeholder="https://www.ucp.edu.ar/" />
+        </div>
 
         <div class="boton">
-          <button class="btn btn-primary" type="submit"  target="_blank" style="    background-color: #5fbfff; border-color: #5fbfff;
-          " >
-            <a href="/home/home.html" style="
-          color: white; 
-          text-decoration: none;">Registrarse🤖</a>
+          <button class="btn btn-primary" type="submit" target="_blank" style="background-color: #5fbfff; border-color: #5fbfff;
+            ">Enviar</a>
           </button>
         </div>
-
-
-        ¿Ya tienes una cuenta?
-        <p> <a href="/Login/login.html">Iniciar sesión</a> </p>
-        </button>
 
     </div>
     </form>
