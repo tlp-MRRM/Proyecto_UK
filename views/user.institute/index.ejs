@@ -4,12 +4,11 @@
     <nav aria-label="breadcrumb d-flex align-content-center">
         <ol class="breadcrumb p-3 mb-1" style="height: 70px;">
             <li class="breadcrumb-item">
-                <div class="logo">
                 <a class="navbar-brand" href="../home/home.html">
+                    <div class="logo"></div>
                 </a>
-            </div>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Buscar</li>
+            <li class="breadcrumb-item active" aria-current="page">Perfil</li>
         </ol>
     </nav>
 </header>
@@ -17,30 +16,37 @@
 
 <main>
     <section>
+        <div class="col-lg-12  pt-2" id="info">
 
-        <div class="col-lg-12 info pt-2" >
+            <div>
 
-
-            <div class="col-lg-3 mb-4 perfil">
-                <img src="img/profile_logo.png" width="210px" alt="Profile Picture">
-            </div>
-
-
-
-            <div class="botones ">
-
-                <button type="button" class="btn btn-secondary btn-sm boton  mb-4" style="text-decoration: none;
+                <div class="col-lg-3 mb-4 perfil">
+                    <img src="img/profile_logo.png" width="210px" alt="Profile Picture">
+                </div>
+                <div class="botones ">
+                    <button type="button" class="btn btn-secondary btn-sm boton  mb-4" style="text-decoration: none;
 "><a href="">Editar perfil</a></button>
 
 
-                <button type="button" class="btn btn-secondary btn-sm boton  mb-4 " style="text-decoration: none;
+                    <button type="button" class="btn btn-secondary btn-sm boton  mb-4 " style="text-decoration: none;
 "><a href="/register/register.html">Cerrar sesión</a></button>
 
+                </div>
             </div>
+
+            <div class="ubi">
+                <div class="card-body">
+                    <h1>UBICACIÓN </h1>
+                </div>
+            </div>
+
 
     </section>
 
-    <section>
+
+
+
+    <article>
 
         <div class="card mb-5">
             <div class="card-body">
@@ -59,28 +65,62 @@
                 </ul>
             </div>
         </div>
-    </section>
 
-    <div class="card mb-5">
+        <div class="card mb-5">
 
-        <div class="card-body">
-            <div class="config">
-                <h1>Historial de reseñas</h1>
-                <a class="navbar-brand" href="/home/home.html">
-                    <div class="editar"></div>
-                </a>
+            <div class="card-body">
+                <div class="config">
+                    <h1>Historial de reseñas</h1>
+                    
+                </div>
+
+                <p>Tuve el privilegio de ser parte de la comunidad estudiantil en la Universidad "Ejemplo" durante
+                    los
+                    últimos cuatro años, y mi experiencia ha sido increíblemente enriquecedora. Esta institución ha
+                    demostrado
+                    ser un lugar excepcional para el aprendizaje, el crecimiento personal y el desarrollo académico.
+                </p>
             </div>
 
-            <p>Tuve el privilegio de ser parte de la comunidad estudiantil en la Universidad "Ejemplo" durante los
-                últimos cuatro años, y mi experiencia ha sido increíblemente enriquecedora. Esta institución ha
-                demostrado
-                ser un lugar excepcional para el aprendizaje, el crecimiento personal y el desarrollo académico.</p>
         </div>
+    </article>
+
+    <div class="listadocarreras">
 
     </div>
 
-
-
 </main>
+
+<h1>Carreras</h1>
+<button type="button" class="btn btn-secondary btn-sm boton  mb-4" style="text-decoration: none;
+"><a href="">Añadir carrera</a></button>
+
+<div class="listadocarrera m-4">
+    <div class="carrera">
+        <h3>Licenciatura en Ingeniería de Software</h3>
+        <p>Años de Duración: 4</p>
+        <p>Modalidad: Presencial</p>
+        <button type="button" class="btn btn-secondary btn-sm boton  mb-4" style="text-decoration: none;
+      "><a href="">Ver más</a></button>
+    </div>
+    <div class="carrera">
+        <h3>Técnico en Programación Web</h3>
+        <p>Años de Duración: 3</p>
+        <p>Modalidad: Virtual</p>
+        <button type="button" class="btn btn-secondary btn-sm boton  mb-4" style="text-decoration: none;
+      "><a href="">Ver más</a></button>
+    </div>
+    <div class="carrera">
+        <h3> Licenciatura en Administración de Empresas</h3>
+        <p>Años de Duración: 5</p>
+        <p>Modalidad: Semipresencial</p>
+        <button type="button" class="btn btn-secondary btn-sm boton  mb-4" style="text-decoration: none;
+      "><a href="">Ver más</a></button>
+    </div>
+</div>
+
+<button type="button" class="btn btn-secondary btn-sm boton  mb-4" style="text-decoration: none;
+  "><a href="">Ver todas las Carreras</a></button>
+
 
 <%- include('./partials/footer.ejs'); %>
