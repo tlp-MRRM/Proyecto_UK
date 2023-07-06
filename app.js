@@ -4,9 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv')
 dotenv.config({path:'.env'})
-const mariadb = require('mariadb');
 const path = require("path");
-const connection = require("./db/connection.js")
 const app = express();
 
 
@@ -27,22 +25,13 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 
-// // Se ejecuta una instancia de conexión a la base de datos
-// sequelize.authenticate()
-//   .then(() => { 
-//     console.log('Conexión a base de datos exitosa');
-//  })
-//   .catch((error) => console.log('Error al conectar a base de datos', error));
+const { conexionDB } = require('./db/connection.js')
+conexionDB()
 
 app.use (require('./routes/form.insti.routes.js'));
 app.use(require('./routes/home.routes.js'));
 
-connection.getConnection()
-  .then(conn => {
-    console.log('Conexión exitosa a la base de datos.');})
-  .catch(err => {
-    console.error('Error al conectar a la base de datos: ', err);
-  });
+
 
 app.listen(process.env.port,() => {
     console.log(`Server running on port ${process.env.port}`)
