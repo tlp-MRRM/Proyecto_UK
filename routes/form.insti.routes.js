@@ -6,9 +6,11 @@ const {
     renderInstituteProfile
 } = require('../controllers/register.controllers');
 
-router.get('/registrar-instituto', renderRegisterInstitute);
+router.get('/new/institute', renderRegisterInstitute);
 
-router.get('/agregar-carrera', renderRegisterCareers)
+router.get('/new/career', renderRegisterCareers)
 
-router.get('/instituto/:id', renderInstituteProfile);
+router.get('/institute/:id', renderInstituteProfile);
+
+
 module.exports = router;

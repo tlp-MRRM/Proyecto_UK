@@ -1,4 +1,4 @@
-const {sequelize, DataTypes} = require('../db/connection')
+const {sequelize, DataTypes} = require('../db')
 
 const province = sequelize.define('province', {
     id:{
@@ -7,6 +7,8 @@ const province = sequelize.define('province', {
         primaryKey: true
     },
     province: DataTypes.STRING(255)
+}, {
+    underscore : true
 })
 
 province.sync({ force: false }).then(() => {

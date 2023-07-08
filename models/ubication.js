@@ -1,4 +1,4 @@
-const {sequelize, DataTypes} = require('../db/connection')
+const {sequelize, DataTypes} = require('../db')
 
 const ubication = sequelize.define('ubication', {
     id:{
@@ -18,6 +18,8 @@ const ubication = sequelize.define('ubication', {
     postal_code: DataTypes.INTEGER(10),
     map_link: DataTypes.STRING(500)
 
+}, {
+    underscore : true
 })
 
 ubication.sync({ force: false }).then(() => {

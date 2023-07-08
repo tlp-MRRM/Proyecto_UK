@@ -1,4 +1,4 @@
-const {sequelize, DataTypes} = require('../db/connection')
+const {sequelize, DataTypes} = require('../db')
 
 const institute = sequelize.define('institute', {
     id: {
@@ -7,36 +7,44 @@ const institute = sequelize.define('institute', {
         primaryKey: true
     },
     name: DataTypes.STRING(100),
-    id_category: {
+    idCategory: {
         type:DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'categories',
+            key: 'id'
+        }
+    },
+    idInstitute: {
+        type: DataTypes.INTEGER(4),
         allowNull: true,
         references: {
-            model: 'category',
+            model: 'institutes',
             key: 'id'
         }
     },
-    id_institute: {
+    idUbication: {
         type: DataTypes.INTEGER(4),
+        allowNull: false,
         references: {
-            model: 'institute',
+            model: 'ubications',
             key: 'id'
         }
     },
-    id_ubication: {
+    idContact: {
         type: DataTypes.INTEGER(4),
+        allowNull: false,
         references: {
-            model: 'ubication',
+            model: 'contacts',
             key: 'id'
         }
     },
-    id_contact: {
-        type: DataTypes.INTEGER(4),
-        references: {
-            model: 'contact',
-            key: 'id'
-        }
-    },
-    year_fundation: DataTypes.INTEGER
+    yearFundation: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    }
+}, {
+    underscore : true
 });
 
 institute.sync({ force: false }).then(() => {

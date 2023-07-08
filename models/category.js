@@ -1,4 +1,4 @@
-const {sequelize, DataTypes} = require('../db/connection')
+const {sequelize, DataTypes} = require('../db')
 
 const category = sequelize.define('category', {
     id:{
@@ -7,6 +7,8 @@ const category = sequelize.define('category', {
         primaryKey: true
     },
     category: DataTypes.STRING(15)
+}, {
+    underscore : true
 })
 
 category.sync({ force: false }).then(() => {

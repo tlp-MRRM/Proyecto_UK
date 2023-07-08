@@ -1,4 +1,4 @@
-const {sequelize, DataTypes} = require('../db/connection');
+const {sequelize, DataTypes} = require('../db');
 
 
 const modality = sequelize.define('modality', {
@@ -8,6 +8,8 @@ const modality = sequelize.define('modality', {
         primaryKey: true
     },
     modality: DataTypes.STRING(30)
+}, {
+    underscore : true
 });
 
 modality.sync({ force: false }).then(() => {

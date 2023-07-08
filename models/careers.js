@@ -1,4 +1,4 @@
-const {sequelize, DataTypes} = require('../db/connection')
+const {sequelize, DataTypes} = require('../db')
 
 const career = sequelize.define('career', {
     id: {
@@ -10,15 +10,15 @@ const career = sequelize.define('career', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    id_type_career: {
+    idTypeCareer: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model: 'type_career',
+            model: 'typeCareers',
             key: 'id'
         }
     },
-    start_date: {
+    startDate: {
         type: DataTypes.DATEONLY,
         allowNull: false
     },
@@ -26,42 +26,44 @@ const career = sequelize.define('career', {
         type: DataTypes.INTEGER(2),
         allowNull: false
     },
-    id_time_unit: {
+    idTimeUnit: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model: 'time_unit',
+            model: 'timeUnits',
             key: 'id'
         }
     },
-    id_modality: {
+    idModality: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model:'modality',
+            model:'modalities',
             key: 'id'
         }
     },
-    final_title: {
+    finalTitle: {
         type: DataTypes.STRING(100),
         allowNull: false
     },
-    id_institute: {
+    idInstitute: {
         type: DataTypes.INTEGER(1),
         allowNull: true,
         references: {
-            model: 'institute',
+            model: 'institutes',
             key: 'id'
         }
     },
-    id_career: {
+    idCareer: {
         type: DataTypes.INTEGER(1),
         allowNull: true,
         references: {
-            model: 'career',
+            model: 'careers',
             key: 'id'
         }
     }
+}, {
+    underscore : true
 })
 career.sync({ force: false }).then(() => {
     console.log('Tabla de Carreras creada');

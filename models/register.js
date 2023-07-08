@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('sequelize');
+const { sequelize, DataTypes } = require('../db');
 
 const Usuario = sequelize.define('usuarios', {
   id: {
@@ -26,6 +26,8 @@ const Usuario = sequelize.define('usuarios', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+}, {
+  underscore : true
 });
 
 Usuario.sync();

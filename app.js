@@ -3,7 +3,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv')
-dotenv.config({path:'.env'})
 const path = require("path");
 const app = express();
 
@@ -13,6 +12,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 
+dotenv.config()
 app.use(helmet({
   contentSecurityPolicy: false  
 }));
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 
-const { conexionDB } = require('./db/connection.js')
+const { conexionDB } = require('./db')
 conexionDB()
 
 app.use (require('./routes/form.insti.routes.js'));

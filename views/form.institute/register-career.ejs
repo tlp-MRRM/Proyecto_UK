@@ -1,78 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/register-career.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
-
-<body>
+<%- include('./partials/header.ejs'); %>
     <main>
-        <form class="formAgregarCarrera" id="formAgregarCarrera">
-            <h1>Agrega una nueva carrera</h1>
+        <form class="formAgregarCarrera p-3" id="formAgregarCarrera">
+            <h2 class="mb-3">Agrega una nueva carrera</h2>
             <div class="mb-3">
-                <label for="facultad" class="form-label">Facultad de la carrera</label>
+                <label for="facultad" class="form-label">Facultad de la carrera<span
+                        style="color: red;">*</span></label>
                 <input type="text" placeholder="Facultad de **** " class="form-control" id="facultad">
             </div>
-            <label for="name" class="form-label">Nombre de la carrera</label>
-            <div class="d-flex">
-                <div class="mb-3 w-100 h-100 me-3">
-                    
-                    <input type="text" class="form-control inputNombreCarrera" placeholder="Tecnicatura en *****" id="name">
-                </div>
-                <select class="form-select selectTipoCarrera">
-                    <option selected>Seleccione el tipo de carrera</option>
-                    <option value="1">Carrera de Pregrado</option>
-                    <option value="2">Carrera de Grado</option>
-                    <option value="3">Maestria</option>
-                    <option value="4">Especializacion</option>
-                    <option value="5">Diplomatura</option>
-                </select>
-            </div>
-
+            <label for="name" class="form-label">Nombre de la carrera<span style="color: red;">*</span></label>
             <div class="mb-3">
-                <label for="start_date" class="form-label">Fecha de inicio</label>
-                <input type="date" class="form-control" id="start_date">
+                <input type="text" class="form-control inputNombreCarrera" placeholder="Ingeniería en *****" id="name">
             </div>
-            <label for="duration" class="form-label">Duración</label>
-            <div class="d-flex flex-row mb-3">
-                <div class="mb-3 me-3">
-                    <input type="number" class="form-control me-3" id="duration" placeholder="3">
+            
+                <%- include('./partials/tipo-carrera.ejs'); %>
+                <%- include('./partials/modalidad.ejs'); %>
+
+                <div class="mb-3 apartado2">
+                    <div class="me-3 start_date">
+                        <label for="start_date" class="form-label">Fecha de inicio<span style="color: red;">*</span></label>
+                        <input type="date" class="form-control" id="start_date">
                 </div>
-                <select class="form-select me-3">
-                    <option selected>Seleccione el tiempo</option>
-                    <option value="1">Años</option>
-                    <option value="2">Meses</option>
-                </select>
-                <select class="form-select">
-                    <option selected>Seleccione una modalidad</option>
-                    <option value="1">Presencial</option>
-                    <option value="2">A distancia</option>
-                    <option value="3">Presencial y a distancia</option>
-                </select>
-            </div>
 
+                <div class="me-3 duracion">
+                    <label for="duration" class="form-label">Duración<span style="color: red;">*</span></label>
+                    <input type="number" class="form-control" id="duration" placeholder="*">
+                </div>
+                    <%- include('./partials/time.ejs'); %>
 
+                </div>
 
-            <div class="mb-3">
-                <label for="finalTitle" class="form-label">Titulo final</label>
-                <input type="text" placeholder="Tecnico en ****" class="form-control" id="finalTitle">
-            </div>
-            <div class="d-flex justify-content-end">
-                <a class="btn btn-danger me-2" href='/instituto/:id'>Cancelar</a>
-                <button type="submit" class="btn btn-success">Agregar</button>
-            </div>
+                    <div class="mb-3">
+                        <label for="finalTitle" class="form-label">Título intermedio</label>
+                        <input type="text" placeholder="Tecnico en ****" class="form-control" id="finalTitle">
+                    </div>
+                    <div class="mb-3">
+                        <label for="finalTitle" class="form-label">Título final <span
+                                style="color: red;">*</span></label>
+                        <input type="text" placeholder="Ingeniero en ****" class="form-control" id="finalTitle">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a class="btn btn-danger me-2" href='/instituto/:id'>Cancelar</a>
+                        <button type="submit" class="btn btn-success">Agregar</button>
+                    </div>
 
         </form>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-</body>
-</body>
-
-</html>
+    <%- include('./partials/footer.ejs'); %>

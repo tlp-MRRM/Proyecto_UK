@@ -1,5 +1,5 @@
+
 main {
-  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,27 +11,91 @@ body {
   margin: 0;
 }
 form {
+  margin: 50px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 50%;
+  width: 30%;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.selectTipoCarrera {
-  width: fit-content !important;
-}
-
-.inputNombreCarrera {
-  width: max-content;
+.apartado2 {
+  display: flex;
+  justify-content: space-between;
 }
 
 
-@media screen and (max-width: 768px) { 
+
+
+
+@media screen and (max-width: 1700px) { 
   form {
-    width: 90% !important;
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1500px) { 
+  form {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 1300px) { 
+  form {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 1000px) { 
+  form {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 768px) { 
+  main {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f4f4f4;
+  }
+  form {
+    width: 80%;
+    height: auto;
+  }
+  form .apartado2 .duracion  {
+    margin: 0 !important;
+  }
+  form .apartado2 .start_date  {
+    margin: 0 !important;
+  }
+  .apartado2 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 450px) { 
+  main {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f4f4f4;
+  }
+  form {
+    width: 95%;
+    height: auto;
+  }
+  form .apartado2 .duracion  {
+    margin: 0 !important;
+  }
+  form .apartado2 .start_date  {
+    margin: 0 !important;
+  }
+  .apartado2 {
+    display: flex;
+    flex-direction: column;
   }
 }

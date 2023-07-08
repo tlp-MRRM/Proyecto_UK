@@ -1,4 +1,4 @@
-const {sequelize, DataTypes} = require('../db/connection');
+const {sequelize, DataTypes} = require('../db');
 
 
 const locality = sequelize.define('locality', {
@@ -15,6 +15,8 @@ const locality = sequelize.define('locality', {
         }
     }, 
     locality: DataTypes.STRING(255)
+}, {
+    underscore : true
 });
 
 locality.sync({ force: false }).then(() => {

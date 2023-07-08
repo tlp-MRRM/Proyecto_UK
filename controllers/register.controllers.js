@@ -1,5 +1,19 @@
 const ctrlRenderForms = {}
 const ctrl = {}
+const typeCareer = require('../models/typeCareer')
+const ubication = require('../models/ubication')
+const category = require('../models/category')
+const contact = require('../models/contact')
+const institute = require('../models/institute')
+const locality = require('../models/locality')
+const modality = require('../models/modality')
+const province = require('../models/province')
+const register = require('../models/register')
+const timeUnit = require('../models/timeUnit')
+
+
+const career = require('../models/careers');
+
 ctrlRenderForms.renderRegisterInstitute = (req, res) => {
     res.render("register/register")
 }

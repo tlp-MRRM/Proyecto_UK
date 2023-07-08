@@ -1,4 +1,4 @@
-const {sequelize, DataTypes} = require('../db/connection');
+const {sequelize, DataTypes} = require('../db');
 
 const contact = sequelize.define('contact', {
     id:{
@@ -9,6 +9,8 @@ const contact = sequelize.define('contact', {
     mail: DataTypes.STRING(250),
     tel: DataTypes.STRING(15),
     weblink: DataTypes.STRING(500)
+}, {
+    underscore : true
 });
 
 contact.sync({ force: false }).then(() => {
