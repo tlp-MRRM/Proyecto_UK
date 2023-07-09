@@ -8,7 +8,7 @@ const {
 
 router.get('/new/institute', renderRegisterInstitute);
 
-router.get('/new/career', renderRegisterCareers)
+router.get('/institute/:id/new/career', renderRegisterCareers)
 
 router.get('/institute/:id', renderInstituteProfile);
 

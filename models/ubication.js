@@ -6,7 +6,7 @@ const ubication = sequelize.define('ubication', {
         autoIncrement: true,
         primaryKey: true
     },
-    id_locality: {
+    idLocality: {
         type:DataTypes.INTEGER(4),
         references: {
             model:'localities',
@@ -15,8 +15,8 @@ const ubication = sequelize.define('ubication', {
     },
     street: DataTypes.STRING(100),
     altitude: DataTypes.INTEGER(6),
-    postal_code: DataTypes.INTEGER(10),
-    map_link: DataTypes.STRING(500)
+    postalCode: DataTypes.INTEGER(10),
+    mapLink: DataTypes.STRING(500)
 
 }, {
     underscore : true

@@ -3,12 +3,12 @@ const {sequelize, DataTypes} = require('../db');
 
 const locality = sequelize.define('locality', {
     id:{
-        type: DataTypes.INTEGER(4),
+        type: DataTypes.INTEGER(11),
         autoIncrement: true,
         primaryKey: true
     },
-    id_province: {
-        type: DataTypes.INTEGER('2'),
+    idProvince: {
+        type: DataTypes.INTEGER(11),
         references: {
             model: 'provinces',
             key: 'id'
@@ -16,6 +16,7 @@ const locality = sequelize.define('locality', {
     }, 
     locality: DataTypes.STRING(255)
 }, {
+    timestamps: false,
     underscore : true
 });
 

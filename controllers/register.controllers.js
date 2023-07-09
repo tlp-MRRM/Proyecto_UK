@@ -1,17 +1,15 @@
 const ctrlRenderForms = {}
 const ctrl = {}
+const modality = require('../models/modality')
+const province = require('../models/province')
+const locality = require('../models/locality')
 const typeCareer = require('../models/typeCareer')
+const register = require('../models/user')
+const timeUnit = require('../models/timeUnit')
 const ubication = require('../models/ubication')
 const category = require('../models/category')
 const contact = require('../models/contact')
 const institute = require('../models/institute')
-const locality = require('../models/locality')
-const modality = require('../models/modality')
-const province = require('../models/province')
-const register = require('../models/register')
-const timeUnit = require('../models/timeUnit')
-
-
 const career = require('../models/careers');
 
 ctrlRenderForms.renderRegisterInstitute = (req, res) => {
@@ -26,31 +24,23 @@ ctrlRenderForms.renderInstituteProfile = (req, res) => {
     res.render('user.institute/index')
 }
 //CRUD
-ctrl.agregarInstituto = async (req, res) => {
+ctrl.newInstitute = async (req, res) => {
     const {
         name,
-        id_category,
-        id_ubication,
-        duration,
-        id_time_unit,
-        id_modality,
-        final_title,
-        id_institute,
-        id_career
+        idCategory,
+        idInstitute,
+        idUbication,
+        idContact,
+        yearFundation
     } = req.body;
     try {
         const institute = await institute.create({
             name,
-            id_type_career,
-            start_date,
-            id_category,
-            id_ubication,
-            duration,
-            id_time_unit,
-            id_modality,
-            final_title,
-            id_institute,
-            id_career
+            idCategory,
+            idInstitute,
+            idUbication,
+            idContact,
+            yearFundation
         });
         return res.json(institute);
     } catch (error) {
@@ -61,29 +51,29 @@ ctrl.agregarInstituto = async (req, res) => {
     }
 }
 
-ctrl.agregarCarrera = async (req, res) => {
+ctrl.newCareer = async (req, res) => {
     const {
         name,
-        id_type_career,
-        start_date,
+        idTypeCarer,
+        startDate,
         duration,
-        id_time_unit,
-        id_modality,
+        idTimeUnit,
+        idModality,
         final_title,
-        id_institute,
-        id_career
+        idInstitute,
+        idCareer
     } = req.body;
     try {
         const career = await career.create({
             name,
-            id_type_career,
-            start_date,
+            idTypeCarer,
+            startDate,
             duration,
-            id_time_unit,
-            id_modality,
+            idTimeUnit,
+            idModality,
             final_title,
-            id_institute,
-            id_career
+            idInstitute,
+            idCareer
         });
         return res.json(career);
     } catch (error) {

@@ -6,6 +6,11 @@ const career = sequelize.define('career', {
         autoIncrement: true,
         primaryKey: true
     },
+    status: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false

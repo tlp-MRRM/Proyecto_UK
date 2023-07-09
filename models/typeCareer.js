@@ -8,6 +8,7 @@ const typeCareer = sequelize.define('typeCareer', {
     },
     type: DataTypes.STRING
 }, {
+    timestamps: false,
     underscore : true
 });
 

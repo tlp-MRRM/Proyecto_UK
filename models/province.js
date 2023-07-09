@@ -2,12 +2,13 @@ const {sequelize, DataTypes} = require('../db')
 
 const province = sequelize.define('province', {
     id:{
-        type: DataTypes.INTEGER(4),
+        type: DataTypes.INTEGER(10),
         autoIncrement: true,
         primaryKey: true
     },
     province: DataTypes.STRING(255)
 }, {
+    timestamps: false,
     underscore : true
 })
 

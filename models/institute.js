@@ -6,6 +6,11 @@ const institute = sequelize.define('institute', {
         autoIncrement: true,
         primaryKey: true
     },
+    status: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+    },
     name: DataTypes.STRING(100),
     idCategory: {
         type:DataTypes.INTEGER,

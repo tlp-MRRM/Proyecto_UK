@@ -9,6 +9,7 @@ const modality = sequelize.define('modality', {
     },
     modality: DataTypes.STRING(30)
 }, {
+    timestamps: false,
     underscore : true
 });
 

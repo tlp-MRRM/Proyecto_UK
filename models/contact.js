@@ -10,6 +10,7 @@ const contact = sequelize.define('contact', {
     tel: DataTypes.STRING(15),
     weblink: DataTypes.STRING(500)
 }, {
+    timestamps: false,
     underscore : true
 });
 

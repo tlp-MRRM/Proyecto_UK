@@ -20,10 +20,10 @@ h1 {
 .Register {
   display: flex;
   flex-direction: column;
-  width: 55%;
+  width: 40%;
   background-color: white;
   border: 22px solid;
-  border-radius: 2rem;
+  border-radius: 15px;
   border-color: white;
   color: black;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
