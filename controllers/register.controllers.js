@@ -13,7 +13,13 @@ const institute = require('../models/institute')
 const career = require('../models/careers');
 
 ctrlRenderForms.renderRegisterInstitute = (req, res) => {
-    res.render("register/register")
+    
+    try {
+        console.log('prueba')
+    res.render("formInstitute/register-institute")
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 ctrlRenderForms.renderRegisterCareers = (req, res) => {

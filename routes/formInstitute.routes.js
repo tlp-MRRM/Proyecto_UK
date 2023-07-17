@@ -5,8 +5,12 @@ const {
     renderRegisterCareers,
     renderInstituteProfile
 } = require('../controllers/register.controllers');
+try {
+    router.get('/new/institute', renderRegisterInstitute);
+} catch (error) {
+    console.log(error);
+}
 
-router.get('/new/institute', renderRegisterInstitute);
 
 router.get('/institute/:id/new/career', renderRegisterCareers)
 

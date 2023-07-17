@@ -35,11 +35,13 @@ app.use(express.json());
 const { conexionDB } = require('./db')
 conexionDB()
 
-app.use (require('./routes/form.insti.routes.js'));
+app.use(require('./routes/formInstitute.routes.js'));
 app.use(require('./routes/home.routes.js'));
 
 
 
-app.listen(process.env.port,() => {
+
+
+app.listen(process.env.PORT,() => {
     console.log(`Server running on port ${process.env.port}`)
 })

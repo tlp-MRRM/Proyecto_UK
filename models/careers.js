@@ -73,4 +73,3 @@ const career = sequelize.define('career', {
 career.sync({ force: false }).then(() => {
     console.log('Tabla de Carreras creada');
 });
-module.exports = career

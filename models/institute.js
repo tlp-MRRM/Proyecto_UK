@@ -11,7 +11,14 @@ const institute = sequelize.define('institute', {
         allowNull: false,
         defaultValue: true
     },
-    name: DataTypes.STRING(100),
+    name: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
+    abbreviation: {
+        type: DataTypes.STRING(10),
+        allowNull: false
+    },
     idCategory: {
         type:DataTypes.INTEGER,
         allowNull: false,
@@ -47,6 +54,13 @@ const institute = sequelize.define('institute', {
     yearFundation: {
         type: DataTypes.INTEGER,
         allowNull: true,
+    },
+    description: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
     }
 }, {
     underscore : true

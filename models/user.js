@@ -1,6 +1,6 @@
 const { sequelize, DataTypes } = require('../db');
 
-const Usuario = sequelize.define('user', {
+const user = sequelize.define('user', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -30,8 +30,6 @@ const Usuario = sequelize.define('user', {
   underscore : true
 });
 
-Usuario.sync();
-
-module.exports = Usuario;
-
-
+user.sync({ force: false }).then(() => {
+  console.log('Tabla de usuarios creada');
+});
