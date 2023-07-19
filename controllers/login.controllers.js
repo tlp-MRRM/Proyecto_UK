@@ -1,24 +1,12 @@
+ctrl= {}
 
-function get (req, res) {
-    res.render('views/login/login.ejs')
-}
+const jwk = require('jsonwebtoken');
+const bcrypts = require('bcryptjs')
+const conexion = require('../db')
+const {promisify} = require('util')
 
-function post() {
-    res.send('Hello world post')
-};  
+ctrl.login = (req, res) => {
+    res.render('login/login.ejs')
+} 
 
-function put() {
-    res.send('Hello put')
-};
-
-
-function deelete() {
-    res.sendf('Hello Delete option')
-}
-
-module.exports = {
-    post,
-     put, 
-     deelete, 
-     get
-}
+module.exports =  ctrl 

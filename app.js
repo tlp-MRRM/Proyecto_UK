@@ -37,9 +37,7 @@ conexionDB()
 
 app.use(require('./routes/formInstitute.routes.js'));
 app.use(require('./routes/home.routes.js'));
-
-
-
+app.use(require('./routes/login.routes.js'));
 
 
 app.listen(process.env.PORT,() => {
