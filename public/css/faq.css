@@ -1,0 +1,52 @@
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+body {
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    height: 100vh;
+}
+#cabecera {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    background-color: rgb(237, 237, 237);
+  }
+  .preguntas-frecuentes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+  }
+  
+main {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+header li {
+  font-size: 30px;
+}
+.logo {
+    background-image: url(../img/home/logo.png);
+    width: 45px;
+    height: 45px;
+    background-size: cover;
+    transition: 0.1s ease-in-out;
+  }
+  .logo:hover {
+    transform: scale(1.2);
+    background-image: url(../img/home/logo_hover.png);
+  }
+  
+  footer {
+    margin-top: 110px;
+    background-color: rgb(237, 237, 237);
+    width: 100%;
+  }

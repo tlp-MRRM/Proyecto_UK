@@ -13,13 +13,7 @@ const institute = require('../models/institute')
 const career = require('../models/careers');
 
 ctrlRenderForms.renderRegisterInstitute = (req, res) => {
-    
-    try {
-        console.log('prueba')
     res.render("formInstitute/register-institute")
-    } catch (error) {
-        console.log(error)
-    }
 }
 
 ctrlRenderForms.renderRegisterCareers = (req, res) => {
@@ -29,6 +23,8 @@ ctrlRenderForms.renderRegisterCareers = (req, res) => {
 ctrlRenderForms.renderInstituteProfile = (req, res) => {
     res.render('user.institute/index')
 }
+
+
 //CRUD
 ctrl.newInstitute = async (req, res) => {
     const {

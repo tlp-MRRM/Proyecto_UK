@@ -36,7 +36,12 @@ body {
   background-color: rgb(237, 237, 237);
 }
 
-header 
+.preguntas-frecuentes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+}
 
 
 main {
@@ -148,9 +153,6 @@ html {
   min-height: 100%;
 }
 
-.footerR {
-  margin: 0 !important;
-}
 
 
 footer {

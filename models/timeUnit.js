@@ -9,7 +9,7 @@ const timeUnit = sequelize.define('timeUnit', {
     unitTime: DataTypes.STRING('50')
 }, {
     timestamps: false,
-    underscore : true
+    underscored : true
 })
 
 timeUnit.sync({ force: false }).then(() => {

@@ -68,7 +68,7 @@ const career = sequelize.define('career', {
         }
     }
 }, {
-    underscore : true
+    underscored : true
 })
 career.sync({ force: false }).then(() => {
     console.log('Tabla de Carreras creada');

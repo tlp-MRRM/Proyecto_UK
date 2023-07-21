@@ -1,7 +1,17 @@
-ctrlRenderHome = {}
+ctrl = {}
 
-ctrlRenderHome.inicio = (req, res) => {
+ctrl.renderHome = (req, res) => {
     res.render('home/index.ejs')
 };
 
-module.exports = ctrlRenderHome
+ctrl.renderFaq = (req, res) => {
+    res.render('home/faq.ejs')
+};
+ctrl.renderWorkWithUs = (req, res) => {
+    res.render('workWithUs/index.ejs')
+}
+
+ctrl.renderAboutUs = (req, res) => {
+    res.render('home/about.ejs')
+}
+module.exports = ctrl

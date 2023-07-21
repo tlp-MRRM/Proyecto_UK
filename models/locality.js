@@ -17,7 +17,7 @@ const locality = sequelize.define('locality', {
     locality: DataTypes.STRING(255)
 }, {
     timestamps: false,
-    underscore : true
+    underscored : true
 });
 
 locality.sync({ force: false }).then(() => {

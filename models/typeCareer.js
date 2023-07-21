@@ -9,7 +9,7 @@ const typeCareer = sequelize.define('typeCareer', {
     type: DataTypes.STRING
 }, {
     timestamps: false,
-    underscore : true
+    underscored : true
 });
 
 typeCareer.sync({ force: false }).then(() => {

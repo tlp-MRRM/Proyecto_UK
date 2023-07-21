@@ -1,7 +1,6 @@
-function get(req, res) {
-    res.render('search/index.ejs')
+ctrlSearch = {};
+ctrlSearch.renderSearch = (req, res) => {
+    res.render('search/index')
 };
 
-module.exports = {
-    get
-}
+module.exports = ctrlSearch

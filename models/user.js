@@ -27,7 +27,7 @@ const user = sequelize.define('user', {
     allowNull: false,
   },
 }, {
-  underscore : true
+  underscored : true
 });
 
 user.sync({ force: false }).then(() => {

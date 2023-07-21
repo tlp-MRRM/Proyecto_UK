@@ -11,7 +11,7 @@ const contact = sequelize.define('contact', {
     weblink: DataTypes.STRING(500)
 }, {
     timestamps: false,
-    underscore : true
+    underscored : true
 });
 
 contact.sync({ force: false }).then(() => {

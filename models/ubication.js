@@ -19,7 +19,7 @@ const ubication = sequelize.define('ubication', {
     mapLink: DataTypes.STRING(500)
 
 }, {
-    underscore : true
+    underscored : true
 })
 
 ubication.sync({ force: false }).then(() => {

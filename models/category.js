@@ -9,7 +9,7 @@ const category = sequelize.define('category', {
     category: DataTypes.STRING(15)
 }, {
     timestamps: false,
-    underscore : true
+    underscored : true
 })
 
 category.sync({ force: false }).then(() => {

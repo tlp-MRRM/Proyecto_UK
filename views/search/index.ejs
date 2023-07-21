@@ -1,23 +1,30 @@
 <%- include('./partials/header.ejs'); %>
 
-<header id="cabecera">
-    <nav aria-label="breadcrumb d-flex align-content-center">
-      <ol class="breadcrumb p-3">
-        <li class="breadcrumb-item">
-          <a class="navbar-brand" href="../home/home.html">
-            <div class="logo"></div>
-          </a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Buscar</li>
-      </ol>
-    </nav>
-  </header>
+<header id="cabecera" class="d-flex justify-content-between align-content-center">
+  <nav aria-label="breadcrumb d-flex align-content-center">
+    <ol class="breadcrumb p-2 m-0 ps-3 d-flex justify-content-between">
+      <li class="breadcrumb-item">
+        <a class="navbar-brand" href="/">
+          <div class="logo"></div>
+        </a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Buscar</li>
+    </ol>
+  </nav>
+  <div class="preguntas-frecuentes">
+    <a href="/preguntas-frecuentes"><img src="./img/home/question-mark-vector-icon.png" style="width: 30px;"
+        alt="Ayuda"></a>
+  </div>
+</header>
   <main>
     <section>
-      <div class="busquedaCuadro">
+      <div class="busquedaCuadro w-100">
         <h3><label for="busqueda">Busca una universidad/carrera</label></h3>
-        <input type="text" id="busqueda" placeholder="Ingeniería en Software" name="busqueda">
-        <button id="btnBuscar">Buscar</button>
+        <div class="d-flex w-100 d-flex justify-content-center">
+          <input type="text" id="busqueda" placeholder="Ingeniería en Software" name="busqueda">
+        <button class="w-auto" id="btnBuscar">Buscar</button>
+        </div>
+        
       </div>
       <div id="resultados">
 
@@ -26,13 +33,13 @@
       <div id="carouselExampleAutoplaying" class="carousel slide carrusel" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/laCuencaDelPlata.jpg" class="d-block w-100" alt="La cuenca del plata">
+            <img src="./img/home/laCuencaDelPlata.jpg" class="d-block w-100" alt="La cuenca del plata">
           </div>
           <div class="carousel-item">
-            <img src="img/siglo21.png" class="d-block w-100" alt="Siglo 21">
+            <img src="./img/home/siglo21.png" class="d-block w-100" alt="Siglo 21">
           </div>
           <div class="carousel-item">
-            <img src="img/UNAF.jpg" class="d-block w-100" alt="UNAF">
+            <img src="/img/home/UNAF.jpg" class="d-block w-100" alt="UNAF">
           </div>
         </div>
         <button class="carousel-control-prev btn-next " type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -48,14 +55,6 @@
       </div>
 
     </section>
-    <aside>
-      <div class="universidadesDestacadas" id="univDest">
-
-
-
-      </div>
-
-    </aside>
   </main>
 
   <%- include('./partials/footer.ejs'); %>

@@ -63,7 +63,7 @@ const institute = sequelize.define('institute', {
         }
     }
 }, {
-    underscore : true
+    underscored : true
 });
 
 institute.sync({ force: false }).then(() => {

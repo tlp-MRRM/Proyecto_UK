@@ -1,4 +1,4 @@
-import { universidad1, universidad2 } from "../models/universidad.js";
+import { universidad1, universidad2 } from "../../front/busqueda/models/universidad.js";
 const arrayUniversidades = [universidad1, universidad2];
 
 const resultados = document.getElementById("resultados")    
