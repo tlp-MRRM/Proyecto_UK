@@ -1,0 +1,23 @@
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body {
+    background-color: #f4f4f4;
+}
+form {
+    width: 50%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 40px;
+}
+
+.nombres {
+    display: flex;
+}
+.nombre {
+    width: 95%;
+    margin-right: 10px;
+}

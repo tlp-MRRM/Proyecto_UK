@@ -17,7 +17,7 @@ ctrlRenderForms.renderRegisterInstitute = (req, res) => {
 }
 
 ctrlRenderForms.renderRegisterCareers = (req, res) => {
-    res.render("form.institute/register-career")
+    res.render("formInstitute/register-career")
 }
 
 ctrlRenderForms.renderInstituteProfile = (req, res) => {
