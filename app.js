@@ -38,6 +38,7 @@ conexionDB()
 app.use(require('./routes/formInstitute.routes.js'));
 app.use(require('./routes/home.routes.js'));
 app.use(require('./routes/search.routes.js'));
+app.use(require('./routes/login.routes.js'))
 
 
 

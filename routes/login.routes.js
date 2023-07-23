@@ -4,6 +4,13 @@ const {
     login 
 } = require('../controllers/login.controllers')
 
-router.get("/login", login)
+const {
+    sesion
+} = require('../controllers/login.controllers')
+
+router.get("/iniciar-sesion", login)
+
+
+router.post('/inciar-sesion', sesion)
 
 module.exports = router;
