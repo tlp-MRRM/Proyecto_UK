@@ -13,21 +13,25 @@
     <main>
         <form class="formAgregarInstituto p-3" id="formAgregarInstituto">
             <h2 class="mb-3">Registra tu institución</h2>
-            <div class="mb-3">
-                <label for="name" class="form-label">Nombre de la institución<span
-                        style="color: red;">*</span></label>
-                <input type="text" placeholder="Instituto politecnico" class="form-control" name="name">
-            </div>
-            <label for="abbreviation" class="form-label">Abreviatura<span style="color: red;">*</span></label>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="IPF" id="abbreviation">
+            <div class="nombres">
+                <div class="nombre">
+                    <label for="name" class="form-label">Nombre de la institución<span
+                            style="color: red;">*</span></label>
+                    <input type="text" placeholder="Instituto politecnico" class="form-control" name="name">
+                </div>
+                <div>
+                    <label for="abbreviation" class="form-label">Abreviatura<span style="color: red;">*</span></label>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="IPF" id="abbreviation">
+                    </div>
+                </div>
             </div>
             
-                <%- include('./partials/categoria-instituto.ejs'); %>
+                <%- include('./partials/categoryInstitute'); %>
 
-                <%- include('./partials/ubicacion.ejs'); %>
+                <%- include('./partials/ubicationInstitute.ejs'); %>
 
-                <%- include('./partials/contacto.ejs'); %>
+                <%- include('./partials/contact.ejs'); %>
 
 
                 <div class="mb-3">
@@ -45,5 +49,6 @@
 
         </form>
     </main>
+    <script src="./js/register-institute.js"></script>
 </body>
 </html>

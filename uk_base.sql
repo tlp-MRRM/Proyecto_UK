@@ -1,137 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: Jul 22, 2023 at 11:40 AM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `uk_base`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `careers`
---
-
-DROP TABLE IF EXISTS `careers`;
-CREATE TABLE IF NOT EXISTS `careers` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `name` varchar(255) NOT NULL,
-  `idTypeCareer` int NOT NULL,
-  `startDate` date NOT NULL,
-  `duration` int NOT NULL,
-  `idTimeUnit` int NOT NULL,
-  `idModality` int NOT NULL,
-  `finalTitle` varchar(100) NOT NULL,
-  `idInstitute` int DEFAULT NULL,
-  `idCareer` int DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idTypeCareer` (`idTypeCareer`),
-  KEY `idTimeUnit` (`idTimeUnit`),
-  KEY `idModality` (`idModality`),
-  KEY `idCareer` (`idCareer`),
-  KEY `idInstitute` (`idInstitute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories`
---
-
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `category` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `categories`
---
 
 INSERT INTO `categories` (`id`, `category`) VALUES
 (1, 'Pública'),
 (2, 'Privada'),
 (3, 'Semi-privada');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `contacts`
---
-
-DROP TABLE IF EXISTS `contacts`;
-CREATE TABLE IF NOT EXISTS `contacts` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `mail` varchar(250) DEFAULT NULL,
-  `tel` varchar(15) DEFAULT NULL,
-  `weblink` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `institutes`
---
-
-DROP TABLE IF EXISTS `institutes`;
-CREATE TABLE IF NOT EXISTS `institutes` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `name` varchar(100) NOT NULL,
-  `abbreviation` varchar(10) NOT NULL,
-  `idCategory` int NOT NULL,
-  `idInstitute` int DEFAULT NULL,
-  `idUbication` int NOT NULL,
-  `idContact` int NOT NULL,
-  `yearFundation` int DEFAULT NULL,
-  `description` varchar(255) NOT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idCategory` (`idCategory`),
-  KEY `idInstitute` (`idInstitute`),
-  KEY `idUbication` (`idUbication`),
-  KEY `idContact` (`idContact`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `localities`
---
-
-DROP TABLE IF EXISTS `localities`;
-CREATE TABLE IF NOT EXISTS `localities` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `idProvince` int DEFAULT NULL,
-  `locality` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idProvince` (`idProvince`)
-) ENGINE=InnoDB AUTO_INCREMENT=2383 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `localities`
---
 
 INSERT INTO `localities` (`id`, `idProvince`, `locality`) VALUES
 (1, 1, '25 de Mayo'),
@@ -2524,16 +2398,6 @@ INSERT INTO `localities` (`id`, `idProvince`, `locality`) VALUES
 -- Table structure for table `modalities`
 --
 
-DROP TABLE IF EXISTS `modalities`;
-CREATE TABLE IF NOT EXISTS `modalities` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `modality` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `modalities`
---
 
 INSERT INTO `modalities` (`id`, `modality`) VALUES
 (1, 'Presencial'),
@@ -2546,16 +2410,7 @@ INSERT INTO `modalities` (`id`, `modality`) VALUES
 -- Table structure for table `provinces`
 --
 
-DROP TABLE IF EXISTS `provinces`;
-CREATE TABLE IF NOT EXISTS `provinces` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `province` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `provinces`
---
 
 INSERT INTO `provinces` (`id`, `province`) VALUES
 (1, 'Buenos Aires'),
@@ -2587,19 +2442,7 @@ INSERT INTO `provinces` (`id`, `province`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `timeunits`
---
 
-DROP TABLE IF EXISTS `timeunits`;
-CREATE TABLE IF NOT EXISTS `timeunits` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `unitTime` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `timeunits`
---
 
 INSERT INTO `timeunits` (`id`, `unitTime`) VALUES
 (1, 'Años'),
@@ -2609,17 +2452,6 @@ INSERT INTO `timeunits` (`id`, `unitTime`) VALUES
 
 --
 -- Table structure for table `typecareers`
---
-
-DROP TABLE IF EXISTS `typecareers`;
-CREATE TABLE IF NOT EXISTS `typecareers` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `typecareers`
 --
 
 INSERT INTO `typecareers` (`id`, `type`) VALUES
@@ -2635,74 +2467,9 @@ INSERT INTO `typecareers` (`id`, `type`) VALUES
 -- Table structure for table `ubications`
 --
 
-DROP TABLE IF EXISTS `ubications`;
-CREATE TABLE IF NOT EXISTS `ubications` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `idLocality` int DEFAULT NULL,
-  `street` varchar(100) DEFAULT NULL,
-  `altitude` int DEFAULT NULL,
-  `postalCode` int DEFAULT NULL,
-  `mapLink` varchar(500) DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idLocality` (`idLocality`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
-  `apellido` varchar(255) NOT NULL,
-  `correoElectronico` varchar(255) NOT NULL,
-  `contraseña` varchar(255) NOT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `correoElectronico` (`correoElectronico`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `careers`
---
-ALTER TABLE `careers`
-  ADD CONSTRAINT `careers_ibfk_2` FOREIGN KEY (`idTimeUnit`) REFERENCES `timeunits` (`id`),
-  ADD CONSTRAINT `careers_ibfk_3` FOREIGN KEY (`idModality`) REFERENCES `modalities` (`id`),
-  ADD CONSTRAINT `careers_ibfk_5` FOREIGN KEY (`idCareer`) REFERENCES `careers` (`id`),
-  ADD CONSTRAINT `careers_ibfk_6` FOREIGN KEY (`idInstitute`) REFERENCES `institutes` (`id`);
-
---
--- Constraints for table `institutes`
---
-ALTER TABLE `institutes`
-  ADD CONSTRAINT `institutes_ibfk_1` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`id`),
-  ADD CONSTRAINT `institutes_ibfk_2` FOREIGN KEY (`idInstitute`) REFERENCES `institutes` (`id`),
-  ADD CONSTRAINT `institutes_ibfk_3` FOREIGN KEY (`idUbication`) REFERENCES `ubications` (`id`),
-  ADD CONSTRAINT `institutes_ibfk_4` FOREIGN KEY (`idContact`) REFERENCES `contacts` (`id`);
-
---
--- Constraints for table `localities`
---
-ALTER TABLE `localities`
-  ADD CONSTRAINT `localities_ibfk_1` FOREIGN KEY (`idProvince`) REFERENCES `provinces` (`id`);
-
---
--- Constraints for table `ubications`
---
-ALTER TABLE `ubications`
-  ADD CONSTRAINT `ubications_ibfk_1` FOREIGN KEY (`idLocality`) REFERENCES `localities` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
