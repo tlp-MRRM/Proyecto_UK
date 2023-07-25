@@ -1,6 +1,6 @@
-ctrlSearch = {};
-ctrlSearch.renderSearch = (req, res) => {
+ctrl = {};
+ctrl.renderSearch = (req, res) => {
     res.render('search/index')
 };
 
-module.exports = ctrlSearch
+module.exports = ctrl

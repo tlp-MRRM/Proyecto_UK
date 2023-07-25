@@ -15,3 +15,5 @@ const province = sequelize.define('province', {
 province.sync({ force: false }).then(() => {
     console.log('Tabla de provincias creada');
 });
+
+module.exports = province

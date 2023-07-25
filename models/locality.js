@@ -23,3 +23,5 @@ const locality = sequelize.define('locality', {
 locality.sync({ force: false }).then(() => {
     console.log('Tabla de localidad creada');
 });
+
+module.exports = locality;

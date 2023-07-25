@@ -1,4 +1,3 @@
-const ctrlRenderForms = {}
 const ctrl = {}
 const modality = require('../models/modality')
 const province = require('../models/province')
@@ -12,20 +11,55 @@ const contact = require('../models/contact')
 const institute = require('../models/institute')
 const career = require('../models/careers');
 
-ctrlRenderForms.renderRegisterInstitute = (req, res) => {
+ctrl.renderRegisterInstitute = async (req, res) => {
     res.render("formInstitute/register-institute")
 }
 
-ctrlRenderForms.renderRegisterCareers = (req, res) => {
+
+ctrl.renderRegisterCareers = (req, res) => {
     res.render("formInstitute/register-career")
 }
 
-ctrlRenderForms.renderInstituteProfile = (req, res) => {
+ctrl.renderInstituteProfile = (req, res) => {
     res.render('user.institute/index')
 }
 
 
 //CRUD
+
+ctrl.findAllProvinces = async (req, res) => {
+    try {
+            const provinces = await province.findAll();
+            return res.json(provinces);
+        } catch (error) {
+            console.error('Error al obtener las provincias:', error);
+            res.status(500).json({ error: 'Error al obtener las provincias' });
+        }
+}
+
+ctrl.findAllLocalities = async (req, res) => {
+    try {
+        const localities = await locality.findAll();
+        return res.json(localities);
+    } catch (error) {
+        console.error('Error al obtener las localidades:', error);
+        res.status(500).json({ error: 'Error al obtener las localidades' });
+    }
+}
+
+ctrl.findAllLocalitiesById = async(req, res) => {
+    try {
+        const localities = await locality.findAll({
+            where: {
+                idProvince: req.params.id
+            }
+        });
+        return res.json(localities);
+    } catch (error) {
+        console.error('Error al obtener las localidades:', error);
+        res.status(500).json({ error: 'Error al obtener las localidades' });
+    }
+}
 ctrl.newInstitute = async (req, res) => {
     const {
         name,
@@ -87,5 +121,5 @@ ctrl.newCareer = async (req, res) => {
 }
 
 
-module.exports = ctrlRenderForms
+module.exports = ctrl
 
