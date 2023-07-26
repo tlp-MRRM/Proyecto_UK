@@ -15,3 +15,5 @@ const timeUnit = sequelize.define('timeUnit', {
 timeUnit.sync({ force: false }).then(() => {
     console.log('Tabla de unidad de tiempo creada');
 });
+
+module.exports = timeUnit

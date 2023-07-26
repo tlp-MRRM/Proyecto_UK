@@ -5,8 +5,10 @@ const {
     renderRegisterCareers,
     renderInstituteProfile,
     findAllProvinces,
-    findAllLocalities,
-    findAllLocalitiesById
+    findAllLocalitiesById,
+    newContact,
+    newUbication,
+    newInstitute
 } = require('../controllers/register.controllers');
 
 router.get('/nuevaInstitucion', renderRegisterInstitute);
@@ -18,6 +20,10 @@ router.get('/instituto/:id', renderInstituteProfile);
 
 router.get('/api/provincias', findAllProvinces);
 router.get('/api/provincia/:id/localidades', findAllLocalitiesById)
-router.get('/api/localidades', findAllLocalities)
 
+router.post('/api/contacto', newContact);
+
+router.post('/api/ubicacion', newUbication);
+
+router.post('/api/instituto', newInstitute);
 module.exports = router;

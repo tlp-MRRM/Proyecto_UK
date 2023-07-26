@@ -16,3 +16,5 @@ const modality = sequelize.define('modality', {
 modality.sync({ force: false }).then(() => {
     console.log('Tabla de modalidad creada');
 });
+
+module.exports = modality;

@@ -25,3 +25,5 @@ const ubication = sequelize.define('ubication', {
 ubication.sync({ force: false }).then(() => {
     console.log('Tabla de ubicacion creada');
 });
+
+module.exports = ubication

@@ -1,5 +1,6 @@
 const {sequelize, DataTypes} = require('../db');
 
+
 const contact = sequelize.define('contact', {
     id:{
         type: DataTypes.INTEGER(4),
@@ -17,3 +18,4 @@ const contact = sequelize.define('contact', {
 contact.sync({ force: false }).then(() => {
     console.log('Tabla de contacto creada');
 });
+module.exports = contact;

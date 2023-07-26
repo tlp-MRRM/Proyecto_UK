@@ -15,3 +15,5 @@ const typeCareer = sequelize.define('typeCareer', {
 typeCareer.sync({ force: false }).then(() => {
     console.log('Tabla de tipo de carrera creada');
 });
+
+module.exports = typeCareer;

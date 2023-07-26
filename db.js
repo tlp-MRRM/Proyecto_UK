@@ -1,5 +1,5 @@
 // Se importan las clases de la librería
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Sequelize, Model, DataTypes, Transaction } = require('sequelize');
 
 // Se crea una instancia de la conexión a la base de datos
 const sequelize = new Sequelize(

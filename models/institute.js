@@ -1,5 +1,7 @@
 const {sequelize, DataTypes} = require('../db')
-
+const contact = require('./contact');
+const category = require('./category');
+const ubication = require('./ubication');
 const institute = sequelize.define('institute', {
     id: {
         type: DataTypes.INTEGER(4),
@@ -66,6 +68,13 @@ const institute = sequelize.define('institute', {
     underscored : true
 });
 
+category.belongsTo(institute, { foreignKey: 'idCategory', as: 'id' });
+ubication.belongsTo(institute, { foreignKey: 'idUbication', as: 'id' });
+institute.hasMany(institute, { foreignKey: 'idInstitute', as: 'institutes' });
+contact.belongsTo(institute, { foreignKey: 'idContact', as: 'id' });
+
 institute.sync({ force: false }).then(() => {
     console.log('Tabla de instituto creada');
 });
+
+module.exports = institute;

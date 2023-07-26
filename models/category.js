@@ -15,3 +15,5 @@ const category = sequelize.define('category', {
 category.sync({ force: false }).then(() => {
     console.log('Tabla de categorias creada');
 });
+
+module.exports = category

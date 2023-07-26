@@ -19,7 +19,7 @@ const career = sequelize.define('career', {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model: 'typeCareers',
+            model: 'type_careers',
             key: 'id'
         }
     },
@@ -35,7 +35,7 @@ const career = sequelize.define('career', {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model: 'timeUnits',
+            model: 'time_units',
             key: 'id'
         }
     },
@@ -73,3 +73,5 @@ const career = sequelize.define('career', {
 career.sync({ force: false }).then(() => {
     console.log('Tabla de Carreras creada');
 });
+
+module.exports = career
