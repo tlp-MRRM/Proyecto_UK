@@ -21,15 +21,15 @@ const institute = sequelize.define('institute', {
         type: DataTypes.STRING(10),
         allowNull: false
     },
-    idCategory: {
+    id_category: {
         type:DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: 'categories',
-            key: 'id'
-        }
+        // references: {
+        //     model: 'categories',
+        //     key: 'id'
+        // }
     },
-    idInstitute: {
+    id_institute: {
         type: DataTypes.INTEGER(4),
         allowNull: true,
         references: {
@@ -37,7 +37,7 @@ const institute = sequelize.define('institute', {
             key: 'id'
         }
     },
-    idUbication: {
+    id_ubication: {
         type: DataTypes.INTEGER(4),
         allowNull: false,
         references: {
@@ -45,17 +45,17 @@ const institute = sequelize.define('institute', {
             key: 'id'
         }
     },
-    idContact: {
+    id_contact: {
         type: DataTypes.INTEGER(4),
         allowNull: false,
-        references: {
-            model: 'contacts',
-            key: 'id'
-        }
+        // references: {
+        //     model: 'contacts',
+        //     key: 'id'
+        // }
     },
-    yearFundation: {
+    year_fundation: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: true,    
     },
     description: {
         type: DataTypes.STRING(255),
@@ -64,14 +64,14 @@ const institute = sequelize.define('institute', {
             notEmpty: true
         }
     }
-}, {
-    underscored : true
 });
 
-category.belongsTo(institute, { foreignKey: 'idCategory', as: 'id' });
-ubication.belongsTo(institute, { foreignKey: 'idUbication', as: 'id' });
-institute.hasMany(institute, { foreignKey: 'idInstitute', as: 'institutes' });
-contact.belongsTo(institute, { foreignKey: 'idContact', as: 'id' });
+category.belongsTo(institute);
+institute.hasMany(ubication)
+ubication.belongsTo(institute);
+institute.hasMany(institute);
+institute.hasMany(contact);
+contact.belongsTo(institute)
 
 institute.sync({ force: false }).then(() => {
     console.log('Tabla de instituto creada');

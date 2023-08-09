@@ -1,14 +1,14 @@
 const ctrl = {}
-const institute = require('../models/institute')
-const modality = require('../models/modality')
 const province = require('../models/province')
 const locality = require('../models/locality')
-const typeCareer = require('../models/typeCareer')
-const register = require('../models/user')
-const timeUnit = require('../models/timeUnit')
+const time_unit = require('../models/time_unit')
+const modality = require('../models/modality')
 const ubication = require('../models/ubication')
 const category = require('../models/category')
 const contact = require('../models/contact')
+const institute = require('../models/institute')
+const type_career = require('../models/type_career')
+const register = require('../models/user')
 const career = require('../models/careers');
 const {sequelize} = require('../db');
 
@@ -37,18 +37,27 @@ ctrl.findAllProvinces = async (req, res) => {
     }
 }
 
+ctrl.findAllLocalities = async (req, res) => {
+    try {
+        const localities = await locality.findAll();
+        return res.json(localities);
+    } catch (error) {
+        console.log('Error al obtener las localidades:', error);
+        res.status(500).json({ error: 'Error al obtener las localidades' });
+    }
+}
 
 
 ctrl.findAllLocalitiesById = async (req, res) => {
     try {
         const localities = await locality.findAll({
             where: {
-                idProvince: req.params.id
+                id_province: req.params.id
             }
         });
         return res.json(localities);
     } catch (error) {
-        console.error('Error al obtener las localidades:', error);
+        console.log('Error al obtener las localidades:', error);
         res.status(500).json({ error: 'Error al obtener las localidades' });
     }
 }
@@ -57,20 +66,20 @@ ctrl.findAllLocalitiesById = async (req, res) => {
 //CRUD Methods
 
 ctrl.newUbication = async (req, res) => {
-    const {
-        idLocality,
+    const id_ubication = {
+        id_locality,
         street,
         altitude,
-        postalCode,
-        mapLink
+        postal_code,
+        map_link
     } = req.body;
     try {
-        const newUbication = new ubication({
-            idLocality,
+        id_ubication = new ubication({
+            id_locality,
             street,
             altitude,
-            postalCode,
-            mapLink
+            postal_code,
+            map_link
         });
 
         await ubication.save()
@@ -89,13 +98,13 @@ ctrl.newContact = async (req, res) => {
     const {
         mail,
         tel,
-        weblink
+        web_link
     } = req.body;
     try {
         const newContact = new contact({
             mail,
             tel,
-            weblink
+            web_link
         });
         
         await contact.save();
@@ -111,38 +120,64 @@ ctrl.newContact = async (req, res) => {
 
 
 ctrl.newInstitute = async (req, res) => {
-    const {
-        name,
-        abbreviation,
-        mail,
-        tel,
-        weblink,
-        yearFundation,
-        description,
-        idLocality,
+    const  {
+        id_locality,
         street,
         altitude,
-        postalCode,
-        mapLink
-    } = req.body;
+        postal_code,
+        map_link,
+        mail,
+        tel,
+        web_link,
+        name,
+        abbreviation,
+        year_fundation,
+        description,
+        id_category 
+    } = req.body
+    const t = await sequelize.transaction();
     try {
-        // const t = await sequelize.transaction();
-        const newInstitute = institute.create({
-            name,
-            abbreviation,
-            yearFundation,
-            description,
-            contact : {mail, tel, weblink},
-            ubication: {idLocality, street, altitude, postalCode, mapLink},
-            }, {
-              include: [ contact, ubication ]
-            })
+        const result = await sequelize.transaction(async (t)=> {
+            const newUbication = await ubication.create({
+                id_locality,
+                street,
+                altitude,
+                postal_code,
+                map_link
+            }, {transaction: t});
+            console.log(newUbication.dataValues.id)
+
+            const newContact = await contact.create({
+                mail,
+                tel,
+                web_link
+            }, {transaction: t})
+            console.log(newContact.dataValues.id)
+
+            const newInstitute = institute.create({
+                name,
+                abbreviation,
+                year_fundation,
+                description,
+                id_category,
+                id_ubication: newUbication.id,
+                id_contact: newContact.id
+            }, {transaction:t})
+            console.log((await newInstitute).dataValues)
+
+            // await t.commit()
+            
+        })
+        
+            // }, {
+            //   include: [ contact, ubication ]
+            // })
             // await t.commit();
        console.log('Instituto creado con exito')
 
     } catch (error) {
-        console.log(error)
-        // await t.rollback();
+        console.log('ERROR', error)
+        throw new Error
         return res.status(500).json({
             message: 'Error al crear el instituto'
         });
@@ -155,26 +190,26 @@ ctrl.newInstitute = async (req, res) => {
 ctrl.newCareer = async (req, res) => {
     const {
         name,
-        idTypeCarer,
+        id_type_career,
         startDate,
         duration,
-        idTimeUnit,
-        idModality,
+        id_time_unit,
+        id_modality,
         final_title,
-        idInstitute,
-        idCareer
+        id_institute,
+        id_career
     } = req.body;
     try {
         const career = await career.create({
             name,
-            idTypeCarer,
+            id_type_career,
             startDate,
             duration,
-            idTimeUnit,
-            idModality,
+            id_time_unit,
+            id_modality,
             final_title,
-            idInstitute,
-            idCareer
+            id_institute,
+            id_career
         });
         return res.json(career);
     } catch (error) {

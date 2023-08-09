@@ -1,15 +1,14 @@
 const {sequelize, DataTypes} = require('../db')
 
-const timeUnit = sequelize.define('timeUnit', {
+const timeUnit = sequelize.define('time_unit', {
     id:{
         type: DataTypes.INTEGER(1),
         autoIncrement: true,
         primaryKey: true
     },
-    unitTime: DataTypes.STRING('50')
+    unit_time: DataTypes.STRING('50')
 }, {
     timestamps: false,
-    underscored : true
 })
 
 timeUnit.sync({ force: false }).then(() => {

@@ -10,7 +10,6 @@ const modality = sequelize.define('modality', {
     modality: DataTypes.STRING(30)
 }, {
     timestamps: false,
-    underscored : true
 });
 
 modality.sync({ force: false }).then(() => {

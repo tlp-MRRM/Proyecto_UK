@@ -6,6 +6,7 @@ const {
     renderInstituteProfile,
     findAllProvinces,
     findAllLocalitiesById,
+    findAllLocalities,
     newContact,
     newUbication,
     newInstitute
@@ -19,7 +20,8 @@ router.get('/instituto/:id', renderInstituteProfile);
 
 
 router.get('/api/provincias', findAllProvinces);
-router.get('/api/provincia/:id/localidades', findAllLocalitiesById)
+router.get('/api/provincias/localidades', findAllLocalities);
+router.get('/api/provincia/:id/localidades', findAllLocalitiesById);
 
 router.post('/api/contacto', newContact);
 
