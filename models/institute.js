@@ -10,7 +10,7 @@ const institute = sequelize.define('institute', {
     },
     status: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull:  false,
         defaultValue: true
     },
     name: {
@@ -24,34 +24,18 @@ const institute = sequelize.define('institute', {
     id_category: {
         type:DataTypes.INTEGER,
         allowNull: false,
-        // references: {
-        //     model: 'categories',
-        //     key: 'id'
-        // }
     },
     id_institute: {
         type: DataTypes.INTEGER(4),
         allowNull: true,
-        references: {
-            model: 'institutes',
-            key: 'id'
-        }
     },
     id_ubication: {
         type: DataTypes.INTEGER(4),
         allowNull: false,
-        references: {
-            model: 'ubications',
-            key: 'id'
-        }
     },
     id_contact: {
         type: DataTypes.INTEGER(4),
         allowNull: false,
-        // references: {
-        //     model: 'contacts',
-        //     key: 'id'
-        // }
     },
     year_fundation: {
         type: DataTypes.INTEGER,
