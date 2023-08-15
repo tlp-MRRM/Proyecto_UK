@@ -42,8 +42,6 @@ app.use(require('./routes/login.routes.js'))
 
 
 
-
-
 app.listen(process.env.PORT,() => {
     console.log(`Server running on port ${process.env.port}`)
 })
