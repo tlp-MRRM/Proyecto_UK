@@ -1,9 +1,10 @@
-const router = require('express').Router();
-
+import {Router} from 'express';
+const router = Router()
+import ctrl from '../controllers/search.controllers.js'
 const {
     renderSearch
-} = require('../controllers/search.controllers.js');
+} = ctrl
 
 router.get('/busqueda', renderSearch);
 
-module.exports = router;
+export default router

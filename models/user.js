@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require('../db');
+import {sequelize, DataTypes} from '../db.js';
 
-const user = sequelize.define('user', {
+export const user = sequelize.define('user', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -33,5 +33,3 @@ const user = sequelize.define('user', {
 user.sync({ force: false }).then(() => {
   console.log('Tabla de usuarios creada');
 });
-
-module.exports = user;

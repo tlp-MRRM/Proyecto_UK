@@ -1,6 +1,6 @@
-const {sequelize, DataTypes} = require('../db')
+import {sequelize, DataTypes} from '../db.js'
 
-const typeCareer = sequelize.define('type_career', {
+export const type_career = sequelize.define('type_career', {
     id:{
         type: DataTypes.INTEGER(1),
         autoIncrement: true,
@@ -11,8 +11,7 @@ const typeCareer = sequelize.define('type_career', {
     timestamps: false,
 });
 
-typeCareer.sync({ force: false }).then(() => {
+type_career.sync({ force: false }).then(() => {
     console.log('Tabla de tipo de carrera creada');
 });
 
-module.exports = typeCareer;

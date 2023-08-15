@@ -1,16 +1,18 @@
-const router = require('express').Router();
+import {Router} from 'express';
+const router = Router()
 
+
+import ctrl from '../controllers/register.controllers.js'
 const {
     renderRegisterInstitute,
     renderRegisterCareers,
     renderInstituteProfile,
     findAllProvinces,
     findAllLocalitiesById,
-    findAllLocalities,
     newContact,
     newUbication,
     newInstitute
-} = require('../controllers/register.controllers');
+} = ctrl
 
 router.get('/nuevaInstitucion', renderRegisterInstitute);
 
@@ -20,7 +22,6 @@ router.get('/instituto/:id', renderInstituteProfile);
 
 
 router.get('/api/provincias', findAllProvinces);
-router.get('/api/provincias/localidades', findAllLocalities);
 router.get('/api/provincia/:id/localidades', findAllLocalitiesById);
 
 router.post('/api/contacto', newContact);
@@ -28,4 +29,5 @@ router.post('/api/contacto', newContact);
 router.post('/api/ubicacion', newUbication);
 
 router.post('/api/instituto', newInstitute);
-module.exports = router;
+
+export default router;

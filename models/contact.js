@@ -1,7 +1,7 @@
-const {sequelize, DataTypes} = require('../db');
+import {sequelize, DataTypes} from '../db.js';
 
 
-const contact = sequelize.define('contact', {
+export const contact = sequelize.define('contact', {
     id:{
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -17,4 +17,3 @@ const contact = sequelize.define('contact', {
 contact.sync({ force: false }).then(() => {
     console.log('Tabla de contacto creada');
 });
-module.exports = contact;

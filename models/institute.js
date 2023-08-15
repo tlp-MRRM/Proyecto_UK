@@ -1,8 +1,8 @@
-const {sequelize, DataTypes} = require('../db')
-const contact = require('./contact');
-const category = require('./category');
-const ubication = require('./ubication');
-const institute = sequelize.define('institute', {
+import {sequelize, DataTypes} from '../db.js';
+import {contact} from './contact.js';
+import {category} from './category.js'
+import {ubication} from './ubication.js';
+export const institute = sequelize.define('institute', {
     id: {
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -61,4 +61,3 @@ institute.sync({ force: false }).then(() => {
     console.log('Tabla de instituto creada');
 });
 
-module.exports = institute;

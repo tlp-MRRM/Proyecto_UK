@@ -1,12 +1,18 @@
-const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
-const morgan = require('morgan');
-const dotenv = require('dotenv')
-const path = require("path");
-const app = express();
-const cookieParser = require('cookie-parser');
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+import morgan from 'morgan';
+import 'dotenv/config';
+import cookieParser from 'cookie-parser';
+import { createTransport } from 'nodemailer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 //configuración del motor de plantillas
 app.set("views", path.join(__dirname, "views"));
@@ -17,8 +23,6 @@ app.use(cookieParser())
 
 
 
-
-dotenv.config()
 app.use(helmet({
   contentSecurityPolicy: false  
 }));
@@ -31,14 +35,21 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 
-
-const { conexionDB } = require('./db')
+import {conexionDB} from './db.js'
 conexionDB()
 
-app.use(require('./routes/formInstitute.routes.js'));
-app.use(require('./routes/home.routes.js'));
-app.use(require('./routes/search.routes.js'));
-app.use(require('./routes/login.routes.js'))
+//routes:
+import formInstiRoutes from './routes/formInstitute.routes.js'
+const {
+
+} = formInstiRoutes
+import homeRoutes from './routes/home.routes.js';
+import searchRoutes from './routes/search.routes.js';
+import loginRoutes from './routes/login.routes.js';
+app.use(formInstiRoutes);
+app.use(homeRoutes);
+app.use(searchRoutes);
+app.use(loginRoutes);
 
 
 

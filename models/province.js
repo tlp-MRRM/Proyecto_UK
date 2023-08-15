@@ -1,6 +1,6 @@
-const {sequelize, DataTypes} = require('../db')
+import {sequelize, DataTypes} from '../db.js';
 
-const province = sequelize.define('province', {
+export const province = sequelize.define('province', {
     id:{
         type: DataTypes.INTEGER(10),
         autoIncrement: true,
@@ -15,4 +15,3 @@ province.sync({ force: false }).then(() => {
     console.log('Tabla de provincias creada');
 });
 
-module.exports = province

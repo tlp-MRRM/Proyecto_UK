@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "PROYECTO UK",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon app.js"
   },
@@ -30,9 +31,11 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.6.0",
+    "nodemailer": "^6.9.4",
     "nodemon": "^2.0.22",
     "sequelize": "^6.32.1",
     "sqlite3": "^5.1.6",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "url": "^0.11.1"
   }
 }

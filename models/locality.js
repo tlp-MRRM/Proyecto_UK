@@ -1,7 +1,7 @@
-const {sequelize, DataTypes} = require('../db');
+import {sequelize, DataTypes} from '../db.js';
 
 
-const locality = sequelize.define('locality', {
+export const locality = sequelize.define('locality', {
     id:{
         type: DataTypes.INTEGER(11),
         autoIncrement: true,
@@ -22,5 +22,3 @@ const locality = sequelize.define('locality', {
 locality.sync({ force: false }).then(() => {
     console.log('Tabla de localidad creada');
 });
-
-module.exports = locality;

@@ -1,16 +1,17 @@
 const ctrl = {}
-const province = require('../models/province')
-const locality = require('../models/locality')
-const time_unit = require('../models/time_unit')
-const modality = require('../models/modality')
-const ubication = require('../models/ubication')
-const category = require('../models/category')
-const contact = require('../models/contact')
-const institute = require('../models/institute')
-const type_career = require('../models/type_career')
-const register = require('../models/user')
-const career = require('../models/careers');
-const {sequelize} = require('../db');
+
+import {province} from '../models/province.js';
+import {locality} from '../models/locality.js';
+import {time_unit} from '../models/time_unit.js';
+import {modality} from '../models/modality.js';
+import {ubication} from '../models/ubication.js';
+import {category} from '../models/category.js';
+import {contact} from '../models/contact.js';
+import {institute} from '../models/institute.js';
+import {type_career} from '../models/type_career.js';
+import {user} from '../models/user.js';
+import {career} from '../models/careers.js';
+import {sequelize} from '../db.js'
 
 ctrl.renderRegisterInstitute = async (req, res) => {
     res.render("formInstitute/register-institute")
@@ -221,5 +222,5 @@ ctrl.newCareer = async (req, res) => {
 }
 
 
-module.exports = ctrl
+export default ctrl
 

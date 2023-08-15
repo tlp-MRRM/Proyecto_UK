@@ -1,6 +1,6 @@
-const {sequelize, DataTypes} = require('../db')
+import {sequelize, DataTypes} from '../db.js';
 
-const timeUnit = sequelize.define('time_unit', {
+export const time_unit = sequelize.define('time_unit', {
     id:{
         type: DataTypes.INTEGER(1),
         autoIncrement: true,
@@ -11,8 +11,7 @@ const timeUnit = sequelize.define('time_unit', {
     timestamps: false,
 })
 
-timeUnit.sync({ force: false }).then(() => {
+time_unit.sync({ force: false }).then(() => {
     console.log('Tabla de unidad de tiempo creada');
 });
 
-module.exports = timeUnit

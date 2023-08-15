@@ -1,6 +1,6 @@
-const {sequelize, DataTypes} = require('../db')
+import {sequelize, DataTypes} from '../db.js';
 
-const ubication = sequelize.define('ubication', {
+export const ubication = sequelize.define('ubication', {
     id:{
         type: DataTypes.INTEGER(5),
         autoIncrement: true,
@@ -24,4 +24,3 @@ ubication.sync({ force: false }).then(() => {
     console.log('Tabla de ubicacion creada');
 });
 
-module.exports = ubication

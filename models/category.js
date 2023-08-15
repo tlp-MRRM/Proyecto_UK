@@ -1,6 +1,6 @@
-const {sequelize, DataTypes} = require('../db')
+import {sequelize, DataTypes} from '../db.js';
 
-const category = sequelize.define('category', {
+export const category = sequelize.define('category', {
     id:{
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -15,4 +15,3 @@ category.sync({ force: false }).then(() => {
     console.log('Tabla de categorias creada');
 });
 
-module.exports = category

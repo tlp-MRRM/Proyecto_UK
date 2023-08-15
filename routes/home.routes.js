@@ -1,11 +1,12 @@
-const router = require('express').Router();
-
+import {Router} from 'express';
+const router = Router()
+import ctrl from'../controllers/home.controllers.js'
 const {
     renderHome,
     renderFaq,
     renderWorkWithUs,
     renderAboutUs
-} = require('../controllers/home.controllers')
+} = ctrl
 
 router.get("/", renderHome);
 
@@ -15,4 +16,4 @@ router.get('/trabaja-con-nosotros', renderWorkWithUs);
 
 router.get('/acerca-de-nosotros', renderAboutUs)
 
-module.exports = router;
+export default router

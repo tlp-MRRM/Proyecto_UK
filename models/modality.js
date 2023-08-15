@@ -1,7 +1,7 @@
-const {sequelize, DataTypes} = require('../db');
+import {sequelize, DataTypes} from '../db.js';
 
 
-const modality = sequelize.define('modality', {
+export const modality = sequelize.define('modality', {
     id:{
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -16,4 +16,3 @@ modality.sync({ force: false }).then(() => {
     console.log('Tabla de modalidad creada');
 });
 
-module.exports = modality;

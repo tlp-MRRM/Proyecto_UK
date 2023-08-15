@@ -1,4 +1,4 @@
-ctrl = {}
+const ctrl = {}
 
 ctrl.renderHome = (req, res) => {
     res.render('home/index.ejs')
@@ -14,4 +14,4 @@ ctrl.renderWorkWithUs = (req, res) => {
 ctrl.renderAboutUs = (req, res) => {
     res.render('home/about.ejs')
 }
-module.exports = ctrl
+export default ctrl

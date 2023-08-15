@@ -1,8 +1,8 @@
 // Se importan las clases de la librería
-const { Sequelize, Model, DataTypes, Transaction } = require('sequelize');
+import {Sequelize, Model, DataTypes, Transaction} from 'sequelize'
 
 // Se crea una instancia de la conexión a la base de datos
-const sequelize = new Sequelize(
+export const sequelize = new Sequelize(
     process.env.DB_DATABASE,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
@@ -11,7 +11,7 @@ const sequelize = new Sequelize(
         dialect: process.env.DB_DIALECT || 'mysql'
     });
 
-const conexionDB = async () => {
+export const conexionDB = async () => {
       try {
           await sequelize.authenticate()
           console.log('Conexion a la base de datos exitosa');
@@ -21,10 +21,5 @@ const conexionDB = async () => {
 }
   
 // Se exportan la conexión a MySQL, Model y DataTypes para poder usarlas en los modelos
-module.exports = {
-    conexionDB,
-    sequelize,
-    DataTypes,
-    Model
-}
+export {Model, DataTypes}
 
