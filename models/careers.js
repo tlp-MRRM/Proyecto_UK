@@ -15,15 +15,15 @@ const career = sequelize.define('career', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    idTypeCareer: {
+    id_type_career: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model: 'typeCareers',
+            model: 'type_careers',
             key: 'id'
         }
     },
-    startDate: {
+    start_date: {
         type: DataTypes.DATEONLY,
         allowNull: false
     },
@@ -31,15 +31,15 @@ const career = sequelize.define('career', {
         type: DataTypes.INTEGER(2),
         allowNull: false
     },
-    idTimeUnit: {
+    id_timeUnit: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model: 'timeUnits',
+            model: 'time_units',
             key: 'id'
         }
     },
-    idModality: {
+    id_modality: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
@@ -47,11 +47,11 @@ const career = sequelize.define('career', {
             key: 'id'
         }
     },
-    finalTitle: {
+    final_title: {
         type: DataTypes.STRING(100),
         allowNull: false
     },
-    idInstitute: {
+    id_institute: {
         type: DataTypes.INTEGER(1),
         allowNull: true,
         references: {
@@ -59,7 +59,7 @@ const career = sequelize.define('career', {
             key: 'id'
         }
     },
-    idCareer: {
+    id_career: {
         type: DataTypes.INTEGER(1),
         allowNull: true,
         references: {
@@ -67,9 +67,9 @@ const career = sequelize.define('career', {
             key: 'id'
         }
     }
-}, {
-    underscored : true
 })
 career.sync({ force: false }).then(() => {
     console.log('Tabla de Carreras creada');
 });
+
+module.exports = career

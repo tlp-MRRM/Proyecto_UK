@@ -9,7 +9,6 @@ const province = sequelize.define('province', {
     province: DataTypes.STRING(255)
 }, {
     timestamps: false,
-    underscored : true
 })
 
 province.sync({ force: false }).then(() => {

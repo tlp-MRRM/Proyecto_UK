@@ -1,13 +1,39 @@
 
 
 
-INSERT INTO `categories` (`id`, `category`) VALUES
-(1, 'Pública'),
-(2, 'Privada'),
-(3, 'Semi-privada');
+
+INSERT INTO `provinces` (`id`, `province`) VALUES
+(1, 'Buenos Aires'),
+(2, 'Buenos Aires-GBA'),
+(3, 'Capital Federal'),
+(4, 'Catamarca'),
+(5, 'Chaco'),
+(6, 'Chubut'),
+(7, 'Córdoba'),
+(8, 'Corrientes'),
+(9, 'Entre Ríos'),
+(10, 'Formosa'),
+(11, 'Jujuy'),
+(12, 'La Pampa'),
+(13, 'La Rioja'),
+(14, 'Mendoza'),
+(15, 'Misiones'),
+(16, 'Neuquén'),
+(17, 'Río Negro'),
+(18, 'Salta'),
+(19, 'San Juan'),
+(20, 'San Luis'),
+(21, 'Santa Cruz'),
+(22, 'Santa Fe'),
+(23, 'Santiago del Estero'),
+(24, 'Tierra del Fuego'),
+(25, 'Tucumán');
+
+-- --------------------------------------------------------
 
 
-INSERT INTO `localities` (`id`, `idProvince`, `locality`) VALUES
+
+INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (1, 1, '25 de Mayo'),
 (2, 1, '3 de febrero'),
 (3, 1, 'A. Alsina'),
@@ -2101,7 +2127,7 @@ INSERT INTO `localities` (`id`, `idProvince`, `locality`) VALUES
 (2091, 22, 'Pueblo Muñoz'),
 (2092, 22, 'Pueblo Uranga'),
 (2093, 22, 'Pujato');
-INSERT INTO `localities` (`id`, `idProvince`, `locality`) VALUES
+INSERT INTO `localities` (`id`, `id_province`, `locality`) VALUES
 (2094, 22, 'Pujato N.'),
 (2095, 22, 'Rafaela'),
 (2096, 22, 'Ramayón'),
@@ -2412,39 +2438,10 @@ INSERT INTO `modalities` (`id`, `modality`) VALUES
 
 
 
-INSERT INTO `provinces` (`id`, `province`) VALUES
-(1, 'Buenos Aires'),
-(2, 'Buenos Aires-GBA'),
-(3, 'Capital Federal'),
-(4, 'Catamarca'),
-(5, 'Chaco'),
-(6, 'Chubut'),
-(7, 'Córdoba'),
-(8, 'Corrientes'),
-(9, 'Entre Ríos'),
-(10, 'Formosa'),
-(11, 'Jujuy'),
-(12, 'La Pampa'),
-(13, 'La Rioja'),
-(14, 'Mendoza'),
-(15, 'Misiones'),
-(16, 'Neuquén'),
-(17, 'Río Negro'),
-(18, 'Salta'),
-(19, 'San Juan'),
-(20, 'San Luis'),
-(21, 'Santa Cruz'),
-(22, 'Santa Fe'),
-(23, 'Santiago del Estero'),
-(24, 'Tierra del Fuego'),
-(25, 'Tucumán');
-
--- --------------------------------------------------------
-
 --
 
 
-INSERT INTO `timeunits` (`id`, `unitTime`) VALUES
+INSERT INTO `time_units` (`id`, `unit_time`) VALUES
 (1, 'Años'),
 (2, 'Meses');
 
@@ -2454,7 +2451,7 @@ INSERT INTO `timeunits` (`id`, `unitTime`) VALUES
 -- Table structure for table `typecareers`
 --
 
-INSERT INTO `typecareers` (`id`, `type`) VALUES
+INSERT INTO `type_careers` (`id`, `type`) VALUES
 (1, 'Carrera de Pregrado'),
 (2, 'Carrera de Grado'),
 (3, 'Maestría'),

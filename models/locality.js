@@ -7,7 +7,7 @@ const locality = sequelize.define('locality', {
         autoIncrement: true,
         primaryKey: true
     },
-    idProvince: {
+    id_province: {
         type: DataTypes.INTEGER(11),
         references: {
             model: 'provinces',
@@ -17,7 +17,6 @@ const locality = sequelize.define('locality', {
     locality: DataTypes.STRING(255)
 }, {
     timestamps: false,
-    underscored : true
 });
 
 locality.sync({ force: false }).then(() => {

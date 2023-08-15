@@ -6,7 +6,7 @@ const ubication = sequelize.define('ubication', {
         autoIncrement: true,
         primaryKey: true
     },
-    idLocality: {
+    id_locality: {
         type:DataTypes.INTEGER(4),
         references: {
             model:'localities',
@@ -15,13 +15,13 @@ const ubication = sequelize.define('ubication', {
     },
     street: DataTypes.STRING(100),
     altitude: DataTypes.INTEGER(6),
-    postalCode: DataTypes.INTEGER(10),
-    mapLink: DataTypes.STRING(500)
+    postal_code: DataTypes.INTEGER(10),
+    map_link: DataTypes.STRING(500)
 
-}, {
-    underscored : true
 })
 
 ubication.sync({ force: false }).then(() => {
     console.log('Tabla de ubicacion creada');
 });
+
+module.exports = ubication
