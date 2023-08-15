@@ -53,8 +53,6 @@ app.use(loginRoutes);
 
 
 
-
-
 app.listen(process.env.PORT,() => {
     console.log(`Server running on port ${process.env.port}`)
 })
