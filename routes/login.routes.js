@@ -1,7 +1,7 @@
 import ctrl from "../controllers/login.controllers.js";
 const { login, sesion } = ctrl
-import ctrl from '../controllers/auth.controllers.js'
-const {auth_login} = ctrl
+import {ctrl_auth} from '../controllers/auth.controllers.js'
+const {auth_login} = ctrl_auth
 import {Router} from 'express';
 const router = Router()
 

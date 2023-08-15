@@ -1,7 +1,7 @@
-const ctrl = {}
+export const ctrl_auth = {}
 
 
-ctrl.auth_login = async (req, res) => {
+ctrl_auth.auth_login = async (req, res) => {
     const { username, password } = req.body; // Actualiza los nombres de campos según tu formulario
   
     try {
@@ -36,4 +36,3 @@ ctrl.auth_login = async (req, res) => {
   };
 
 
-export default ctrl
