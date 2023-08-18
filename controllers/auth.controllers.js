@@ -1,4 +1,5 @@
 import { user } from "../models/user.js";
+import bcrypt from 'bcryptjs'; 
 
 const ctrl_auth = {}
 
