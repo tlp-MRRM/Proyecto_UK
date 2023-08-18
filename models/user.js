@@ -22,12 +22,12 @@ export const user = sequelize.define('user', {
       isEmail: true,
     },
   },
-  contraseña: {
+  contrasenia: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 }, {
-  underscored : true
+  underscored:true
 });
 
 user.sync({ force: false }).then(() => {
