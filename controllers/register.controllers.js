@@ -175,12 +175,14 @@ ctrl.newInstitute = async (req, res) => {
             // })
             // await t.commit();
        console.log('Instituto creado con exito')
+       return res.status(201).json({
+        message: 'Tu institucion se ha registrado con exito!'
+       });
 
     } catch (error) {
         console.log('ERROR', error)
-        throw new Error
         return res.status(500).json({
-            message: 'Error al crear el instituto'
+            message: 'Error al crear el instituto:' + error
         });
     }
 }

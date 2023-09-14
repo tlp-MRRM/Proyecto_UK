@@ -1,6 +1,6 @@
-import { check, checkSchema } from "express-validator";
+import { checkSchema } from "express-validator";
 
-export const validation1 = checkSchema({
+export const login_schema = checkSchema({
     email: {
         notEmpty: {
             errorMessage: "El email es obligatorio"
@@ -16,10 +16,6 @@ export const validation1 = checkSchema({
         isPassword: {
             errorMessage: "La contraseña es obligatoria"
         },
-        isLength: {
-            errorMessage: "La contraseña es demasiado corta",
-            opcions: { min: 6 }
         }
-    }
 
 })

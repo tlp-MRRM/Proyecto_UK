@@ -46,12 +46,15 @@ const {
 import homeRoutes from './routes/home.routes.js';
 import searchRoutes from './routes/search.routes.js';
 import loginRoutes from './routes/login.routes.js';
-import registerUserRoutes from './routes/registerUser.routes.js'
+import registerUserRoutes from './routes/registerUser.routes.js';
+import instituteRoutes from './routes/institute.routes.js';
+
 app.use(formInstiRoutes);
 app.use(homeRoutes);
 app.use(searchRoutes);
 app.use(loginRoutes);
 app.use(registerUserRoutes);
+app.use(instituteRoutes);
 
 
 
