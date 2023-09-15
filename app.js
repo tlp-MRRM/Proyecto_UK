@@ -14,6 +14,9 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+import { createLogs } from './helpers/createLogs.js';
+import { handleErrors } from './middlewares/express-validator/handleError.js';
+
 //configuración del motor de plantillas
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -27,9 +30,17 @@ app.use(helmet({
   contentSecurityPolicy: false  
 }));
 app.use(cors());
-app.use(morgan('dev'));
+app.use(
+  morgan('combined', {
+    stream: {
+      write: (message) => {
+        createLogs(message, __dirname, 'logs');
+      }
+    }
+  })
+);
 
-
+app.use(handleErrors);
 
 // carpeta para archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
