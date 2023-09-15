@@ -27,7 +27,7 @@ export const institute = sequelize.define('institute', {
     },
     id_institute: {
         type: DataTypes.INTEGER(4),
-        allowNull: true,
+        allowNull: false,
     },
     id_ubication: {
         type: DataTypes.INTEGER(4),
