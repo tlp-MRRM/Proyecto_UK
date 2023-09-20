@@ -1,3 +1,5 @@
+
+//Importantions 
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -9,6 +11,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+
+//Initialize
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
