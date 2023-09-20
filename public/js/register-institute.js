@@ -6,31 +6,31 @@ const fetchProvinces = async () => {
     const response = await fetch('http://localhost:5000/api/provincias')
     if (response.status === 404) {
         return [];
-      }
-    
-      return response.json();
+    }
+
+    return response.json();
 
 }
-document.addEventListener('DOMContentLoaded', async ()=> {
+document.addEventListener('DOMContentLoaded', async () => {
     try {
         const provinces = await fetchProvinces()
         provinces.forEach((province) => {
-        selectProvince.innerHTML += `
+            selectProvince.innerHTML += `
         <option value="${province.id}">${province.province}</option>`
-    });
+        });
     } catch (error) {
         console.error(error);
     }
 })
 
-const fetchLocalities = async ()=> {
+const fetchLocalities = async () => {
     id_province = selectProvince.value
     const response = await fetch(`http://localhost:5000/api/provincia/${id_province}/localidades`)
     if (response.status === 404) {
         return [];
-      }
-      return response.json();
-      console.log(response.json());
+    }
+    return response.json();
+    console.log(response.json());
 }
 selectProvince.addEventListener('change', async () => {
     try {
@@ -43,17 +43,15 @@ selectProvince.addEventListener('change', async () => {
     } catch (error) {
         console.error(error);
     }
-    
+
 })
 
-// Obtener el botón de registrar y agregar un event listener
-// Función para registrar el instituto
-// Obtener el botón de registrar y agregar un event listener
+
 
 const formulario = document.getElementById('formAgregarInstituto');
 
 formulario.addEventListener('submit', async (event) => {
-    event.preventDefault();   
+    event.preventDefault();
 
     const formData = new FormData(document.getElementById('formAgregarInstituto'));
     const institute = {
@@ -71,21 +69,40 @@ formulario.addEventListener('submit', async (event) => {
         year_fundation: formData.get('year_fundation'),
         description: formData.get('description')
     }
-    
-    console.log('institute:',institute)
+
+    console.log('institute:', institute)
     try {
         const response = await fetch('http://localhost:5000/api/instituto', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(institute)
         })
-        console.log('response:', response)
-        console.log('Instituto registrado con éxito')
 
+        const data = await response.json();
+        console.log(data)
+
+        if (response.ok) {
+            Swal.fire({
+                title: 'Hecho',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+            })
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: data.message,
+                icon: 'error',
+                confirmButtonText: 'Ok',
+            })
+        }
     } catch (error) {
         console.log('error al crear el instituto', error)
+        Swal.fire({
+            title: 'Error Catch',
+            text: error,
+            icon: 'error',
+            confirmButtonText: 'Ok',
+        })
     }
 });
-
-
-1

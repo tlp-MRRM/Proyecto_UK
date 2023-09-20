@@ -1,6 +1,6 @@
-import { check, checkSchema } from "express-validator";
+import { checkSchema } from "express-validator";
 
-const validation1 = checkSchema({
+export const validation1 = checkSchema({
     email: {
         notEmpty: {
             errorMessage: "El email es obligatorio"

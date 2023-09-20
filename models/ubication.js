@@ -8,10 +8,6 @@ export const ubication = sequelize.define('ubication', {
     },
     id_locality: {
         type:DataTypes.INTEGER(4),
-        references: {
-            model:'localities',
-            key: 'id'
-        }
     },
     street: DataTypes.STRING(100),
     altitude: DataTypes.INTEGER(6),
