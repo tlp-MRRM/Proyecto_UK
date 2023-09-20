@@ -18,8 +18,8 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import { createLogs } from './helpers/createLogs.js';
-import { handleErrors } from './middlewares/express-validator/handleError.js';
+import { createLogs } from './src/helpers/createLogs.js';
+import { handleErrors } from './src/middlewares/express-validator/handleError.js';
 
 //configuración del motor de plantillas
 app.set("views", path.join(__dirname, "views"));
@@ -54,15 +54,15 @@ import {conexionDB} from './db.js'
 conexionDB()
 
 //routes:
-import formInstiRoutes from './routes/formInstitute.routes.js'
+import formInstiRoutes from './src/routes/formInstitute.routes.js'
 const {
 
 } = formInstiRoutes
-import homeRoutes from './routes/home.routes.js';
-import searchRoutes from './routes/search.routes.js';
-import loginRoutes from './routes/login.routes.js';
-import registerUserRoutes from './routes/registerUser.routes.js';
-import instituteRoutes from './routes/institute.routes.js';
+import homeRoutes from './src/routes/home.routes.js';
+import searchRoutes from './src/routes/search.routes.js';
+import loginRoutes from './src/routes/login.routes.js';
+import registerUserRoutes from './src/routes/registerUser.routes.js';
+import instituteRoutes from './src/routes/institute.routes.js';
 
 app.use(formInstiRoutes);
 app.use(homeRoutes);

@@ -1,4 +1,4 @@
-import {sequelize, DataTypes} from '../db.js';
+import {sequelize, DataTypes} from '../../db.js';
 import {contact} from './contact.js';
 import {category} from './category.js'
 import {ubication} from './ubication.js';

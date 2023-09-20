@@ -1,4 +1,4 @@
-import {sequelize, DataTypes} from '../db.js';
+import {sequelize, DataTypes} from '../../db.js';
 
 
 export const locality = sequelize.define('locality', {

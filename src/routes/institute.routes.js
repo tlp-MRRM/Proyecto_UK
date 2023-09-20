@@ -4,8 +4,9 @@ import {
   getInstituteCtrl,
   getInstituteByIdCtrl
 } from '../controllers/institute.controllers.js';
-import { validator } from '../validations/validator.js';
-import { instituteSchemaValidation } from '../validations/institute.schema.js';
+
+import { instituteSchemaValidation } from '../models/validations/institute.schema.js';
+import { validateSchema } from '../middlewares/express-validator/express-validator.js';
 
 const router = Router();
 
@@ -13,6 +14,6 @@ router.get('/institute', getInstituteCtrl);
 router.get('/institute/:id', getInstituteByIdCtrl);
 
 
-router.post('/institute', instituteSchemaValidation, validator, createInstituteCtrl);
+router.post('/institute', instituteSchemaValidation, validateSchema, createInstituteCtrl);
 
 export default router
