@@ -13,7 +13,7 @@ import {institute} from '../models/institute.js';
 import {type_career} from '../models/type_career.js';
 import {user} from '../models/user.js';
 import {career} from '../models/careers.js';
-import {sequelize} from '../db.js'
+import {sequelize} from '../../db.js'
 
 ctrl.renderRegisterInstitute = async (req, res) => {
     res.render("formInstitute/register-institute")
