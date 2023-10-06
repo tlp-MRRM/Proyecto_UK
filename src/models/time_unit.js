@@ -1,4 +1,4 @@
-import {sequelize, DataTypes} from '../../db.js';
+import {sequelize, DataTypes} from '../connections/db.js';
 
 export const time_unit = sequelize.define('time_unit', {
     id:{

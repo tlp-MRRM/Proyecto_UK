@@ -6,7 +6,6 @@ import cors from 'cors';
 import morgan from 'morgan';
 import 'dotenv/config';
 import cookieParser from 'cookie-parser';
-import { createTransport } from 'nodemailer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -50,7 +49,7 @@ app.use(handleErrors);
 app.use(express.static(path.join(__dirname, "src/public")));
 app.use(express.json());
 
-import {conexionDB} from './db.js'
+import {conexionDB} from './src/connections/db.js'
 conexionDB()
 
 //routes:

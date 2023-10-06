@@ -1,4 +1,4 @@
-import {sequelize, DataTypes} from '../../db.js';
+import {sequelize, DataTypes} from '../connections/db.js';
 
 export const province = sequelize.define('province', {
     id:{
