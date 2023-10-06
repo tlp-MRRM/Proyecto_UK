@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
 body {
   font-family: "Alegreya Sans", sans-serif !important;
+  background: radial-gradient(rgb(255, 255, 255), rgb(128, 128, 128));
 }
 .logo {
   background-image: url(/home/img/logo.png);
@@ -42,6 +43,7 @@ header li {
 .texto {
     text-align: center;
     font-size: large;
+    font-weight: bold;
 }
 
   
