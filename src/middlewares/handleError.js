@@ -1,5 +1,5 @@
 import path from 'path';
-import { createLogs } from '../../helpers/createLogs.js'
+import { createLogs } from '../helpers/createLogs.js'
 
 const handleErrors = (err, req, res, next) => {
   const date = new Date();

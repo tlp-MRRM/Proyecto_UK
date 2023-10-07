@@ -1,7 +1,6 @@
 
 const selectProvince = document.getElementById('province');
 const selectLocality = document.getElementById('locality');
-const currentYear = new Date().getFullYear();
 const fetchProvinces = async () => {
     const response = await fetch('http://localhost:5000/api/provincias')
     if (response.status === 404) {
@@ -30,7 +29,6 @@ const fetchLocalities = async () => {
         return [];
     }
     return response.json();
-    console.log(response.json());
 }
 selectProvince.addEventListener('change', async () => {
     try {
@@ -64,7 +62,7 @@ formulario.addEventListener('submit', async (event) => {
         altitude: formData.get('altitude'),
         map_link: formData.get('map_link'),
         mail: formData.get('mail'),
-        phone: formData.get('phone'),
+        tel: formData.get('tel'),
         web_link: formData.get('web_link'),
         year_fundation: formData.get('year_fundation'),
         description: formData.get('description')

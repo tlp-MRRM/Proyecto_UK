@@ -1,7 +1,7 @@
-import {sequelize, DataTypes} from '../connections/db.js';
+import { sequelize, DataTypes } from '../connections/db.js';
 
-export const category = sequelize.define('category', {
-    id:{
+export const Category = sequelize.define('Category', {
+    id: {
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
         primaryKey: true
@@ -9,9 +9,10 @@ export const category = sequelize.define('category', {
     category: DataTypes.STRING(15)
 }, {
     timestamps: false,
+    freezeTableName: true
 })
 
-category.sync({ force: false }).then(() => {
+Category.sync({ force: false }).then(() => {
     console.log('Tabla de categorias creada');
 });
 

@@ -1,6 +1,9 @@
-import {sequelize, DataTypes} from '../connections/db.js';
+import { sequelize, DataTypes } from '../connections/db.js';
+import { Modality } from './Modality.js';
+import { TimeUnit } from './TimeUnit.js';
+import { TypeCareer } from './TypeCareer.js';
 
-export const career = sequelize.define('career', {
+export const Career = sequelize.define('Career', {
     id: {
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -19,7 +22,7 @@ export const career = sequelize.define('career', {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model: 'type_careers',
+            model: 'TypeCareer',
             key: 'id'
         }
     },
@@ -35,7 +38,7 @@ export const career = sequelize.define('career', {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model: 'time_units',
+            model: 'TimeUnit',
             key: 'id'
         }
     },
@@ -43,7 +46,7 @@ export const career = sequelize.define('career', {
         type: DataTypes.INTEGER(1),
         allowNull: false,
         references: {
-            model:'modalities',
+            model: 'Modality',
             key: 'id'
         }
     },
@@ -55,7 +58,7 @@ export const career = sequelize.define('career', {
         type: DataTypes.INTEGER(1),
         allowNull: true,
         references: {
-            model: 'institutes',
+            model: 'Institute',
             key: 'id'
         }
     },
@@ -63,12 +66,18 @@ export const career = sequelize.define('career', {
         type: DataTypes.INTEGER(1),
         allowNull: true,
         references: {
-            model: 'careers',
+            model: 'Career',
             key: 'id'
         }
     }
-})
-career.sync({ force: false }).then(() => {
+}, {
+    freezeTableName: true,
+}
+)
+Career.hasOne(TypeCareer)
+Career.hasOne(Modality)
+Career.hasOne(TimeUnit)
+Career.sync({ force: false }).then(() => {
     console.log('Tabla de Carreras creada');
 });
 

@@ -2,7 +2,7 @@
 
 
 
-INSERT INTO `provinces` (`id`, `province`) VALUES
+INSERT INTO `province` (`id`, `province`) VALUES
 (1, 'Buenos Aires'),
 (2, 'Buenos Aires-GBA'),
 (3, 'Capital Federal'),
@@ -29,11 +29,10 @@ INSERT INTO `provinces` (`id`, `province`) VALUES
 (24, 'Tierra del Fuego'),
 (25, 'Tucumán');
 
--- --------------------------------------------------------
 
 
 
-INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
+INSERT INTO `locality` (`id`, `id_Province`, `locality`) VALUES
 (1, 1, '25 de Mayo'),
 (2, 1, '3 de febrero'),
 (3, 1, 'A. Alsina'),
@@ -2127,7 +2126,7 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (2091, 22, 'Pueblo Muñoz'),
 (2092, 22, 'Pueblo Uranga'),
 (2093, 22, 'Pujato');
-INSERT INTO `localities` (`id`, `id_province`, `locality`) VALUES
+INSERT INTO `locality` (`id`, `id_province`, `locality`) VALUES
 (2094, 22, 'Pujato N.'),
 (2095, 22, 'Rafaela'),
 (2096, 22, 'Ramayón'),
@@ -2418,55 +2417,23 @@ INSERT INTO `localities` (`id`, `id_province`, `locality`) VALUES
 (2381, 25, 'Yerba Buena'),
 (2382, 25, 'Yerba Buena (S)');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `modalities`
---
 
 
-INSERT INTO `modalities` (`id`, `modality`) VALUES
+INSERT INTO `modality` (`id`, `modality`) VALUES
 (1, 'Presencial'),
 (2, 'A distancia'),
 (3, 'Presencial - A distancia');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `provinces`
---
-
-
-
---
-
-
-INSERT INTO `time_units` (`id`, `unit_time`) VALUES
+INSERT INTO `timeunit` (`id`, `unit_time`) VALUES
 (1, 'Años'),
 (2, 'Meses');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `typecareers`
---
-
-INSERT INTO `type_careers` (`id`, `type`) VALUES
+INSERT INTO `typecareer` (`id`, `type`) VALUES
 (1, 'Carrera de Pregrado'),
 (2, 'Carrera de Grado'),
 (3, 'Maestría'),
 (4, 'Especialización'),
 (5, 'Diplomatura');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ubications`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
 

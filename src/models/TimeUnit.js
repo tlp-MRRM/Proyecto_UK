@@ -1,7 +1,7 @@
-import {sequelize, DataTypes} from '../connections/db.js';
+import { sequelize, DataTypes } from '../connections/db.js';
 
-export const time_unit = sequelize.define('time_unit', {
-    id:{
+export const TimeUnit = sequelize.define('TimeUnit', {
+    id: {
         type: DataTypes.INTEGER(1),
         autoIncrement: true,
         primaryKey: true
@@ -9,9 +9,10 @@ export const time_unit = sequelize.define('time_unit', {
     unit_time: DataTypes.STRING('50')
 }, {
     timestamps: false,
+    freezeTableName: true
 })
 
-time_unit.sync({ force: false }).then(() => {
+TimeUnit.sync({ force: false }).then(() => {
     console.log('Tabla de unidad de tiempo creada');
 });
 

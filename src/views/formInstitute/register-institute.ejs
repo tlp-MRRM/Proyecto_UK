@@ -14,24 +14,24 @@
 <body>
     <main>
         <form class="formAgregarInstituto p-3 needs-validation" novalidate id="formAgregarInstituto">
-            <h2 class="mb-3">Registra tu institución</h2>
-            <div class="nombres">
-                <div class="nombre">
+            <h2 class="">Registra tu institución</h2>
+            <div class="nombres mb-3">
+                <div class="nombre me-3">
                     <label for="name" class="form-label">Nombre de la institución<span
                             style="color: red;">*</span></label>
-                    <input type="text" placeholder="Instituto politecnico form-control" class="form-control"
-                        name="name">
+                    <input type="text" placeholder="Instituto politecnico" class="form-control" name="name">
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div>
                     <label for="abbreviation" class="form-label">Abreviatura<span style="color: red;">*</span></label>
-                    <div class="mb-3">
-                        <input type="text" class="form-control needs-validation" placeholder="IPF" name="abbreviation" id="abbreviation">
+                    <div class="">
+                        <input type="text" class="form-control needs-validation" placeholder="IPF" name="abbreviation"
+                            id="abbreviation">
                         <div class="valid-feedback">
-                            
-                          </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,13 +43,13 @@
                     <%- include('./partials/contact.ejs'); %>
 
 
-                        <div class="mb-3">
+                        <div class="">
                             <label for="year_fundation" class="form-label">Año de fundación<span
                                     style="color: red;">*</span></label>
                             <input type="number" class="form-control" id="year_fundation" placeholder="2021"
                                 name="year_fundation">
                         </div>
-                        <div class="mb-3">
+                        <div class="mt-3 mb-3">
                             <label for="description" class="form-label">Descripción breve de la institucion (max. 255
                                 caracteres)</label>
                             <input type="text" name="description" id="description" class="form-control">

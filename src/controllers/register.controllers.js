@@ -1,38 +1,21 @@
-const ctrl = {}
 
-
-//importations
-import {province} from '../models/province.js';
-import {locality} from '../models/locality.js';
-import {time_unit} from '../models/time_unit.js';
-import {modality} from '../models/modality.js';
-import {ubication} from '../models/ubication.js';
-import {category} from '../models/category.js';
-import {contact} from '../models/contact.js';
-import {institute} from '../models/institute.js';
-import {type_career} from '../models/type_career.js';
-import {user} from '../models/user.js';
-import {career} from '../models/careers.js';
-import {sequelize} from '../connections/db.js'
-
-ctrl.renderRegisterInstitute = async (req, res) => {
-    res.render("formInstitute/register-institute.ejs")
-}
-
-
-ctrl.renderRegisterCareers = (req, res) => {
-    res.render("formInstitute/register-career")
-}
-
-ctrl.renderInstituteProfile = (req, res) => {
-    res.render('user.institute/index')
-}
+import { Province } from '../models/Province.js';
+import { Locality } from '../models/Locality.js';
+import { Ubication } from '../models/Ubication.js';
+import { Contact } from '../models/Contact.js';
+import { Institute } from '../models/Institute.js';
+import { sequelize } from '../connections/db.js'
+import { Career } from '../models/careers.js';
+import { TypeCareer } from '../models/TypeCareer.js';
 
 
 
-ctrl.findAllProvinces = async (req, res) => {
+
+
+// SELECT LOCALITY
+export const findAllProvinces = async (req, res) => {
     try {
-        const provinces = await province.findAll();
+        const provinces = await Province.findAll();
         return res.json(provinces);
     } catch (error) {
         console.error('Error al obtener las provincias:', error);
@@ -40,9 +23,9 @@ ctrl.findAllProvinces = async (req, res) => {
     }
 }
 
-ctrl.findAllLocalities = async (req, res) => {
+export const findAllLocalities = async (req, res) => {
     try {
-        const localities = await locality.findAll();
+        const localities = await Locality.findAll();
         return res.json(localities);
     } catch (error) {
         console.log('Error al obtener las localidades:', error);
@@ -51,9 +34,9 @@ ctrl.findAllLocalities = async (req, res) => {
 }
 
 
-ctrl.findAllLocalitiesById = async (req, res) => {
+export const findAllLocalitiesById = async (req, res) => {
     try {
-        const localities = await locality.findAll({
+        const localities = await Locality.findAll({
             where: {
                 id_province: req.params.id
             }
@@ -65,65 +48,12 @@ ctrl.findAllLocalitiesById = async (req, res) => {
     }
 }
 
-
-//CRUD Methods
-
-ctrl.newUbication = async (req, res) => {
-    const id_ubication = {
-        id_locality,
-        street,
-        altitude,
-        postal_code,
-        map_link
-    } = req.body;
-    try {
-        id_ubication = new ubication({
-            id_locality,
-            street,
-            altitude,
-            postal_code,
-            map_link
-        });
-
-        await ubication.save()
-        console.log('Ubicacion creada con exito')
-
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({
-            message: 'Error al crear la ubicacion'
-        });
-    }
-}
+// END SELECT LOCALITY
 
 
-ctrl.newContact = async (req, res) => {
+// CREATE INSTITUTE
+export const newInstitute = async (req, res) => {
     const {
-        mail,
-        tel,
-        web_link
-    } = req.body;
-    try {
-        const newContact = new contact({
-            mail,
-            tel,
-            web_link
-        });
-        
-        await contact.save();
-        console.log('Contacto creado con exito')
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({
-            message: 'Error al crear el contacto'
-        });
-    }
-    
-}
-
-
-ctrl.newInstitute = async (req, res) => {
-    const  {
         id_locality,
         street,
         altitude,
@@ -136,28 +66,28 @@ ctrl.newInstitute = async (req, res) => {
         abbreviation,
         year_fundation,
         description,
-        id_category 
+        id_category
     } = req.body
     const t = await sequelize.transaction();
     try {
-        const result = await sequelize.transaction(async (t)=> {
-            const newUbication = await ubication.create({
+        const result = await sequelize.transaction(async (t) => {
+            const newUbication = await Ubication.create({
                 id_locality,
                 street,
                 altitude,
                 postal_code,
                 map_link
-            }, {transaction: t});
+            }, { transaction: t });
             console.log(newUbication.dataValues.id)
 
-            const newContact = await contact.create({
+            const newContact = await Contact.create({
                 mail,
                 tel,
                 web_link
-            }, {transaction: t})
+            }, { transaction: t })
             console.log(newContact.dataValues.id)
 
-            const newInstitute = institute.create({
+            const newInstitute = Institute.create({
                 name,
                 abbreviation,
                 year_fundation,
@@ -165,21 +95,15 @@ ctrl.newInstitute = async (req, res) => {
                 id_category,
                 id_ubication: newUbication.id,
                 id_contact: newContact.id
-            }, {transaction:t})
+            }, { transaction: t })
             console.log((await newInstitute).dataValues)
 
-            // await t.commit()
-            
         })
-        
-            // }, {
-            //   include: [ contact, ubication ]
-            // })
-            // await t.commit();
-       console.log('Instituto creado con exito')
-       return res.status(201).json({
-        message: 'Tu institucion se ha registrado con exito!'
-       });
+
+        console.log('Instituto creado con exito')
+        return res.status(201).json({
+            message: 'Tu institucion se ha registrado con exito!'
+        });
 
     } catch (error) {
         console.log('ERROR', error)
@@ -191,8 +115,8 @@ ctrl.newInstitute = async (req, res) => {
 
 
 
-
-ctrl.newCareer = async (req, res) => {
+//CREATE CAREER
+export const newCareer = async (req, res) => {
     const {
         name,
         id_type_career,
@@ -205,7 +129,7 @@ ctrl.newCareer = async (req, res) => {
         id_career
     } = req.body;
     try {
-        const career = await career.create({
+        const career = await Career.create({
             name,
             id_type_career,
             startDate,
@@ -226,5 +150,4 @@ ctrl.newCareer = async (req, res) => {
 }
 
 
-export default ctrl
 

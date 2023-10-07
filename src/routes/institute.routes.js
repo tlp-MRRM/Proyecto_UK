@@ -1,19 +1,23 @@
-import { Router } from 'express';
-import {
-  createInstituteCtrl,
-  getInstituteCtrl,
-  getInstituteByIdCtrl
-} from '../controllers/institute.controllers.js';
+//=============================
+//ARCHIVO COMENTADO DE MOMENTO=
+//=============================
 
-import { instituteSchemaValidation } from '../models/validations/institute.schema.js';
-import { validateSchema } from '../middlewares/express-validator/express-validator.js';
+// import { Router } from 'express';
+// import {
+//   createInstituteCtrl,
+//   getInstituteCtrl,
+//   getInstituteByIdCtrl
+// } from '../controllers/institute.controllers.js';
 
-const router = Router();
+// import { instituteSchemaValidation } from '../models/validations/institute.schema.js';
+// import { validateSchema } from '../middlewares/express-validator/express-validator.js';
 
-router.get('/institute', getInstituteCtrl);
-router.get('/institute/:id', getInstituteByIdCtrl);
+// const router = Router();
+
+// router.get('/institute', getInstituteCtrl);
+// router.get('/institute/:id', getInstituteByIdCtrl);
 
 
-router.post('/institute', instituteSchemaValidation, validateSchema, createInstituteCtrl);
+// router.post('/institute', instituteSchemaValidation, validateSchema, createInstituteCtrl);
 
-export default router
+// export default router

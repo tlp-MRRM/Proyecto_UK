@@ -1,7 +1,7 @@
-import {sequelize, DataTypes} from '../connections/db.js'
+import { sequelize, DataTypes } from '../connections/db.js'
 
-export const type_career = sequelize.define('type_career', {
-    id:{
+export const TypeCareer = sequelize.define('TypeCareer', {
+    id: {
         type: DataTypes.INTEGER(1),
         autoIncrement: true,
         primaryKey: true
@@ -9,9 +9,10 @@ export const type_career = sequelize.define('type_career', {
     type: DataTypes.STRING
 }, {
     timestamps: false,
+    freezeTableName: true
 });
 
-type_career.sync({ force: false }).then(() => {
+TypeCareer.sync({ force: false }).then(() => {
     console.log('Tabla de tipo de carrera creada');
 });
 

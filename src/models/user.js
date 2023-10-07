@@ -1,6 +1,6 @@
-import {sequelize, DataTypes} from '../connections/db.js';
+import { sequelize, DataTypes } from '../connections/db.js';
 
-export const user = sequelize.define('user', {
+export const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -24,9 +24,10 @@ export const user = sequelize.define('user', {
     allowNull: false,
   },
 }, {
-  underscored:true
+  underscored: true,
+  freezeTableName: true
 });
 
-user.sync({ force: true }).then(() => {
+User.sync({ force: true }).then(() => {
   console.log('Tabla de usuarios creada');
 });

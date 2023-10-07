@@ -1,6 +1,17 @@
-import { checkSchema } from "express-validator";
+import { body } from "express-validator";
 
-export const validation1 = checkSchema({
+export const registerUserSchema = [
+    body('email')
+        .exists().withMessage('El email es requerido')
+        .isEmpty().withMessage('El email no puede estar vacío')
+        .isEmail().withMessage('El email debe ser valido')
+]
+
+
+
+
+checkSchema({
+
     email: {
         notEmpty: {
             errorMessage: "El email es obligatorio"
