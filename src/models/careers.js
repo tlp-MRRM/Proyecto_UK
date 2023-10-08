@@ -1,7 +1,4 @@
 import { sequelize, DataTypes } from '../connections/db.js';
-import { Modality } from './Modality.js';
-import { TimeUnit } from './TimeUnit.js';
-import { TypeCareer } from './TypeCareer.js';
 
 export const Career = sequelize.define('Career', {
     id: {
@@ -21,10 +18,10 @@ export const Career = sequelize.define('Career', {
     id_type_career: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
-        references: {
-            model: 'TypeCareer',
-            key: 'id'
-        }
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     start_date: {
         type: DataTypes.DATEONLY,
@@ -34,21 +31,13 @@ export const Career = sequelize.define('Career', {
         type: DataTypes.INTEGER(2),
         allowNull: false
     },
-    id_timeUnit: {
+    id_time_unit: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
-        references: {
-            model: 'TimeUnit',
-            key: 'id'
-        }
     },
     id_modality: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
-        references: {
-            model: 'Modality',
-            key: 'id'
-        }
     },
     final_title: {
         type: DataTypes.STRING(100),
@@ -57,27 +46,9 @@ export const Career = sequelize.define('Career', {
     id_institute: {
         type: DataTypes.INTEGER(1),
         allowNull: true,
-        references: {
-            model: 'Institute',
-            key: 'id'
-        }
-    },
-    id_career: {
-        type: DataTypes.INTEGER(1),
-        allowNull: true,
-        references: {
-            model: 'Career',
-            key: 'id'
-        }
     }
 }, {
     freezeTableName: true,
 }
 )
-Career.hasOne(TypeCareer)
-Career.hasOne(Modality)
-Career.hasOne(TimeUnit)
-Career.sync({ force: false }).then(() => {
-    console.log('Tabla de Carreras creada');
-});
 

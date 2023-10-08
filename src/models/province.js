@@ -12,7 +12,4 @@ export const Province = sequelize.define('Province', {
     freezeTableName: true
 })
 
-Province.sync({ force: false }).then(() => {
-    console.log('Tabla de provincias creada');
-});
 

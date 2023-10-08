@@ -18,7 +18,5 @@ export const Ubication = sequelize.define('Ubication', {
     freezeTableName: true
 })
 
-Ubication.sync({ force: false }).then(() => {
-    console.log('Tabla de ubicacion creada');
-});
+
 

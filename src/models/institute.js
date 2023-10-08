@@ -1,7 +1,5 @@
 import { sequelize, DataTypes } from '../connections/db.js';
-import { Contact } from './Contact.js';
-import { Category } from './Category.js'
-import { Ubication } from './Ubication.js';
+
 export const Institute = sequelize.define('Institute', {
     id: {
         type: DataTypes.INTEGER(4),
@@ -13,13 +11,9 @@ export const Institute = sequelize.define('Institute', {
         allowNull: false,
         defaultValue: true
     },
-    name: {
-        type: DataTypes.STRING(100),
-        allowNull: false
-    },
-    abbreviation: {
-        type: DataTypes.STRING(10),
-        allowNull: false
+    id_user: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     },
     id_category: {
         type: DataTypes.INTEGER,
@@ -37,6 +31,14 @@ export const Institute = sequelize.define('Institute', {
         type: DataTypes.INTEGER(4),
         allowNull: false,
     },
+    name: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
+    abbreviation: {
+        type: DataTypes.STRING(10),
+        allowNull: false
+    },
     year_fundation: {
         type: DataTypes.INTEGER,
         allowNull: true,
@@ -49,14 +51,4 @@ export const Institute = sequelize.define('Institute', {
     freezeTableName: true,
 });
 
-Category.belongsTo(Institute);
-Institute.hasMany(Ubication)
-Ubication.belongsTo(Institute);
-Institute.hasMany(Institute);
-Institute.hasMany(Contact);
-Contact.belongsTo(Institute)
-
-Institute.sync({ force: false }).then(() => {
-    console.log('Tabla de instituto creada');
-});
 

@@ -12,7 +12,4 @@ export const TimeUnit = sequelize.define('TimeUnit', {
     freezeTableName: true
 })
 
-TimeUnit.sync({ force: false }).then(() => {
-    console.log('Tabla de unidad de tiempo creada');
-});
 

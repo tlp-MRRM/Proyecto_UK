@@ -27,7 +27,3 @@ export const User = sequelize.define('User', {
   underscored: true,
   freezeTableName: true
 });
-
-User.sync({ force: true }).then(() => {
-  console.log('Tabla de usuarios creada');
-});

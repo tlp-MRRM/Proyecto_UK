@@ -1,6 +1,5 @@
 import { sequelize, DataTypes } from '../connections/db.js';
 
-
 export const Locality = sequelize.define('Locality', {
     id: {
         type: DataTypes.INTEGER(11),
@@ -9,10 +8,6 @@ export const Locality = sequelize.define('Locality', {
     },
     id_province: {
         type: DataTypes.INTEGER(11),
-        references: {
-            model: 'province',
-            key: 'id'
-        }
     },
     locality: DataTypes.STRING(255)
 }, {
@@ -20,6 +15,3 @@ export const Locality = sequelize.define('Locality', {
     freezeTableName: true
 });
 
-Locality.sync({ force: false }).then(() => {
-    console.log('Tabla de localidad creada');
-});

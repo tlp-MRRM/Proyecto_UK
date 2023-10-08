@@ -5,7 +5,7 @@ import { Ubication } from '../models/Ubication.js';
 import { Contact } from '../models/Contact.js';
 import { Institute } from '../models/Institute.js';
 import { sequelize } from '../connections/db.js'
-import { Career } from '../models/careers.js';
+import { Career } from '../models/Careers.js';
 import { TypeCareer } from '../models/TypeCareer.js';
 
 

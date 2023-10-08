@@ -39,5 +39,16 @@ export const createInstituteSchema = [
   body('map_link')
     .exists().withMessage('El link de la ubicación es requerido')
     .notEmpty().withMessage('El link de la ubicación no puede estar vacío')
-    .isURL().withMessage('El link de la ubicación debe ser válido')
+    .isURL().withMessage('El link de la ubicación debe ser válido'),
+  body('year_fundation')
+    .exists().withMessage('El año de fundación del instituto es requerido')
+    .isEmpty().withMessage('El año de fundación del instituto no puede estar vacío')
+    .isNumeric().withMessage('El año de fundación del instituto debe ser numérico')
+    .custom((value) => {
+      const currentYear = new Date().getFullYear();
+      if (value > currentYear) {
+        throw new Error('El año de fundación no puede ser mayor al año concurrente');
+      }
+      return true;
+    })
 ];

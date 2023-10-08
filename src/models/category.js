@@ -12,7 +12,3 @@ export const Category = sequelize.define('Category', {
     freezeTableName: true
 })
 
-Category.sync({ force: false }).then(() => {
-    console.log('Tabla de categorias creada');
-});
-

@@ -53,6 +53,8 @@ app.use(
 // DATA BASE CONNECTION ----------------------------------------------------------
 
 import { conexionDB } from './src/connections/db.js'
+import { createTablesAndRelations } from './src/connections/sync.js';
+createTablesAndRelations()
 conexionDB()
 
 // END DB CONNECT-----------------------------------------------------------------

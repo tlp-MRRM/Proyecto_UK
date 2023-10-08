@@ -12,7 +12,3 @@ export const TypeCareer = sequelize.define('TypeCareer', {
     freezeTableName: true
 });
 
-TypeCareer.sync({ force: false }).then(() => {
-    console.log('Tabla de tipo de carrera creada');
-});
-

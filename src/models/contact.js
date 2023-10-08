@@ -1,6 +1,5 @@
 import { sequelize, DataTypes } from '../connections/db.js';
 
-
 export const Contact = sequelize.define('Contact', {
     id: {
         type: DataTypes.INTEGER(4),
@@ -24,6 +23,3 @@ export const Contact = sequelize.define('Contact', {
     freezeTableName: true
 });
 
-Contact.sync({ force: false }).then(() => {
-    console.log('Tabla de contacto creada');
-});

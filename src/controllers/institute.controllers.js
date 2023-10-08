@@ -1,4 +1,4 @@
-import { institute } from "../models/institute.js";
+import { institute } from "../models/Institute.js";
 
 
 export const getInstitute = async (req, res) => {
