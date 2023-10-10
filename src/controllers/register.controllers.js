@@ -55,6 +55,7 @@ export const findAllLocalitiesById = async (req, res) => {
 export const newInstitute = async (req, res) => {
     const {
         id_locality,
+        id_category,
         street,
         altitude,
         postal_code,
@@ -66,7 +67,7 @@ export const newInstitute = async (req, res) => {
         abbreviation,
         year_fundation,
         description,
-        id_category
+        id_user
     } = req.body
     const t = await sequelize.transaction();
     try {
@@ -92,6 +93,7 @@ export const newInstitute = async (req, res) => {
                 abbreviation,
                 year_fundation,
                 description,
+                id_user,
                 id_category,
                 id_ubication: newUbication.id,
                 id_contact: newContact.id
@@ -117,28 +119,34 @@ export const newInstitute = async (req, res) => {
 
 //CREATE CAREER
 export const newCareer = async (req, res) => {
+    const { id_institute } = req.parans.id
+    const isValidInsitute = Institute.findOne({
+        where: id_institute = id_institute
+    })
+    if (!isValidInsitute) {
+        return res.status(403).send("No existe la institución")
+    }
     const {
-        name,
         id_type_career,
+        id_modality,
+        id_time_unit,
+        name,
+        description,
         startDate,
         duration,
-        id_time_unit,
-        id_modality,
         final_title,
-        id_institute,
-        id_career
     } = req.body;
     try {
         const career = await Career.create({
-            name,
+            id_institute,
             id_type_career,
+            id_modality,
+            id_time_unit,
+            description,
+            name,
             startDate,
             duration,
-            id_time_unit,
-            id_modality,
             final_title,
-            id_institute,
-            id_career
         });
         return res.json(career);
     } catch (error) {

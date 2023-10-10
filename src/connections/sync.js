@@ -36,6 +36,7 @@ export const createTablesAndRelations = async () => {
     Institute.belongsTo(User, { foreignKey: 'id_user' });
     User.hasMany(Institute, { foreignKey: 'id_user' });
 
-    await sequelize.sync({ force: true })
+
+    await sequelize.sync({ force: false })
 }
 

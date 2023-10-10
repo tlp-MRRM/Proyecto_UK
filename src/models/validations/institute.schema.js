@@ -42,7 +42,7 @@ export const createInstituteSchema = [
     .isURL().withMessage('El link de la ubicación debe ser válido'),
   body('year_fundation')
     .exists().withMessage('El año de fundación del instituto es requerido')
-    .isEmpty().withMessage('El año de fundación del instituto no puede estar vacío')
+    // .isEmpty().withMessage('El año de fundación del instituto no puede estar vacío')
     .isNumeric().withMessage('El año de fundación del instituto debe ser numérico')
     .custom((value) => {
       const currentYear = new Date().getFullYear();

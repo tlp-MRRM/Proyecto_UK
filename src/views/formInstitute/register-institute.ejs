@@ -7,13 +7,14 @@
     <title>Registra tu institucion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/register-institute.css">
-    <link rel="icon" href="./img/home/logoConFondo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/register-institute.css">
+    <link rel="icon" href="/img/home/logoConFondo.png" type="image/x-icon">
 </head>
 
 <body>
     <main>
-        <form class="formAgregarInstituto p-3 needs-validation" novalidate id="formAgregarInstituto">
+        <form class="formAgregarInstituto p-3 needs-validation" novalidate id="formAgregarInstituto"
+            data-id="<%- id %>">
             <h2 class="">Registra tu institución</h2>
             <div class="nombres mb-3">
                 <div class="nombre me-3">
@@ -61,7 +62,7 @@
 
         </form>
     </main>
-    <script src="./js/register-institute.js"></script>
+    <script src="/js/registerInstitute.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
