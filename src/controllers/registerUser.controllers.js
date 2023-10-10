@@ -1,6 +1,5 @@
-import { User } from '../models/User.js';
-import bcrypt from 'bcryptjs';
-
+import { User } from "../models/User.js";
+import bcrypt from "bcryptjs";
 
 export const registerUser = async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
@@ -10,31 +9,27 @@ export const registerUser = async (req, res) => {
 
         if (existingUser) {
             return res.status(404).json({
-                message: 'El usuario ya existe en nuestro sistema.',
+                message: "El usuario ya existe en nuestro sistema.",
             });
         }
 
-        const passhash = await bcrypt.hash(password, 1)
-
+        const passhash = await bcrypt.hash(password, 1);
 
         const newUser = await User.create({
             firstName: firstName,
             lastName: lastName,
             email: email,
-            password: passhash
-        })
+            password: passhash,
+        });
 
         return res.status(201).json({
             status: 201,
             message: "Usuario creado correctamente",
-            newUser: newUser
-        })
-
-
+            newUser: newUser,
+        });
     } catch (error) {
         return res.status(500).json({
-            message: "Hubo un error." + error
-        })
+            message: "Hubo un error." + error,
+        });
     }
-}
-
+};

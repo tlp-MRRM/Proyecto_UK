@@ -1,0 +1,75 @@
+import { User } from "../models/User.js";
+import bcrypt from "bcryptjs";
+import createAccessToken from "../libs/jwt.js";
+
+//----------------------------------------------------------------
+export const registerUser = async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+
+  try {
+    const existingUser = await User.findOne({ where: { email: email } });
+
+    if (existingUser) {
+      return res.status(404).json({
+        message: "El usuario ya existe en nuestro sistema.",
+      });
+    }
+
+    const passhash = await bcrypt.hash(password, 1);
+
+    const newUser = await User.create({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: passhash,
+    });
+
+    return res.status(201).json({
+      status: 201,
+      message: "Usuario creado correctamente",
+      newUser: newUser,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Hubo un error." + error,
+    });
+  }
+};
+
+//----------------------------------------------------------------
+export const authLogin = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const existingUser = await User.findOne({ where: { email: email } });
+
+    if (!existingUser) {
+      return res.status(404).json({
+        message: "Usuario o contraseña incorrectos.",
+      });
+    }
+
+    const validPassword = await bcrypt.compare(password, existingUser.password);
+
+    if (!validPassword) {
+      return res.status(404).json({
+        message: "Usuario o contraseña incorrectos.",
+      });
+    }
+
+
+    const token = await createAccessToken({ id: existingUser.id });
+    res.cookie("token", token);
+
+    res.json({ token });
+
+    // res.json({
+    //   message: `Inicio de sesión correcto, bienvenido ${email}`,
+    // });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error al iniciar sesión",
+    });
+  }
+};
