@@ -67,8 +67,9 @@ conexionDB()
 import renderRoutes from './src/routes/render.routes.js';
 import instiRegisterRoutes from './src/routes/instRegis.routes.js';
 import authRoutes from './src/routes/auth.routes.js';
+import adminRoutes from './src/routes/admin.routes.js';
 
-
+app.use(adminRoutes)
 app.use(renderRoutes)
 app.use(instiRegisterRoutes) // register new institute
 app.use(authRoutes) // register new user
