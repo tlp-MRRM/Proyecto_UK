@@ -2,7 +2,7 @@ import { User } from "../models/User.js";
 import bcrypt from "bcryptjs";
 
 export const registerUser = async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, isAdmin } = req.body;
 
     try {
         const existingUser = await User.findOne({ where: { email: email } });
@@ -20,6 +20,7 @@ export const registerUser = async (req, res) => {
             lastName: lastName,
             email: email,
             password: passhash,
+            isAdmin: isAdmin
         });
 
         return res.status(201).json({
