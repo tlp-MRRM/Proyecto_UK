@@ -1,58 +1,80 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
 body {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: "Alegreya Sans", sans-serif;
+  background: linear-gradient(#03213b, #0e4e87, #4c8abf, #7ea9c7, #92b2c9, white);
 }
+
+
+
+.material-symbols-outlined {
+color: #ffffff;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-decoration: none;
+width: 100;
+ height: 100;}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.card-body {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+}
+:root {
+  --main-color: #7ea9c7;
+  --darker-main-color: #03213b;
+  --contrast-color: #ffb4a3;
+}
+
+.imagen {
+  background-image: url(../img/home/Intitute.png);
+  width: 400px;
+  height: 400px;
+}
+
 .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url(../img/home/logo.png);
-  width: 45px;
-  height: 45px;
+  width: 100px;
+  height: 100px;
   background-size: cover;
   transition: 0.1s ease-in-out;
 }
+
 .logo:hover {
   transform: scale(1.2);
   background-image: url(../img/home/logo_hover.png);
 }
 
 .busqueda {
-  background-color: rgb(112, 184, 255);
+  background-color: var(--main-color);
   border-radius: 10px;
-  border: 3px rgb(97, 161, 224) solid;
   padding: 1%;
   color: white;
   font-size: 20px;
   font-weight: bold;
   transition: 0.1s ease-in-out;
 }
-.busqueda:hover{
-  transform: scale(1.05); 
+
+.busqueda:hover {
+  transform: scale(1.05);
   color: white;
 }
 
 #cabecera {
-  position: sticky;
-  z-index: 1;
-  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: rgb(237, 237, 237);
 }
 
-.preguntas-frecuentes {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-right: 10px;
-}
-
-
-main {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-}
-
 .principal {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,15 +82,7 @@ main {
 }
 
 .reseñas-cuadro {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2%;
-  margin-bottom: 3%;
-  background-color: rgb(112, 184, 255);
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  width: 40%;
 }
 
 .reseñas-cuadro h2 {
@@ -76,22 +90,6 @@ main {
   font-size: 35px;
   color: white;
   font-weight: bold;
-}
-
-.reseñas {
-  display: flex;
-  flex-direction: column;
-  padding: 2%;
-}
-
-.reseña {
-  margin: 1%;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-.card-text {
-  text-align: justify;
 }
 
 .persona-reseña {
@@ -106,10 +104,6 @@ main {
 
 .section {
   text-align: center;
-  margin-top: 2%;
-  padding: 4%;
-  padding-top: 2%;
-  padding-bottom: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,19 +111,13 @@ main {
   border: 5px solid white;
   background-color: white;
   border-radius: 10px;
-  width: 60%;
+  width: 40%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .section p {
   font-size: 18px;
 }
-
-.bienvenida {
-  padding-bottom: 1%;
-}
-
-
 
 .aside {
   display: flex;
@@ -153,13 +141,51 @@ html {
   min-height: 100%;
 }
 
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+  margin-right: 10%;
+  margin-left: 10%;
+}
 
-
-footer {
-  background-color: rgb(237, 237, 237);
+.nav{
+  color: #ffb4a3;
+}
+.options {
   width: 100%;
-  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+ul a {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--darker-main-color);
 }
 
 
+ul a:hover {
+  color: var(--main-color);
+  font-size: 25px;
 
+}
+
+nav .breadcrumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--darker-main-color);
+  border-radius: 100px;
+}
+ol {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
