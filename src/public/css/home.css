@@ -1,19 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
 body {
   font-family: "Alegreya Sans", sans-serif;
-  background: linear-gradient(#03213b, #0e4e87, #4c8abf, #7ea9c7, #92b2c9, white);
+  background: linear-gradient(#88b5d8, #899faf, #a7b8c5, white);
 }
 
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  margin-right: 10%;
+  margin-left: 10%;
+}
 
-
-.material-symbols-outlined {
-color: #ffffff;
+nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  text-decoration: none;
-width: 100;
- height: 100;}
+} 
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+} 
+
 .title {
   display: flex;
   justify-content: center;
@@ -21,75 +35,34 @@ width: 100;
   color: #ffffff;
 }
 
+.material-symbols-outlined {
+  color: #ffffff;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-decoration: none;
+  font-size: 90px;
+  transition: 0.3s;
+}
+
+.material-symbols-outlined:hover {
+  transition: 0.3s;
+  transform: scale(1.5);
+}
+
+
 .card-body {
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
-}
-:root {
-  --main-color: #7ea9c7;
-  --darker-main-color: #03213b;
-  --contrast-color: #ffb4a3;
-}
-
-.imagen {
-  background-image: url(../img/home/Intitute.png);
-  width: 400px;
-  height: 400px;
-}
-
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(../img/home/logo.png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  transition: 0.1s ease-in-out;
-}
-
-.logo:hover {
-  transform: scale(1.2);
-  background-image: url(../img/home/logo_hover.png);
-}
-
-.busqueda {
-  background-color: var(--main-color);
-  border-radius: 10px;
-  padding: 1%;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  transition: 0.1s ease-in-out;
-}
-
-.busqueda:hover {
-  transform: scale(1.05);
-  color: white;
-}
-
-#cabecera {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: rgb(237, 237, 237);
-}
-
-.principal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 .reseñas-cuadro {
-  width: 40%;
+  width: 45%;
 }
 
 .reseñas-cuadro h2 {
   padding-top: 4%;
   font-size: 35px;
-  color: white;
-  font-weight: bold;
+  color: var(--darker-main-color);
 }
 
 .persona-reseña {
@@ -108,84 +81,32 @@ width: 100;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 5px solid white;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   width: 40%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
-.section p {
-  font-size: 18px;
-}
-
-.aside {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 60%;
-  padding: 2%;
-  border: 5px solid white;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-.aside p {
-  text-align: justify;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-main {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: rgb(238, 238, 238);
-  border-radius: 10px;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
-  margin-right: 10%;
-  margin-left: 10%;
-}
-
-.nav{
-  color: #ffb4a3;
-}
 .options {
   width: 100%;
   display: flex;
+  justify-content: space-evenly;  
   flex-direction: row;
+  align-items: center;
 }
 
-ul a {
-  font-size: 25px;
+.nav-link {
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--darker-main-color);
+  transition: 0.6s; 
+}
+
+.nav-link:hover {
+  transition: 0.6s;
+  transform: scale(1.5);
 }
 
 
-ul a:hover {
-  color: var(--main-color);
-  font-size: 25px;
 
-}
-
-nav .breadcrumb {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--darker-main-color);
-  border-radius: 100px;
-}
-ol {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
