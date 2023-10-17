@@ -2,7 +2,7 @@
 
 
 
-INSERT INTO `provinces` (`id`, `province`) VALUES
+INSERT INTO `province` (`id`, `province`) VALUES
 (1, 'Buenos Aires'),
 (2, 'Buenos Aires-GBA'),
 (3, 'Capital Federal'),
@@ -29,11 +29,10 @@ INSERT INTO `provinces` (`id`, `province`) VALUES
 (24, 'Tierra del Fuego'),
 (25, 'Tucumán');
 
--- --------------------------------------------------------
 
 
 
-INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
+INSERT INTO `locality` (`id`, `id_Province`, `locality`) VALUES
 (1, 1, '25 de Mayo'),
 (2, 1, '3 de febrero'),
 (3, 1, 'A. Alsina'),
@@ -370,7 +369,6 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (334, 4, 'Belén'),
 (335, 4, 'Capayán'),
 (336, 4, 'Capital'),
-(337, 4, '4'),
 (338, 4, 'Corral Quemado'),
 (339, 4, 'El Alto'),
 (340, 4, 'El Rodeo'),
@@ -620,7 +618,6 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (584, 7, 'Comechingones'),
 (585, 7, 'Conlara'),
 (586, 7, 'Copacabana'),
-(587, 7, '7'),
 (588, 7, 'Coronel Baigorria'),
 (589, 7, 'Coronel Moldes'),
 (590, 7, 'Corral de Bustos'),
@@ -698,7 +695,6 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (662, 7, 'La Laguna'),
 (663, 7, 'La Paisanita'),
 (664, 7, 'La Palestina'),
-(665, 7, '12'),
 (666, 7, 'La Paquita'),
 (667, 7, 'La Para'),
 (668, 7, 'La Paz'),
@@ -1111,7 +1107,6 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (1075, 9, 'El Redomón'),
 (1076, 9, 'El Solar'),
 (1077, 9, 'Enrique Carbo'),
-(1078, 9, '9'),
 (1079, 9, 'Espinillo N.'),
 (1080, 9, 'Estación Campos'),
 (1081, 9, 'Estación Escriña'),
@@ -1601,7 +1596,6 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (1565, 16, 'Los Chihuidos'),
 (1566, 16, 'Los Miches'),
 (1567, 16, 'Manzano Amargo'),
-(1568, 16, '16'),
 (1569, 16, 'Octavio Pico'),
 (1570, 16, 'Paso Aguerre'),
 (1571, 16, 'Picún Leufú'),
@@ -1753,7 +1747,6 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (1717, 18, 'Rosario de La Frontera'),
 (1718, 18, 'Rosario de Lerma'),
 (1719, 18, 'Saclantás'),
-(1720, 18, '18'),
 (1721, 18, 'San Antonio'),
 (1722, 18, 'San Carlos'),
 (1723, 18, 'San José De Metán'),
@@ -1777,7 +1770,6 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (1741, 19, 'Pocito'),
 (1742, 19, 'Rawson'),
 (1743, 19, 'Rivadavia'),
-(1744, 19, '19'),
 (1745, 19, 'San Martín'),
 (1746, 19, 'Santa Lucía'),
 (1747, 19, 'Sarmiento'),
@@ -2127,7 +2119,7 @@ INSERT INTO `localities` (`id`, `id_Province`, `locality`) VALUES
 (2091, 22, 'Pueblo Muñoz'),
 (2092, 22, 'Pueblo Uranga'),
 (2093, 22, 'Pujato');
-INSERT INTO `localities` (`id`, `id_province`, `locality`) VALUES
+INSERT INTO `locality` (`id`, `id_province`, `locality`) VALUES
 (2094, 22, 'Pujato N.'),
 (2095, 22, 'Rafaela'),
 (2096, 22, 'Ramayón'),
@@ -2418,55 +2410,25 @@ INSERT INTO `localities` (`id`, `id_province`, `locality`) VALUES
 (2381, 25, 'Yerba Buena'),
 (2382, 25, 'Yerba Buena (S)');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `modalities`
---
 
 
-INSERT INTO `modalities` (`id`, `modality`) VALUES
+INSERT INTO `modality` (`id`, `modality`) VALUES
 (1, 'Presencial'),
 (2, 'A distancia'),
 (3, 'Presencial - A distancia');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `provinces`
---
-
-
-
---
-
-
-INSERT INTO `time_units` (`id`, `unit_time`) VALUES
+INSERT INTO `timeunit` (`id`, `unit_time`) VALUES
 (1, 'Años'),
 (2, 'Meses');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `typecareers`
---
-
-INSERT INTO `type_careers` (`id`, `type`) VALUES
+INSERT INTO `typecareer` (`id`, `type`) VALUES
 (1, 'Carrera de Pregrado'),
 (2, 'Carrera de Grado'),
 (3, 'Maestría'),
 (4, 'Especialización'),
 (5, 'Diplomatura');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `ubications`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
+INSERT INTO `category`(`category`) VALUES ('Público');
+INSERT INTO `category`(`category`) VALUES ('Privado');

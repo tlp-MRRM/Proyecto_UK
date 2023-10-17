@@ -1,7 +1,8 @@
 
+
+//Select Provinces ====================================================================================
 const selectProvince = document.getElementById('province');
 const selectLocality = document.getElementById('locality');
-const currentYear = new Date().getFullYear();
 const fetchProvinces = async () => {
     const response = await fetch('http://localhost:5000/api/provincias')
     if (response.status === 404) {
@@ -12,6 +13,7 @@ const fetchProvinces = async () => {
 
 }
 document.addEventListener('DOMContentLoaded', async () => {
+    alert('SE CARGO EL JS')
     try {
         const provinces = await fetchProvinces()
         provinces.forEach((province) => {
@@ -30,7 +32,6 @@ const fetchLocalities = async () => {
         return [];
     }
     return response.json();
-    console.log(response.json());
 }
 selectProvince.addEventListener('change', async () => {
     try {
@@ -45,26 +46,27 @@ selectProvince.addEventListener('change', async () => {
     }
 
 })
+//Select Provinces ====================================================================================
 
 
-
+//Register institute ==================================================================================
 const formulario = document.getElementById('formAgregarInstituto');
 
 formulario.addEventListener('submit', async (event) => {
     event.preventDefault();
-
     const formData = new FormData(document.getElementById('formAgregarInstituto'));
     const institute = {
         name: formData.get('name'),
         abbreviation: formData.get('abbreviation'),
         id_category: formData.get('category'),
         id_locality: formData.get('locality'),
-        postal_code: formData.get('postal_code'),
+        postal_code: parseInt(formData.get('postal_code')),
         street: formData.get('street'),
+        id_user: formulario.dataset.id,
         altitude: formData.get('altitude'),
         map_link: formData.get('map_link'),
         mail: formData.get('mail'),
-        phone: formData.get('phone'),
+        tel: formData.get('tel'),
         web_link: formData.get('web_link'),
         year_fundation: formData.get('year_fundation'),
         description: formData.get('description')
@@ -72,14 +74,14 @@ formulario.addEventListener('submit', async (event) => {
 
     console.log('institute:', institute)
     try {
+        const token = localStorage.getItem('token')
         const response = await fetch('http://localhost:5000/api/instituto', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'Authorization': `${token}` },
             body: JSON.stringify(institute)
         })
 
         const data = await response.json();
-        console.log(data)
 
         if (response.ok) {
             Swal.fire({
@@ -106,3 +108,4 @@ formulario.addEventListener('submit', async (event) => {
         })
     }
 });
+//Register institute ==================================================================================

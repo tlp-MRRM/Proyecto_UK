@@ -1,8 +1,7 @@
-import {sequelize, DataTypes} from '../connections/db.js';
+import { sequelize, DataTypes } from '../connections/db.js';
 
-
-export const modality = sequelize.define('modality', {
-    id:{
+export const Modality = sequelize.define('Modality', {
+    id: {
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
         primaryKey: true
@@ -10,9 +9,7 @@ export const modality = sequelize.define('modality', {
     modality: DataTypes.STRING(30)
 }, {
     timestamps: false,
+    freezeTableName: true
 });
 
-modality.sync({ force: false }).then(() => {
-    console.log('Tabla de modalidad creada');
-});
 

@@ -1,6 +1,6 @@
-import {sequelize, DataTypes} from '../connections/db.js';
+import { sequelize, DataTypes } from '../connections/db.js';
 
-export const career = sequelize.define('career', {
+export const Career = sequelize.define('Career', {
     id: {
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
@@ -11,17 +11,25 @@ export const career = sequelize.define('career', {
         allowNull: false,
         defaultValue: true
     },
+    id_type_career: {
+        type: DataTypes.INTEGER(1),
+        allowNull: false,
+    },
+    id_modality: {
+        type: DataTypes.INTEGER(1),
+        allowNull: false,
+    },
+    id_institute: {
+        type: DataTypes.INTEGER(1),
+        allowNull: true,
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    id_type_career: {
-        type: DataTypes.INTEGER(1),
-        allowNull: false,
-        references: {
-            model: 'type_careers',
-            key: 'id'
-        }
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     start_date: {
         type: DataTypes.DATEONLY,
@@ -31,44 +39,16 @@ export const career = sequelize.define('career', {
         type: DataTypes.INTEGER(2),
         allowNull: false
     },
-    id_timeUnit: {
+    id_time_unit: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
-        references: {
-            model: 'time_units',
-            key: 'id'
-        }
-    },
-    id_modality: {
-        type: DataTypes.INTEGER(1),
-        allowNull: false,
-        references: {
-            model:'modalities',
-            key: 'id'
-        }
     },
     final_title: {
         type: DataTypes.STRING(100),
         allowNull: false
-    },
-    id_institute: {
-        type: DataTypes.INTEGER(1),
-        allowNull: true,
-        references: {
-            model: 'institutes',
-            key: 'id'
-        }
-    },
-    id_career: {
-        type: DataTypes.INTEGER(1),
-        allowNull: true,
-        references: {
-            model: 'careers',
-            key: 'id'
-        }
     }
-})
-career.sync({ force: false }).then(() => {
-    console.log('Tabla de Carreras creada');
-});
+}, {
+    freezeTableName: true,
+}
+)
 

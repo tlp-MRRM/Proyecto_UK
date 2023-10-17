@@ -1,19 +1,25 @@
-import {sequelize, DataTypes} from '../connections/db.js';
+import { sequelize, DataTypes } from '../connections/db.js';
 
-
-export const contact = sequelize.define('contact', {
-    id:{
+export const Contact = sequelize.define('Contact', {
+    id: {
         type: DataTypes.INTEGER(4),
         autoIncrement: true,
         primaryKey: true
     },
-    mail: DataTypes.STRING(250),
-    tel: DataTypes.STRING(15),
-    web_link: DataTypes.STRING(500)
+    mail: {
+        type: DataTypes.STRING(),
+        allowNull: false
+    },
+    tel: {
+        type: DataTypes.STRING(),
+        allowNull: false
+    },
+    web_link: {
+        type: DataTypes.STRING(),
+        allowNull: false
+    }
 }, {
     timestamps: false,
+    freezeTableName: true
 });
 
-contact.sync({ force: false }).then(() => {
-    console.log('Tabla de contacto creada');
-});

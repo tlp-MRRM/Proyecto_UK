@@ -1,7 +1,7 @@
-import {sequelize, DataTypes} from '../connections/db.js';
+import { sequelize, DataTypes } from '../connections/db.js';
 
-export const province = sequelize.define('province', {
-    id:{
+export const Province = sequelize.define('Province', {
+    id: {
         type: DataTypes.INTEGER(10),
         autoIncrement: true,
         primaryKey: true
@@ -9,9 +9,7 @@ export const province = sequelize.define('province', {
     province: DataTypes.STRING(255)
 }, {
     timestamps: false,
+    freezeTableName: true
 })
 
-province.sync({ force: false }).then(() => {
-    console.log('Tabla de provincias creada');
-});
 
