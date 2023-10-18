@@ -2430,3 +2430,5 @@ INSERT INTO `typecareer` (`id`, `type`) VALUES
 (4, 'Especialización'),
 (5, 'Diplomatura');
 
+INSERT INTO `category`(`category`) VALUES ('Público');
+INSERT INTO `category`(`category`) VALUES ('Privado');

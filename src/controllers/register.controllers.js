@@ -67,8 +67,9 @@ export const newInstitute = async (req, res) => {
         abbreviation,
         year_fundation,
         description,
-        id_user
     } = req.body
+    const id_user = req.user.id
+    console.log('EL ID USER ES:', req.user)
     const t = await sequelize.transaction();
     try {
         const result = await sequelize.transaction(async (t) => {

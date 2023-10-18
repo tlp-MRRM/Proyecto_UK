@@ -1,6 +1,6 @@
 import { User } from "../models/User.js";
 import bcrypt from "bcryptjs";
-import createAccessToken from "../libs/jwt.js";
+import jwt from "jsonwebtoken";
 
 
 
@@ -29,14 +29,15 @@ export const authLogin = async (req, res) => {
     }
 
 
-    const token = await createAccessToken({ id: existingUser.id });
-    res.cookie("token", token);
+    const token = jwt.sign({ id: existingUser.id }, process.env.TOKEN_SECRET_KEY);
 
-    res.json({ token });
+    return res.json({
+      message: 'Inicio de sesión correcto, se redireccionará en unos momentos',
+      token,
+      id: existingUser.id
+    });
 
-    // res.json({
-    //   message: `Inicio de sesión correcto, bienvenido ${email}`,
-    // });
+
   } catch (error) {
     console.log(error);
     res.status(500).json({
