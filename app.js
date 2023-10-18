@@ -1,5 +1,5 @@
 // IMPORTS ------------------------------------------------------------------------ 
-
+import { Sequelize } from 'sequelize';
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -10,6 +10,8 @@ import path from 'path';
 import { createLogs } from './src/helpers/createLogs.js';
 import { handleErrors } from './src/middlewares/handleError.js';
 import { __dirname } from './src/helpers/_dirname.js'
+
+import { Institute } from './src/models/institute.js';
 
 // END IMPORTS --------------------------------------------------------------------
 
@@ -65,13 +67,31 @@ conexionDB()
 import renderRoutes from './src/routes/render.routes.js';
 import instiRegisterRoutes from './src/routes/instRegis.routes.js';
 import authRoutes from './src/routes/auth.routes.js';
+import adminRoutes from './src/routes/admin.routes.js';
 
-
+app.use(adminRoutes)
 app.use(renderRoutes)
 app.use(instiRegisterRoutes) // register new institute
 app.use(authRoutes) // register new user
 
 // END ROUTES --------------------------------------------------------------------
+
+app.get('/buscar', async (req, res) => {
+  const { name } = req.query; // Utiliza el nombre correcto de la columna
+
+  try {
+    const institutes = await Institute.findAll({
+      where: {
+        name: { [Sequelize.Op.like]: `%${name}%` }, // Utiliza el nombre correcto de la columna
+      },
+    });
+
+    res.json(institutes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
+});
 
 
 // SERVER CONNECTION -------------------------------------------------------------

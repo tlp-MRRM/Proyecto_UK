@@ -8,7 +8,7 @@ const renderRoutes = Router()
 
 renderRoutes.get('/registro-usuario', renderRegisterUser);
 
-renderRoutes.get('/nuevaInstitucion', renderRegisterInstitute);
+renderRoutes.get('/nueva-institucion/user/:id', renderRegisterInstitute);
 
 renderRoutes.get('/instituto/:id/nueva/carrera', renderRegisterCareers)
 

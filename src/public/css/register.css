@@ -53,10 +53,9 @@ button:hover {
   display: flex;
   justify-content: center;
   padding-bottom: 5%;
-
 }
 
-#register {
+.registerForm {
   width: 35%;
   margin: 10px;
   background-color: white;

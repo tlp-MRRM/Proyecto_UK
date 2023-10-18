@@ -10,6 +10,6 @@ instiRegisterRoutes.get('/api/provincias', findAllProvinces);
 instiRegisterRoutes.get('/api/provincia/:id/localidades', findAllLocalitiesById);
 
 //register new institute
-instiRegisterRoutes.post('/api/instituto', createInstituteSchema, validateSchema, newInstitute);
+instiRegisterRoutes.post('/api/instituto/user/:id', createInstituteSchema, validateSchema, newInstitute);
 
 export default instiRegisterRoutes;

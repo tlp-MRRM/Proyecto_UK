@@ -5,8 +5,9 @@ export const renderSearch = (_req, res) => {
     res.render('search/index')
 };
 
-export const renderRegisterInstitute = async (req, res) => {
-    res.render("formInstitute/register-institute.ejs")
+export const renderRegisterInstitute = (req, res) => {
+    console.log("RENDERregister ", req.params)
+    res.render("formInstitute/register-institute.ejs", { id: req.params.id })
 }
 
 
