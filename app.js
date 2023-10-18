@@ -73,6 +73,8 @@ app.use(adminRoutes)
 app.use(renderRoutes)
 app.use(instiRegisterRoutes) // register new institute
 app.use(authRoutes) // register new user
+app.use(adminRoutes);
+// ... otras rutas ...
 
 // END ROUTES --------------------------------------------------------------------
 

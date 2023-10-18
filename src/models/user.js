@@ -1,14 +1,10 @@
 import { sequelize, DataTypes } from '../connections/db.js';
 
-export const User = sequelize.define('User', {
+export const User= sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-  },
-  isAdmin: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false
   },
   firstName: {
     type: DataTypes.STRING,
