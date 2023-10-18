@@ -1,4 +1,6 @@
 
+
+//Select Provinces ====================================================================================
 const selectProvince = document.getElementById('province');
 const selectLocality = document.getElementById('locality');
 const fetchProvinces = async () => {
@@ -44,9 +46,10 @@ selectProvince.addEventListener('change', async () => {
     }
 
 })
+//Select Provinces ====================================================================================
 
 
-
+//Register institute ==================================================================================
 const formulario = document.getElementById('formAgregarInstituto');
 
 formulario.addEventListener('submit', async (event) => {
@@ -71,22 +74,33 @@ formulario.addEventListener('submit', async (event) => {
 
     console.log('institute:', institute)
     try {
-        const response = await fetch('http://localhost:5000/api/instituto/user/:id', {
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:5000/api/instituto', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'Authorization': `${token}` },
             body: JSON.stringify(institute)
         })
 
         const data = await response.json();
-        console.log(data)
 
         if (response.ok) {
             Swal.fire({
                 title: 'Hecho',
                 text: data.message,
                 icon: 'success',
-                confirmButtonText: 'Aceptar',
+                confirmButtonText: 'Se le rediccionará en unos segundos',
             })
+            console.log(data)
+            setTimeout(async () => {
+                window.location.href = `http://localhost:5000/instituto/${data.id_institute}`;
+                const responseInstitutes = await fetch('http://localhost:5000/api/get-institutes-by-user', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ id_user: id })
+                })
+            }, 2000);
         } else {
             Swal.fire({
                 title: 'Error',
@@ -105,3 +119,4 @@ formulario.addEventListener('submit', async (event) => {
         })
     }
 });
+//Register institute ==================================================================================

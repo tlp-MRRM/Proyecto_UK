@@ -1,3 +1,25 @@
+//ADMIN RENDERS =================================================
+
+import { User } from "../models/User.js";
+
+export const renderGetAllUsers = async (req, res) => {
+    try {
+        const users = await User.findAll({
+            where: {
+                is_admin: 0
+            }
+        })
+        return res.render('admin/admin', {
+            users
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error al obtener los usuarios'
+        });
+    }
+}
+
+//END ADMIN RENDERS =============================================
 export const renderRegisterUser = (_req, res) => {
     res.render('register/registerUser')
 }
@@ -6,35 +28,34 @@ export const renderSearch = (_req, res) => {
 };
 
 export const renderRegisterInstitute = (req, res) => {
-    console.log("RENDERregister ", req.params)
-    res.render("formInstitute/register-institute.ejs", { id: req.params.id })
+    const id_user = req.user
+    res.render("formInstitute/register-institute.ejs", { id_user: id_user })
 }
-
 
 export const renderRegisterCareers = (req, res) => {
     res.render("formInstitute/register-career")
 }
 
 
-export const renderInstituteProfile = (req, res) => {
+export const renderInstituteProfile = (_req, res) => {
     res.render('userInstitute/index.ejs')
 }
 
-export const renderLogin = (req, res) => {
+export const renderLogin = (_req, res) => {
     res.render('login/login.ejs')
 }
 
-export const renderHome = (req, res) => {
+export const renderHome = (_req, res) => {
     res.render('home/index.ejs')
 };
 
-export const renderFaq = (req, res) => {
+export const renderFaq = (_req, res) => {
     res.render('home/faq.ejs')
 };
-export const renderWorkWithUs = (req, res) => {
+export const renderWorkWithUs = (_req, res) => {
     res.render('workWithUs/index.ejs')
 }
 
-export const renderAboutUs = (req, res) => {
+export const renderAboutUs = (_req, res) => {
     res.render('home/about.ejs')
 }

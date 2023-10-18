@@ -11,7 +11,7 @@ import { createLogs } from './src/helpers/createLogs.js';
 import { handleErrors } from './src/middlewares/handleError.js';
 import { __dirname } from './src/helpers/_dirname.js'
 
-import { Institute } from './src/models/institute.js';
+import { Institute } from './src/models/Institute.js';
 
 // END IMPORTS --------------------------------------------------------------------
 

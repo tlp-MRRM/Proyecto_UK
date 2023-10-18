@@ -1,7 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
 body {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: "Alegreya Sans", sans-serif;
+  background-color: rgb(237, 237, 237);
 }
+:root {
+  --main-color: #7ea9c7;
+  --darker-main-color: #03213b;
+  --contrast-color: #ffb4a3;
+}
+svg {
+  transition: transform 0.2s ease;
+}
+
+svg:hover {
+  transform: scale(1.2);
+}
+
 .logo {
   background-image: url(../img/home/logo.png);
   width: 45px;
@@ -15,17 +29,17 @@ body {
 }
 
 .busqueda {
-  background-color: rgb(112, 184, 255);
+  background-color: var(--main-color);
   border-radius: 10px;
-  border: 3px rgb(97, 161, 224) solid;
+  border: 3px var(--main-color) solid;
   padding: 1%;
   color: white;
   font-size: 20px;
   font-weight: bold;
   transition: 0.1s ease-in-out;
 }
-.busqueda:hover{
-  transform: scale(1.05); 
+.busqueda:hover {
+  transform: scale(1.05);
   color: white;
 }
 
@@ -33,7 +47,7 @@ body {
   position: sticky;
   z-index: 1;
   top: 0;
-  background-color: rgb(237, 237, 237);
+  background-color: var(--darker-main-color);
 }
 
 .preguntas-frecuentes {
@@ -43,11 +57,10 @@ body {
   padding-right: 10px;
 }
 
-
 main {
   display: flex;
   flex-direction: row;
-  background-color: white;
+  background-color: var(--main-color);
 }
 
 .principal {
@@ -75,7 +88,6 @@ main {
   padding-top: 4%;
   font-size: 35px;
   color: white;
-  font-weight: bold;
 }
 
 .reseñas {
@@ -104,7 +116,7 @@ main {
   margin-top: 2%;
 }
 
-.section {
+.containerBienvenida {
   text-align: center;
   margin-top: 2%;
   padding: 4%;
@@ -117,7 +129,7 @@ main {
   border: 5px solid white;
   background-color: white;
   border-radius: 10px;
-  width: 60%;
+  width: 50%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -128,8 +140,6 @@ main {
 .bienvenida {
   padding-bottom: 1%;
 }
-
-
 
 .aside {
   display: flex;
@@ -153,13 +163,9 @@ html {
   min-height: 100%;
 }
 
-
-
 footer {
-  background-color: rgb(237, 237, 237);
+  background-color: var(--darker-main-color);
   width: 100%;
   margin-bottom: 0;
+  color: var(--contrast-color);
 }
-
-
-

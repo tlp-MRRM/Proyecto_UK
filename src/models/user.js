@@ -6,6 +6,10 @@ export const User = sequelize.define('User', {
     primaryKey: true,
     autoIncrement: true,
   },
+  isAdmin: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false
+  },
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
