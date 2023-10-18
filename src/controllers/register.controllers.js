@@ -89,7 +89,7 @@ export const newInstitute = async (req, res) => {
             }, { transaction: t })
             console.log(newContact.dataValues.id)
 
-            const newInstitute = Institute.create({
+            return await Institute.create({
                 name,
                 abbreviation,
                 year_fundation,
@@ -99,12 +99,13 @@ export const newInstitute = async (req, res) => {
                 id_ubication: newUbication.id,
                 id_contact: newContact.id
             }, { transaction: t })
-            console.log((await newInstitute).dataValues)
 
         })
 
         console.log('Instituto creado con exito')
+        console.log(result)
         return res.status(201).json({
+            id_institute: result.dataValues?.id,
             message: 'Tu institucion se ha registrado con exito!'
         });
 

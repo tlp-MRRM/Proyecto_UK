@@ -4,7 +4,11 @@ import { User } from "../models/User.js";
 
 export const renderGetAllUsers = async (req, res) => {
     try {
-        const users = await User.findAll()
+        const users = await User.findAll({
+            where: {
+                is_admin: 0
+            }
+        })
         return res.render('admin/admin', {
             users
         });
@@ -29,9 +33,7 @@ export const renderRegisterInstitute = (req, res) => {
 }
 
 export const renderRegisterCareers = (req, res) => {
-    console.log(req.user)
     res.render("formInstitute/register-career")
-
 }
 
 

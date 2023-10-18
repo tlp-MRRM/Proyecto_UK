@@ -88,8 +88,19 @@ formulario.addEventListener('submit', async (event) => {
                 title: 'Hecho',
                 text: data.message,
                 icon: 'success',
-                confirmButtonText: 'Aceptar',
+                confirmButtonText: 'Se le rediccionará en unos segundos',
             })
+            console.log(data)
+            setTimeout(async () => {
+                window.location.href = `http://localhost:5000/instituto/${data.id_institute}`;
+                const responseInstitutes = await fetch('http://localhost:5000/api/get-institutes-by-user', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ id_user: id })
+                })
+            }, 2000);
         } else {
             Swal.fire({
                 title: 'Error',
