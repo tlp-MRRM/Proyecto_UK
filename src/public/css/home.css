@@ -167,5 +167,11 @@ footer {
   background-color: var(--darker-main-color);
   width: 100%;
   margin-bottom: 0;
-  color: var(--contrast-color);
+  color: white !important;
+}
+.links-footer {
+  color: white;
+}
+.footer-p {
+  color: white !important;
 }
