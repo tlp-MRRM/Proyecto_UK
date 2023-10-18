@@ -50,17 +50,8 @@
                                 <td>
                                     <button class="btn btn-sm btn-danger" data-id="<%= user.id %>"
                                         onclick="eliminarReserva(event)">Eliminar</button> <!-- Corregí el botón eliminar -->
-                                    <a href="<%= `/ver-usuario/${user.id}` %>"></a>
                                     <a href="<%= `/editar-usuario/${user.id}` %>" class="btn btn-warning">Editar</a>
-                                </td>
-                                <td>
-                                    <button class="btn btn-sm btn-danger" data-id="<%= user.id %>" onclick="eliminarReserva(event)">Eliminar</button>
-                                    <a href="/ver-usuario/<%= user.id %>" class="btn btn-info">Ver</a>
-                                    <a href="/editar-usuario/<%= user.id %>" class="btn btn-warning">Editar</a>
-                                    <a href="#" class="btn btn-warning" onclick="editarUsuario( user.id )">Editar</a>
-
-                                </td>
-                                
+                                </td>                                
                             </tr>
                         <% }) %>
                     </tbody>
