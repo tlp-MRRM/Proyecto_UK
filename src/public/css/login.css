@@ -1,5 +1,5 @@
 body {
-  background: radial-gradient(#ffd16f, rgb(214, 255, 133));
+  background: linear-gradient(#88b5d8, #899faf, #a7b8c5, white);
 }
 main {
   width: 100%;
@@ -13,9 +13,9 @@ main {
   padding-bottom: 15px;
 }
 .boton:hover {
-  background-color: rgb(137, 184, 45) !important;
+  background-color: #81bbe8 !important;
   transition: 0.2s ease-in-out;
-  border-color: yellowgreen !important;
+  border-color: #81bbe8 !important;
 }
 .login {
   width: 35%;
@@ -32,7 +32,7 @@ main {
 }
 .boton {
   width: 30%;
-  background-color: yellowgreen !important;
+  background-color: #87c6f7 !important;
   color: white !important;
 }
 .form-check {
@@ -52,6 +52,6 @@ main {
   }
 }
 .aqui {
-  color: yellowgreen;
+  color: #aed1ec;
   font-weight: bold;
 }

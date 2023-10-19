@@ -1,4 +1,4 @@
-import { sequelize, DataTypes } from '../connections/db.js'
+import { sequelize, DataTypes } from '../database/db.js'
 
 export const TypeCareer = sequelize.define('TypeCareer', {
     id: {

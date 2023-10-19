@@ -54,8 +54,8 @@ app.use(
 
 // DATA BASE CONNECTION ----------------------------------------------------------
 
-import { conexionDB } from './src/connections/db.js'
-import { createTablesAndRelations } from './src/connections/sync.js';
+import { conexionDB } from './src/database/db.js'
+import { createTablesAndRelations } from './src/database/sync.js';
 createTablesAndRelations()
 conexionDB()
 
@@ -100,7 +100,7 @@ app.get('/buscar', async (req, res) => {
 
 const port = process.env.PORT || 4000
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`)
+  console.log(`Server running on port http://localhost:${port}`)
 })
 
 // END SERVER CONNECTION ---------------------------------------------------------

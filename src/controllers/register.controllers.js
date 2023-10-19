@@ -4,7 +4,7 @@ import { Locality } from '../models/Locality.js';
 import { Ubication } from '../models/Ubication.js';
 import { Contact } from '../models/Contact.js';
 import { Institute } from '../models/Institute.js';
-import { sequelize } from '../connections/db.js'
+import { sequelize } from '../database/db.js'
 import { Career } from '../models/Careers.js';
 import { TypeCareer } from '../models/TypeCareer.js';
 
