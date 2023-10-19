@@ -3,7 +3,6 @@ body {
   font-family: "Alegreya Sans", sans-serif;
 }
 
-
 .register {
   display: flex;
   flex-direction: column;
@@ -13,14 +12,13 @@ body {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
 main {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   background: linear-gradient(#88b5d8, #899faf, #a7b8c5, white);
 }
-
 
 @media screen and (max-width: 768px) {
   .register {
@@ -45,7 +43,7 @@ button {
   border-radius: 2px;
   position: relative;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
-  color: #88b5d8  ;
+  color: #88b5d8;
   text-decoration: none;
   transition: 0.3s ease all;
   z-index: 1;
@@ -59,17 +57,19 @@ button:before {
   right: 50%;
   bottom: 0;
   opacity: 0;
-  content: '';
+  content: "";
   background-color: #88b5d8;
   z-index: -1;
   border-radius: 5px;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus {
   color: white;
 }
 
-button:hover:before, button:focus:before {
+button:hover:before,
+button:focus:before {
   transition: 0.5s all ease;
   left: 0;
   right: 0;
@@ -79,4 +79,3 @@ button:hover:before, button:focus:before {
 button:active {
   transform: scale(0.9);
 }
-  
