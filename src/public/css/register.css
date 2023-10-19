@@ -1,50 +1,82 @@
-body::after {
-  content: "";
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2Fa9e86304-a31d-11e9-a282-2df48f366f7d?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1");
-  background-size: cover;
-
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-
-  z-index: -1;
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+body {
+  font-family: "Alegreya Sans", sans-serif;
 }
 
-main {
+
+.register {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-}
-
-h1 {
-  padding: 0;
-  margin: 0;
-}
-
-@media screen and (max-width: 768px) {
-  .registerForm {
-    width: 70%;
-  }
-}
-@media screen and (max-width: 512px) {
-  .registerForm {
-    width: 90%;
-  }
-}
-
-.registerForm {
-  margin: 15px;
   background-color: white;
   border: 15px solid white;
   border-radius: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#88b5d8, #899faf, #a7b8c5, white);
+}
+
+
+@media screen and (max-width: 768px) {
+  .register {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 512px) {
+  .register {
+    width: 90%;
+  }
+}
+
+button {
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.7em 2em;
+  border: 3px solid #88b5d8;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #88b5d8  ;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+button:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #88b5d8;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+button:hover, button:focus {
+  color: white;
+}
+
+button:hover:before, button:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+  

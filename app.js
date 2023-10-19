@@ -54,8 +54,8 @@ app.use(
 
 // DATA BASE CONNECTION ----------------------------------------------------------
 
-import { conexionDB } from './src/connections/db.js'
-import { createTablesAndRelations } from './src/connections/sync.js';
+import { conexionDB } from './src/database/db.js'
+import { createTablesAndRelations } from './src/database/sync.js';
 createTablesAndRelations()
 conexionDB()
 
