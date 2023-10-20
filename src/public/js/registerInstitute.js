@@ -13,7 +13,6 @@ const fetchProvinces = async () => {
 
 }
 document.addEventListener('DOMContentLoaded', async () => {
-    alert('SE CARGO EL JS')
     try {
         const provinces = await fetchProvinces()
         provinces.forEach((province) => {
