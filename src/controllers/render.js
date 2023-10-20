@@ -20,8 +20,11 @@ export const renderGetAllUsers = async (req, res) => {
 }
 
 //END ADMIN RENDERS =============================================
-export const renderRegisterUser = (_req, res) => {
-    res.render('register/registerUser')
+export const renderRegister = (req, res) => {
+    res.render('register/register')
+}
+export const renderRegisterAdmin = (_req, res) => {
+    res.render('register/registerAdmin')
 }
 export const renderSearch = (_req, res) => {
     res.render('search/index')
