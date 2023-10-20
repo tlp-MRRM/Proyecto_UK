@@ -1,10 +1,20 @@
 import { sequelize, DataTypes } from '../database/db.js';
 
-export const User= sequelize.define('User', {
+export const ROLES = {
+  ADMIN: 'admin',
+  USER: 'user',
+  INSTITUTE: 'institute'
+}
+
+export const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
+  },
+  role: {
+    type: DataTypes.ENUM(ROLES.ADMIN, ROLES.USER, ROLES.INSTITUTE),
+    defaultValue: ROLES.USER
   },
   firstName: {
     type: DataTypes.STRING,

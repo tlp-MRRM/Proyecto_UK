@@ -13,7 +13,7 @@ main {
   padding-bottom: 15px;
 }
 .boton:hover {
-  background-color: #81bbe8 !important;
+  background-color: #629fcd !important;
   transition: 0.2s ease-in-out;
   border-color: #81bbe8 !important;
 }
@@ -26,14 +26,22 @@ main {
   border-color: white;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-.botones {
-  display: flex;
-  justify-content: space-between;
+.lineaSeparadora {
+  color: rgba(126, 126, 126, 0.4);
+  font-weight: bold;
 }
 .boton {
-  width: 30%;
+  height: 3rem;
   background-color: #87c6f7 !important;
   color: white !important;
+  font-weight: bold !important;
+  font-size: 1.5rem !important;
+}
+.crearCuenta {
+  background-color: #3a0ca3 !important;
+  font-weight: bold !important;
+  color: white !important;
+  width: auto;
 }
 .form-check {
   padding-top: 3%;
