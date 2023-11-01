@@ -30,9 +30,9 @@ export const eliminarUsuario = async (req, res) => {
 
  // Asegúrate de importar tu modelo de usuario
 
-
-export const editarUsuario = async (req, res) => {
+ export const editarUsuario = async (req, res) => {
     const id = req.params.userId; // Asegúrate de que estás obteniendo el ID correctamente desde la URL
+    console.log(id)
     const { firstName, lastName, email } = req.body;
 
     try {
