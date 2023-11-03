@@ -13,7 +13,7 @@ renderRoutes.get('/nueva-institucion', renderRegisterInstitute);
 
 renderRoutes.get('/instituto/:id/nueva/carrera', renderRegisterCareers)
 
-renderRoutes.get('/instituto/:id', renderInstituteProfile);
+renderRoutes.get('/mi-instituto/:id', renderInstituteProfile);
 
 renderRoutes.get('/iniciar-sesion', renderLogin)
 
