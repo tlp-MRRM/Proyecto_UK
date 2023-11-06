@@ -1,0 +1,109 @@
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+body {
+  font-family: "Alegreya Sans", sans-serif;
+  background: linear-gradient(#88b5d8, #899faf, #a7b8c5, white);
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.material-symbols-outlined {
+  color: #ffffff;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-decoration: none;
+  font-size: 40px;
+  transition: 0.3s;
+}
+
+.material-symbols-outlined:hover {
+  transition: 0.3s;
+  transform: scale(1.5);
+}
+
+.card-body {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.reseñas-cuadro {
+  width: 45%;
+}
+
+.reseñas-cuadro h2 {
+  padding-top: 4%;
+  font-size: 35px;
+  color: var(--darker-main-color);
+}
+
+.persona-reseña {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.reseña img {
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.section {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  width: 40%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.6s;
+}
+
+.nav-link:hover {
+  transition: 0.6s;
+  transform: scale(1.5);
+}
+
