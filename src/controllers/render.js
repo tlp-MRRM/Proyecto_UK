@@ -6,7 +6,7 @@ export const renderGetAllUsers = async (req, res) => {
     try {
         const users = await User.findAll({
             where: {
-                is_admin: 0
+                role: 'institute'
             }
         })
         return res.render('admin/admin', {

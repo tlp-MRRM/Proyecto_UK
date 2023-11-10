@@ -98,7 +98,7 @@ export const authLogin = async (req, res) => {
     res.cookie("token", token);
     return res.json({
       message: 'Inicio de sesión correcto, se redireccionará en unos momentos',
-      isAdmin: existingUser.isAdmin,
+      role: existingUser.role,
       token,
       id: existingUser.id
     });;

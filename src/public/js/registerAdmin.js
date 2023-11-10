@@ -3,19 +3,18 @@ form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const data = new FormData(form)
     if (data.get('isAdmin') == 'on') {
-        isAdmin = true
+        role = 'admin'
     }
     else {
-        isAdmin = false
+        role = 'institute'
     }
 
-    console.log(isAdmin)
     const newUser = {
         firstName: data.get("name"),
         lastName: data.get("surname"),
         email: data.get("email"),
         password: data.get("password"),
-        isAdmin: isAdmin
+        role: role
     }
     try {
         const response = await fetch(`http://localhost:5000/api/register-admin`, {

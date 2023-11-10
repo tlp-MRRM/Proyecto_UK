@@ -40,6 +40,10 @@ export const createInstituteSchema = [
     .exists().withMessage('El link de la ubicación es requerido')
     .notEmpty().withMessage('El link de la ubicación no puede estar vacío')
     .isURL().withMessage('El link de la ubicación debe ser válido'),
+  body('web_link')
+    .exists().withMessage('El link de la página es requerido')
+    .notEmpty().withMessage('El link de la página no puede estar vacío')
+    .isURL().withMessage('El link de la página debe ser válido'),
   body('year_fundation')
     .exists().withMessage('El año de fundación del instituto es requerido')
     // .isEmpty().withMessage('El año de fundación del instituto no puede estar vacío')

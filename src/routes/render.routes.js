@@ -10,7 +10,7 @@ const renderRoutes = Router()
 
 renderRoutes.get("/", renderHome);
 
-renderRoutes.get('/registro-usuario-admin', validateToken, validateAdmin, renderRegisterAdmin);
+renderRoutes.get('/registro-usuario', validateToken, validateAdmin, renderRegisterAdmin);
 
 renderRoutes.get('/nueva-institucion', renderRegisterInstitute);
 

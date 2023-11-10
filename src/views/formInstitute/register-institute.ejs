@@ -9,6 +9,7 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/register-institute.css">
     <link rel="icon" href="/img/home/logoConFondo.png" type="image/x-icon">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 
 <body>
@@ -21,9 +22,6 @@
                     <label for="name" class="form-label">Nombre de la institución<span
                             style="color: red;">*</span></label>
                     <input type="text" placeholder="Instituto politecnico" class="form-control" name="name">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
                 </div>
                 <div>
                     <label for="abbreviation" class="form-label">Abreviatura<span style="color: red;">*</span></label>
@@ -62,6 +60,9 @@
 
         </form>
     </main>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGp4PNyWJeF8HTgW-tRTzvz_PlDvp0QjM&callback=initMap&v=weekly"
+        defer></script>
     <script src="/js/registerInstitute.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

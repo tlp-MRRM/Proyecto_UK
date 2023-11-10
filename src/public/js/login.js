@@ -22,18 +22,17 @@ form.addEventListener('submit', async (e) => {
         return Swal.fire('Error', message, 'error');
     }
 
-    const { message, token, id, isAdmin } = await response.json()
-    console.log('IS ADMIN ACA ========================')
-    console.log(isAdmin)
+    const { message, token, id, role } = await response.json()
+
 
     localStorage.setItem('token', token);
 
     Swal.fire('Inicio de sesion exitoso', message, 'success');
-    if (isAdmin == true) {
+    if (role == 'admin') {
         setTimeout(() => {
             window.location.href = 'http://localhost:5000/admin-users';
         }, 2000);
-    } else {
+    } else if (role == 'institute') {
         setTimeout(async () => {
             const responseInstitutes = await fetch('http://localhost:5000/api/get-institutes-by-user', {
                 method: "POST",
@@ -48,5 +47,10 @@ form.addEventListener('submit', async (e) => {
             window.location.href = `http://localhost:5000/nueva-institucion`;
 
         }, 2000);
+    }
+    else {
+        setTimeout(() => {
+            window.location.href = 'http://localhost:5000/'
+        }, 2000)
     }
 });
