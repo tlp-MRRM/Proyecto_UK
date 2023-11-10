@@ -1,2 +1,0 @@
-::1 - - [13/Oct/2023:18:22:22 +0000] "GET /preguntas-frecuentes HTTP/1.1" 500 1458 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
-::1 - - [13/Oct/2023:18:22:44 +0000] "GET /preguntas-frecuentes HTTP/1.1" 500 1458 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
