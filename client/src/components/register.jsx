@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export const Register = () => {
     const [firstName, setName] = useState("");
@@ -10,9 +11,9 @@ export const Register = () => {
     const [passwordComfirm, setPasswordComfirm] = useState("");
 
     //onsubmit
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = {
+        const newUser = {
             firstName,
             lastName,
             email,
@@ -20,23 +21,39 @@ export const Register = () => {
             passwordComfirm,
         };
 
-        fetch("http://localhost:5000/api/register", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-type": "application/json",
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                if (data.status === 200) {
-                    window.location.href = "/iniciar";
-                } else {
-                    alert(data.message);
-                }
+        try {
+            const response = await fetch(`http://localhost:5000/api/register`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newUser),
             })
-            .catch((err) => console.log(err));
+            const data = await response.json();
+            if (response.ok) {
+                Swal.fire({
+                    title: 'Hecho',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: '<a href="http://localhost:3000/" style="color: #FFFFFF; text-decoration: none;" >Ok</a>',
+                })
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+        } catch (error) {
+            console.log('Error al registrarse', error)
+            Swal.fire({
+                title: 'Error Catch',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'Ok',
+            })
+        }
     };
 
     return (

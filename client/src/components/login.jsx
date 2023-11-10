@@ -1,33 +1,62 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
+
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
             email,
             password
         };
 
-        fetch("http://localhost:5000/api/login", {
+        const response = await fetch("http://localhost:5000/api/login", {
             method: "POST",
-            body: JSON.stringify(data),
             headers: {
-                "Content-type": "application/json",
+                "Content-Type": "application/json"
             },
+            body: JSON.stringify(data)
         })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                if (data.status === 200) {
-                    window.location.href = "/";
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch((err) => console.log(err));
-    };
 
+
+        if (!response.ok) {
+            const { message } = await response.json();
+            return Swal.fire('Error', message, 'error');
+        }
+
+        const { message, token, id, role } = await response.json()
+
+
+        localStorage.setItem('token', token);
+
+        Swal.fire('Inicio de sesion exitoso', message, 'success');
+        if (role == 'admin') {
+            setTimeout(() => {
+                window.location.href = 'http://localhost:5000/admin-users';
+            }, 2000);
+        } else if (role == 'institute') {
+            setTimeout(async () => {
+                const responseInstitutes = await fetch('http://localhost:5000/api/get-institutes-by-user', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ id_user: id })
+                })
+                if (responseInstitutes.ok) {
+                    return window.location.href = `http://localhost:5000/instituto/${id}`;
+                }
+                window.location.href = `http://localhost:5000/nueva-institucion`;
+
+            }, 2000);
+        }
+        else {
+            setTimeout(() => {
+                window.location.href = 'http://localhost:3000/'
+            }, 2000)
+        }
+    }
 
     return (
         <>
