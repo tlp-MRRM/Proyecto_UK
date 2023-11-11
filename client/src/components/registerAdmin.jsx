@@ -1,35 +1,68 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export const RegistroAdmin = () => {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const form = document.getElementById("formRegister");
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
-        console.log(data);
-        fetch("http://localhost:5000/api/register-admin", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-type": "application/json",
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                if (data.status === 200) {
-                    window.location.href = "/";
-                } else {
-                    alert(data.message);
-                }
+
+        const data = new FormData(e.target);
+        let role = ''
+
+        if (data.get('isAdmin') == 'on') {
+            role = 'admin'
+        }
+        else {
+            role = 'institute'
+        }
+    
+
+        const newUser = {
+            name,
+            lastName,
+            email,
+            password,
+            role
+        };
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/register-admin`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newUser),
             })
-            .catch((err) => console.log(err));
+            const data = await response.json();
+            if (response.ok) {
+                Swal.fire({
+                    title: 'Hecho',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: '<a href="http://localhost:5000/admin-users" style="color: #FFFFFF; text-decoration: none;" >Ir a administrar usuarios</a>',
+                })
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+        } catch (error) {
+            console.log('error al crear usuario', error)
+            Swal.fire({
+                title: 'Error Catch',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'Ok',
+            })
+        }
     };
 
     return (
