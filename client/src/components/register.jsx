@@ -29,6 +29,55 @@ export const Register = () => {
                 },
                 body: JSON.stringify(newUser),
             })
+            //validacion para password con 8 caracteres minimo
+            if (password.length < 8) {
+                return Swal.fire({
+                    title: 'Error',
+                    text: 'La contraseña debe tener al menos 8 caracteres',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+
+            //validacion para password y passwordComfirm iguales
+            if (password !== passwordComfirm) {
+                return Swal.fire({
+                    title: 'Error',
+                    text: 'Las contraseñas no coinciden',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+
+            //validacion para email
+            if (!email.includes('@')) {
+                return Swal.fire({
+                    title: 'Error',
+                    text: 'El email no es válido',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+
+            if (!email.includes('.com')) {
+                return Swal.fire({
+                    title: 'Error',
+                    text: 'El email no es válido',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+
+            }
+
+            if (!email.includes('gmail')) {
+                return Swal.fire({
+                    title: 'Error',
+                    text: 'El email no es válido',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+
             const data = await response.json();
             if (response.ok) {
                 Swal.fire({
@@ -54,7 +103,7 @@ export const Register = () => {
                 confirmButtonText: 'Ok',
             })
         }
-    };
+    }
 
     return (
         <>
