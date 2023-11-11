@@ -33,7 +33,7 @@ footer {
 }
 
 .title {
-  display: flex;  
+  display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
@@ -98,11 +98,33 @@ footer {
   align-items: center;
 }
 
-.nav-link { 
+.nav-link {
   font-size: 20px;
   display: flex;
   justify-content: center;
   margin: 20px;
-  color:black;
+  color: black;
 }
 
+
+.carousel-inner {
+  width: 70vh;
+}
+
+#carouselExampleAutoplaying {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.btn-next {
+  display:grid;
+  place-items:center;
+  top: 100%;  
+  border-radius: 50%;
+
+  background-color: black;
+  width: 3rem;
+  height: 2rem;
+}
