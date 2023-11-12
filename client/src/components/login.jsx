@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const Login = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleSubmit = async (e) => {
@@ -33,7 +35,7 @@ export const Login = () => {
         Swal.fire('Inicio de sesion exitoso', message, 'success');
         if (role == 'admin') {
             setTimeout(() => {
-                window.location.href = 'http://localhost:5000/admin-users';
+                navigate('http://localhost:5000/admin-users');
             }, 2000);
         } else if (role == 'institute') {
             setTimeout(async () => {
@@ -45,15 +47,15 @@ export const Login = () => {
                     body: JSON.stringify({ id_user: id })
                 })
                 if (responseInstitutes.ok) {
-                    return window.location.href = `http://localhost:5000/instituto/${id}`;
+                    return navigate(`http://localhost:5000/instituto/${id}`);
                 }
-                window.location.href = `http://localhost:5000/nueva-institucion`;
+                navigate(`http://localhost:5000/nueva-institucion`);
 
             }, 2000);
         }
         else {
             setTimeout(() => {
-                window.location.href = 'http://localhost:3000/'
+                navigate('/')
             }, 2000)
         }
     }

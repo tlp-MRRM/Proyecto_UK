@@ -1,9 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const Register = () => {
+    const navigate = useNavigate();
     const [firstName, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -59,6 +61,7 @@ export const Register = () => {
                 })
             }
 
+            // validacion para email
             if (!email.includes('.com')) {
                 return Swal.fire({
                     title: 'Error',
@@ -69,6 +72,7 @@ export const Register = () => {
 
             }
 
+            // validacion para email
             if (!email.includes('gmail')) {
                 return Swal.fire({
                     title: 'Error',
@@ -81,11 +85,13 @@ export const Register = () => {
             const data = await response.json();
             if (response.ok) {
                 Swal.fire({
-                    title: 'Hecho',
+                    title: 'Bien Hecho!',
                     text: data.message,
                     icon: 'success',
-                    confirmButtonText: '<a href="http://localhost:3000/" style="color: #FFFFFF; text-decoration: none;" >Ok</a>',
-                })
+                    confirmButtonText: 'Ok',
+                }, setTimeout(() => {
+                    navigate("/iniciar");
+                }, 2000))
             } else {
                 Swal.fire({
                     title: 'Error',
