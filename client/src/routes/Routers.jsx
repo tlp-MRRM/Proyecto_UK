@@ -8,6 +8,7 @@ import { RegistroAdminPage } from "../pages/registroAdmin";
 import { RegistroCarrera } from "../pages/registroCarrera";
 import { RegistroInstituto } from "../pages/registroInsti";
 import { Trabaja } from "../pages/trabaja";
+import { PaginaNoEncontrada } from "../pages/notFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -25,6 +26,7 @@ export const Routers = () => {
                 <Route path="/registro/carrera" element={<RegistroCarrera />} />
                 <Route path="/registro/instituto" element={<RegistroInstituto />} />
                 <Route path="/trabaja" element={<Trabaja />} />
+                <Route path="*" element={<PaginaNoEncontrada />} />
             </Routes>
         </BrowserRouter>
     )

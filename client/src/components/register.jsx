@@ -61,6 +61,7 @@ export const Register = () => {
                 })
             }
 
+            
             // validacion para email
             if (!email.includes('.com')) {
                 return Swal.fire({
