@@ -66,7 +66,7 @@ export const Login = () => {
                 <div className="login">
                     <h1 className="iniciarS">Iniciar sesión</h1>
 
-                    <form id="login-form" onSubmit={handleSubmit}>
+                    <form id="login-form" onSubmit={handleSubmit} style={{ width: '400px' }}>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">
                                 Correo electrónico

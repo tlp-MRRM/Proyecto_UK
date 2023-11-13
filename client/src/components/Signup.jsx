@@ -115,7 +115,7 @@ export const Signup = () => {
         <>
             <div className="w-100 d-flex justify-content-center">
                 <main className="d-flex justify-content-center align-items-center p-4" style={{ width: 'fit-content' }}>
-                    <form id="formRegister" className="registerForm" style={{ width: '430px' }} onSubmit={handleSubmit}>
+                    <form id="formRegister" className="registerForm" style={{ width: '400px' }} onSubmit={handleSubmit}>
                         <h2 className="mb-2">Regístrate</h2>
                         <div className="register">
                             <label htmlFor="name" className="form-label">
@@ -189,18 +189,15 @@ export const Signup = () => {
                                 required
                                 className="form-control mb-4"
                             />
-                            <div>
-                                <button type="submit" className="btn btn-success w-100 mb-3" style={{ fontWeight: 'bold', fontSize: '20px' }}>
-                                    Registrar
+                            <div className="d-flex">
+                                <a href="/iniciar-sesion" className="btn btn-outline-primary w-100 me-1" style={{ fontWeight: 'bold', fontSize: '20px' }}>
+                                    Iniciar sesión
+                                </a>
+                                <button type="submit" className="btn btn-success w-100 ms-1" style={{ fontWeight: 'bold', fontSize: '20px' }}>
+                                    Registrarse
                                 </button>
                             </div>
 
-                            <div className="d-flex flex-column justify-content-center align-items-center w-100">
-                                <p className="m-1">¿Ya tenés una cuenta?</p>
-                                <a href="/iniciar-sesion" className="btn btn-outline-primary w-100" style={{ fontWeight: 'bold', fontSize: '20px' }}>
-                                    Inicia sesión
-                                </a>
-                            </div>
                         </div>
                     </form>
                 </main>

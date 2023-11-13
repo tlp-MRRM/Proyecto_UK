@@ -14,7 +14,7 @@ main {
   justify-content: space-around;
   background-color: rgb(238, 238, 238);
   border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.167);
 }
 
 nav {
