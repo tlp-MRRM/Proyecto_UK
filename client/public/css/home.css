@@ -15,9 +15,6 @@ main {
   background-color: rgb(238, 238, 238);
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-  margin-right: 10%;
-  margin-left: 10%;
-  margin-top: 5%;
 }
 
 nav {
@@ -106,7 +103,6 @@ footer {
   color: black;
 }
 
-
 .carousel-inner {
   width: 70vh;
 }
@@ -119,9 +115,9 @@ footer {
 }
 
 .btn-next {
-  display:grid;
-  place-items:center;
-  top: 100%;  
+  display: grid;
+  place-items: center;
+  top: 100%;
   border-radius: 50%;
 
   background-color: black;

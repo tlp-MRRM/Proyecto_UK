@@ -4,16 +4,16 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 export const Nav = () => {
     return (
         <>
-            <header>
+            <header className='pb-2'>
                 <nav>
                     <div className="mt-4 mb-4">
                         <a href="/" className="material-symbols-outlined">
-                        home
+                            home
                         </a>
                     </div>
 
                     <div>
-                        <a href="/preguntas" className="material-symbols-outlined">
+                        <a href="/preguntas-frecuentes" className="material-symbols-outlined">
                             quiz
                         </a>
                     </div>
@@ -24,7 +24,7 @@ export const Nav = () => {
                         </a>
                     </div>
                     <div>
-                        <a href="/iniciar" className="material-symbols-outlined">
+                        <a href="/iniciar-sesion" className="material-symbols-outlined">
                             login
                         </a>
                     </div>

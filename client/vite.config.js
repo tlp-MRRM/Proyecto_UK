@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000
+  },
+  optimizeDeps: {
+    exclude: ['buffer', 'jsonwebtoken'] // Excluye 'buffer' y 'jsonwebtoken' de la externalización
   }
 })

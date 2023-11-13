@@ -4,26 +4,24 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 export const RegistroAdmin = () => {
-    const [name, setName] = useState('');
+    const [firstName, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
+    const handleCheckboxChange = (event) => {
+        setIsAdmin(event.target.checked);
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = new FormData(e.target);
-        let role = ''
 
-        if (data.get('isAdmin') == 'on') {
-            role = 'admin'
-        }
-        else {
-            role = 'institute'
-        }
-    
+
+        const role = isAdmin ? 'admin' : 'institute';
+
 
         const newUser = {
-            name,
+            firstName,
             lastName,
             email,
             password,
@@ -44,7 +42,7 @@ export const RegistroAdmin = () => {
                     title: 'Hecho',
                     text: data.message,
                     icon: 'success',
-                    confirmButtonText: '<a href="http://localhost:5000/admin-users" style="color: #FFFFFF; text-decoration: none;" >Ir a administrar usuarios</a>',
+                    confirmButtonText: '<a href="http://localhost:3000/admin-users" style="color: #FFFFFF; text-decoration: none;" >Ir a administrar usuarios</a>',
                 })
             } else {
                 Swal.fire({
@@ -67,8 +65,8 @@ export const RegistroAdmin = () => {
 
     return (
         <>
-            <main className="container d-flex justify-content-center align-items-center">
-                <form id="formRegister" className="registerForm" onSubmit={handleSubmit}>
+            <main className="container d-flex justify-content-center align-items-center" style={{ width: 'fit-content' }}>
+                <form id="formRegister" className="registerForm p-2" onSubmit={handleSubmit}>
                     <div className="register">
                         <h2>Registrar un usuario</h2>
                         <label htmlFor="name" className="form-label">
@@ -78,7 +76,7 @@ export const RegistroAdmin = () => {
                             onChange={(e) => {
                                 setName(e.target.value)
                             }}
-                            value={name}
+                            value={firstName}
                             type="text"
                             id="name"
                             name="name"
@@ -131,23 +129,24 @@ export const RegistroAdmin = () => {
                             className="form-control mb-3"
                         />
 
-                        <div className="form-check form-switch mb-3">
+                        <div className="form-check form-switch mb-3 d-flex justify-content-end">
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+                                isAdmin?
+                            </label>
                             <input
                                 className="form-check-input"
                                 type="checkbox"
                                 id="flexSwitchCheckDefault"
+                                checked={isAdmin}
+                                onChange={handleCheckboxChange}
                             />
-                            <label
-                                className="form-check-label"
-                                htmlFor="flexSwitchCheckDefault"
-                            >
-                                isAdmin?
-                            </label>
+                        </div>
+                        <div className="d-flex justify-content-end mb-2">
+                            <button type="submit" className="btn btn-primary">
+                                Registrar
+                            </button>
                         </div>
 
-                        <button type="submit" className="btn btn-primary">
-                            Registrar
-                        </button>
                     </div>
                 </form>
             </main>

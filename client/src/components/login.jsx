@@ -62,7 +62,7 @@ export const Login = () => {
 
     return (
         <>
-            <main className="container">
+            <main className="container p-4 mb-5" style={{ width: 'fit-content' }}>
                 <div className="login">
                     <h1 className="iniciarS">Iniciar sesión</h1>
 
@@ -111,16 +111,17 @@ export const Login = () => {
                                 aquí
                             </a>
                         </div>
-                        <button type="submit" className="btn btn-primary">
-                            Iniciar sesión
-                        </button>
-
-                        <div className="d-flex justify-content-center p-2 lineaSeparadora">
+                        <div className="d-flex justify-content-center">
+                            <button type="submit" className="btn btn-primary w-100" style={{ fontWeight: 'bold', fontSize: '20px' }}>
+                                Iniciar sesión
+                            </button>
+                        </div>
+                        <div className="d-flex justify-content-center p-2" style={{ color: "#CBCBCB" }}>
                             _________________________________________________________
                         </div>
 
                         <div className="d-flex justify-content-center">
-                            <a href="/registro" className="btn mt-3 btn-outline-success">
+                            <a href="/registrate" className="btn mt-3 btn-outline-success w-100" style={{ fontWeight: 'bold', fontSize: '20px' }}>
                                 Crear cuenta nueva
                             </a>
                         </div>
