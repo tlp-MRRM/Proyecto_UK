@@ -1,13 +1,13 @@
-import React from 'react'
+
 
 export const PageNotFound404 = () => {
     return (
-        <div className='w-100 d-flex justify-content-center align-items-center' style={{ height: '70vh' }}>
+        <div className='w-100 d-flex justify-content-center align-items-center' style={{ height: '100vh' }}>
             <main className='w-25 p-4' style={{ height: 'fit-content' }}>
                 <div>
                     <div className='d-flex align-items-center flex-column'>
                         <h3 style={{ width: 'fit-content' }}>ERROR</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-error-404" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#88afca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-error-404" width="100" height="100" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#88afca" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M3 7v4a1 1 0 0 0 1 1h3" />
                             <path d="M7 7v10" />
