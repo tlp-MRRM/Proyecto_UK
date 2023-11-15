@@ -10,13 +10,15 @@ import path from 'path';
 import { createLogs } from './src/helpers/createLogs.js';
 import { handleErrors } from './src/middlewares/handleError.js';
 import { __dirname } from './src/helpers/_dirname.js'
-
+import { createServer } from 'http';
+import { Server as SocketServer } from 'socket.io';
 import { Institute } from './src/models/Institute.js';
 
 // END IMPORTS --------------------------------------------------------------------
 
 const app = express();
-
+const httpServer = createServer(app);
+const io = new SocketServer(httpServer);
 
 //EJS CONFIG ---------------------------------------------------------------------
 
@@ -99,7 +101,7 @@ app.get('/buscar', async (req, res) => {
 // SERVER CONNECTION -------------------------------------------------------------
 
 const port = process.env.PORT || 4000
-app.listen(port, () => {
+httpServer.listen(port, () => {
   console.log(`Server running on port http://localhost:${port}`)
 })
 

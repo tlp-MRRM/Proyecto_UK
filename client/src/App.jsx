@@ -1,11 +1,16 @@
-
+import { SocketProvider } from './context/socketProvider';
 import { Routers } from './routes/Routers';
+import { AuthProvider } from './context/authProvider';
 
 function App() {
 
   return (
     <>
-      <Routers />
+      <AuthProvider>
+        <SocketProvider>
+          <Routers />
+        </SocketProvider>
+      </AuthProvider>
     </>
   )
 }
