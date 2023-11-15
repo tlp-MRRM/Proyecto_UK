@@ -11,7 +11,7 @@ export const Home = () => {
 
                 <article className="section mt-2 mb-2 text-center">
                     <div>
-                        <img src="../public/img/Institute.png" alt="Institute" width="300" />
+                        <img src="../public/img/Institute.png" alt="Institute" width="300" className='img-fluid' />
                         <p className="p-3 m-0">
                             Tu fuente confiable de información académica actualizada. Descubre oportunidades de estudio, carreras y
                             recursos para tu éxito educativo. ¡Explora y forja tu camino hacia un futuro prometedor en el mundo del conocimiento!

@@ -11,9 +11,29 @@ import { WorkWithUsPage } from "../pages/WorkWithUs.page.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NotFoundPage } from "../pages/NotFound.page.jsx";
 import { UnauthorizedPage } from "../pages/Unauthorized.page.jsx";
-
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../context/authProvider";
 
 export const Routers = () => {
+
+    const { login, logout, authState } = useContext(AuthContext);
+
+    useEffect(() => {
+        const user = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+
+        if (user && token) {
+            login(token, user.id, user.role);
+        } else {
+            logout();
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+            return;
+        }
+    }
+        , [authState.logged]);
+
+
     return (
         <BrowserRouter>
             <Routes>

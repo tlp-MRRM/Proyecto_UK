@@ -5,7 +5,7 @@ import { types } from "../types/types";
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-
+    
     const [authState, dispatch] = useReducer(authReducer, { logged: false });
 
 
