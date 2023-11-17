@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 export const Nav = () => {
+
+
     return (
         <>
             <header className='pb-2'>
