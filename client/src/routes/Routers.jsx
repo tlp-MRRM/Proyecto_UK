@@ -11,6 +11,7 @@ import { WorkWithUsPage } from "../pages/WorkWithUs.page.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NotFoundPage } from "../pages/NotFound.page.jsx";
 import { UnauthorizedPage } from "../pages/Unauthorized.page.jsx";
+import { InstitutePage } from "../pages/Institute.page.jsx";
 
 
 export const Routers = () => {
@@ -28,6 +29,7 @@ export const Routers = () => {
                 <Route path="/registro/instituto" element={<RegisterInstitutePage />} />
                 <Route path="/trabaja-con-nosotros" element={<WorkWithUsPage />} />
                 <Route path="/unauthorized" element={<UnauthorizedPage />} />
+                <Route path="/instituto/:id" element={<InstitutePage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </BrowserRouter>
