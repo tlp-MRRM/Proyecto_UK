@@ -7,7 +7,7 @@ export const InstituteCard = ({ institute }) => {
             <h5 className="card-title">{institute.name}</h5>
             <p className="card-text">{institute.description}</p>
             <div className="card-footer">
-                <a href="{institute.">ver más</a>
+                <a href="/">ver más</a>
             </div>
           </div>
         </div>
