@@ -24,13 +24,6 @@ export const Register = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      });
       //validacion para password con 8 caracteres minimo
       if (password.length < 8) {
         return Swal.fire({
@@ -71,15 +64,14 @@ export const Register = () => {
         });
       }
 
-      // validacion para email
-      if (!email.includes("gmail")) {
-        return Swal.fire({
-          title: "Error",
-          text: "El email no es válido",
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-      }
+
+      const response = await fetch(`http://localhost:5000/api/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
 
       const data = await response.json();
       if (response.ok) {

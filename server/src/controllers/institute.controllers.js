@@ -1,13 +1,14 @@
 import { Institute } from "../models/Institute.js";
 
 
-export const getInstitutesByUser = async (req, res) => {
+export const getMainInstituteByUser = async (req, res) => {
 
   const { id_user } = req.body;
   try {
     const hasInstitutes = await Institute.findAll({
       where: {
-        id_user: id_user
+        id_user: id_user,
+        id_institute: null
       }
     })
     if (hasInstitutes.length == 0) {
@@ -19,7 +20,7 @@ export const getInstitutesByUser = async (req, res) => {
   }
 }
 
-export const getInstitute = async (req, res) => {
+export const getAllInstitutes = async (req, res) => {
   try {
     const institutes = await Institute.findAll();
     res.status(200).json(institutes);
@@ -30,7 +31,7 @@ export const getInstitute = async (req, res) => {
 
 export const getInstituteById = async (req, res) => {
   try {
-    const institut = await institute.findById(req.params.id);
+    const institut = await Institute.findById(req.params.id);
 
     res.status(200).json(institut);
   } catch (error) {

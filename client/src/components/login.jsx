@@ -15,7 +15,7 @@ export const Login = () => {
             password
         };
 
-        const response = await fetch("http://localhost:5000/api/login", {
+        const response = await fetch("http://localhost:5000/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -37,7 +37,7 @@ export const Login = () => {
         Swal.fire('Inicio de sesion exitoso', message, 'success');
         if (role == 'admin') {
             setTimeout(() => {
-                navigate('http://localhost:5000/admin-users');
+                navigate('/admin-users');
             }, 2000);
         } else if (role == 'institute') {
             setTimeout(async () => {
