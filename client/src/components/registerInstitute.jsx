@@ -1,87 +1,107 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const RegisterInstitute = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [abbreviation, setAbbreviation] = useState("");
-  const [category, setCategory] = useState("");
-  const [province, setProvince] = useState("");
-  const [locality, setLocality] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [street, setStreet] = useState("");
-  const [altitude, setAltitude] = useState("");
-  const [mapLink, setMapLink] = useState("");
-  const [mail, setMail] = useState("");
-  const [tel, setTel] = useState("");
-  const [webLink, setWebLink] = useState("");
-  const [yearFundation, setYearFundation] = useState("");
-  const [description, setDescription] = useState("");
+  const [provinces, setProvinces] = useState([]);
+  const [localities, setLocalities] = useState([]);
+  const [form, setForm] = useState({
+    name: "",
+    abbreviation: "",
+    category: "",
+    province: "",
+    locality: "",
+    postalCode: "",
+    street: "",
+    altitude: "",
+    mapLink: "",
+    mail: "",
+    tel: "",
+    webLink: "",
+    yearFundation: "",
+    description: "",
+  });
+  const handleInputChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const newInstitute = {
-      name,
-      abbreviation,
-      category,
-      province,
-      locality,
-      postalCode,
-      street,
-      altitude,
-      mapLink,
-      mail,
-      tel,
-      webLink,
-      yearFundation,
-      description,
-    };
-
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/register-institute`,
-        {
-          method: "POST",
+  useEffect(() => {
+    const getProvinces = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/provincias", {
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(newInstitute),
-        }
-      );
-      const data = await response.json();
-      if (response.ok) {
-        Swal.fire(
+        });
+        const data = await response.json();
+        setProvinces(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProvinces();
+  }, []);
+  useEffect(() => {
+    const getLocalities = async () => {
+      try {
+        if(form.province === "") return setLocalities([]);
+
+        const response = await fetch(
+          `http://localhost:5000/api/provincia/${form.province}/localidades`,
           {
-            title: "Hecho",
-            text: data.message,
-            icon: "success",
-            confirmButtonText: "Ok",
-          },
-          setTimeout(() => {
-            navigate("/");
-          }, 2000)
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
+        const data = await response.json();
+        setLocalities(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getLocalities();
+  }, [form.province]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/api/institutes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+      if (response.status === 201) {
+        Swal.fire({
+          title: "Instituto registrado!",
+          text: "El instituto se registró correctamente.",
+          icon: "success",
+          confirmButtonText: "Aceptar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/");
+          }
+        });
       } else {
         Swal.fire({
-          title: "Error",
+          title: "Error!",
           text: data.message,
           icon: "error",
-          confirmButtonText: "Ok",
+          confirmButtonText: "Aceptar",
         });
       }
     } catch (error) {
-      console.log("error al crear Institución", error);
-      Swal.fire({
-        title: "Error Catch",
-        text: error,
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
+      console.log(error);
     }
+    
   };
 
   return (
@@ -91,7 +111,6 @@ export const RegisterInstitute = () => {
           className="formAgregarInstituto p-3 needs-validation"
           noValidate
           id="formAgregarInstituto"
-          data-id="<%- id_user %>"
           onSubmit={handleSubmit}
         >
           <h2 className="">Registra tu institución</h2>
@@ -105,10 +124,8 @@ export const RegisterInstitute = () => {
                 placeholder="Instituto politecnico"
                 className="form-control"
                 name="name"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
+                value={form.name}
+                onChange={handleInputChange}
               />
               <div className="valid-feedback">Looks good!</div>
             </div>
@@ -123,10 +140,8 @@ export const RegisterInstitute = () => {
                   placeholder="IPF"
                   name="abbreviation"
                   id="abbreviation"
-                  value={abbreviation}
-                  onChange={(e) => {
-                    setAbbreviation(e.target.value);
-                  }}
+                  value={form.abbreviation}
+                  onChange={handleInputChange}
                 />
                 <div className="valid-feedback"></div>
               </div>
@@ -140,10 +155,8 @@ export const RegisterInstitute = () => {
               className="form-select selectTipoCarrera"
               id="category"
               name="category"
-              value={category}
-              onChange={(e) => {
-                setCategory(e.target.value);
-              }}
+              value={form.category}
+              onChange={handleInputChange}
             >
               <option value="" disabled>
                 Seleccione la categoría *
@@ -166,14 +179,17 @@ export const RegisterInstitute = () => {
                   className="form-select mb-3"
                   id="province"
                   name="province"
-                  value={province}
-                  onChange={(e) => {
-                    setProvince(e.target.value);
-                  }}
+                  value={form.province}
+                  onChange={handleInputChange}
                 >
                   <option value="" disabled>
                     Seleccione una provincia
                   </option>
+                  {provinces.map((province) => (
+                    <option key={province.id} value={province.id}>
+                      {province.province}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="w-50">
@@ -184,14 +200,17 @@ export const RegisterInstitute = () => {
                   className="form-select mb-3"
                   id="locality"
                   name="locality"
-                  value={locality}
-                  onChange={(e) => {
-                    setLocality(e.target.value);
-                  }}
+                  value={form.locality}
+                  onChange={handleInputChange}
                 >
                   <option value="" disabled>
                     Selecciona una localidad
                   </option>
+                  {localities.map((locality) => (
+                    <option key={locality.id} value={locality.id}>
+                      {locality.locality}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -205,10 +224,8 @@ export const RegisterInstitute = () => {
               id="postal_code"
               placeholder="3600"
               name="postal_code"
-              value={postalCode}
-              onChange={(e) => {
-                setPostalCode(e.target.value);
-              }}
+              value={form.postalCode}
+              onChange={handleInputChange}
             />
 
             <label htmlFor="street" className="form-label">
@@ -220,10 +237,8 @@ export const RegisterInstitute = () => {
               id="street"
               placeholder="***"
               name="street"
-              value={street}
-              onChange={(e) => {
-                setStreet(e.target.value);
-              }}
+              value={form.street}
+              onChange={handleInputChange}
             />
 
             <label htmlFor="altitude" className="form-label">
@@ -235,10 +250,8 @@ export const RegisterInstitute = () => {
               id="altitude"
               placeholder="3000"
               name="altitude"
-              value={altitude}
-              onChange={(e) => {
-                setAltitude(e.target.value);
-              }}
+              value={form.altitude}
+              onChange={handleInputChange}
             />
 
             <label htmlFor="map_Link" className="form-label">
@@ -250,10 +263,8 @@ export const RegisterInstitute = () => {
               id="map_link"
               placeholder="https://www.google.com/maps/place/..."
               name="map_link"
-              value={mapLink}
-              onChange={(e) => {
-                setMapLink(e.target.value);
-              }}
+              value={form.mapLink}
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-3">
@@ -266,10 +277,8 @@ export const RegisterInstitute = () => {
               id="mail"
               placeholder="<EMAIL>"
               name="mail"
-              value={mail}
-              onChange={(e) => {
-                setMail(e.target.value);
-              }}
+              value={form.mail}
+              onChange={handleInputChange}
             />
 
             <label htmlFor="phone" className="form-label">
@@ -281,10 +290,8 @@ export const RegisterInstitute = () => {
               id="tel"
               placeholder="0000000000"
               name="tel"
-              value={tel}
-              onChange={(e) => {
-                setTel(e.target.value);
-              }}
+              value={form.tel}
+              onChange={handleInputChange}
             />
 
             <label htmlFor="webLink" className="form-label">
@@ -296,10 +303,8 @@ export const RegisterInstitute = () => {
               id="web_link"
               placeholder="https://..."
               name="web_link"
-              value={webLink}
-              onChange={(e) => {
-                setWebLink(e.target.value);
-              }}
+              value={form.webLink}
+              onChange={handleInputChange}
             />
           </div>
           <div className="">
@@ -312,10 +317,8 @@ export const RegisterInstitute = () => {
               id="year_fundation"
               placeholder="2021"
               name="year_fundation"
-              value={yearFundation}
-              onChange={(e) => {
-                setYearFundation(e.target.value);
-              }}
+              value={form.yearFundation}
+              onChange={handleInputChange}
             />
           </div>
           <div className="mt-3 mb-3">
@@ -327,10 +330,8 @@ export const RegisterInstitute = () => {
               name="description"
               id="description"
               className="form-control"
-              value={description}
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
+              value={form.description}
+              onChange={handleInputChange}
             />
           </div>
           <div className="d-flex justify-content-end">
@@ -343,8 +344,6 @@ export const RegisterInstitute = () => {
           </div>
         </form>
       </main>
-      <script src="/js/registerInstitute.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </>
   );
 };
