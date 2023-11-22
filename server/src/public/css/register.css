@@ -1,0 +1,16 @@
+body {
+  height: 100vh;
+}
+main {
+  background: linear-gradient(#88b5d8, #899faf, #a7b8c5, white);
+  height: 100%;
+}
+form {
+  background-color: white;
+  height: fit-content;
+  padding: 1.5rem;
+  margin: 2rem;
+  border-radius: 0.8rem;
+  width: 25rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

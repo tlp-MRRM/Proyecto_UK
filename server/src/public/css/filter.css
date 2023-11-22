@@ -1,0 +1,29 @@
+.result-item {
+  background-color: #b9b9b9; /* Color de fondo para los resultados */
+  color: black;
+  padding: 1px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+svg {
+  transition: transform 0.2s ease;
+}
+
+svg:hover {
+  transform: scale(1.2);
+}
+header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+
+.currentPage {
+  color: white !important;
+}
+.container {
+  background-color: #acacac;
+  border-radius: 100px;
+  padding: 10px;
+  text-align: center;
+}
