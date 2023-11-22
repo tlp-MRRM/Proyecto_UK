@@ -1,50 +1,11 @@
 import { User } from "../models/User.js";
+import { Institute } from "../models/Institute.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 
 
 //----------------------------------------------------------------
-export const authLoginViejo = async (req, res) => {
-  const {
-    email,
-    password
-  } = req.body;
-  try {
-    const existingUser = await User.findOne({ where: { email: email } });
-
-
-    if (!existingUser) {
-      return res.status(404).json({
-        message: "Usuario o contraseña incorrectos.",
-      });
-    }
-
-    const validPassword = await bcrypt.compare(password, existingUser.password);
-
-    if (!validPassword) {
-      return res.status(404).json({
-        message: "Usuario o contraseña incorrectos.",
-      });
-    }
-    console.log('AUTH CONTROLLER IS ADMIN ===============')
-    console.log(existingUser.isAdmin)
-    const token = jwt.sign({ id: existingUser.id }, process.env.TOKEN_SECRET_KEY);
-    return res.json({
-      message: 'Inicio de sesión correcto, se redireccionará en unos momentos',
-      isAdmin: existingUser.isAdmin,
-      token,
-      id: existingUser.id
-    });
-
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: "Error al iniciar sesión",
-    });
-  }
-};
-
 
 
 const USER = 'user'
@@ -93,15 +54,30 @@ export const authLogin = async (req, res) => {
     const validPassword = await bcrypt.compare(password, existingUser.password);
     if (!validPassword) return res.status(400).json({ message: "Contraseña incorrecta" });
 
-    const token = jwt.sign({ id: existingUser.id, role: existingUser.role }, process.env.TOKEN_SECRET_KEY, { expiresIn: '1h' });;
+    const token = jwt.sign({ id: existingUser.id, role: existingUser.role }, process.env.TOKEN_SECRET_KEY, { expiresIn: '1h' });
+    let redirectUrl;
+    switch (existingUser.role) {
+      case 'admin':
+        redirectUrl = 'http://localhost:3000/admin-user';
+        break;
+      case 'institute':
+        let institute = await Institute.findOne({ where: { userId: existingUser.id, id_institute: null } });
+        redirectUrl = `http://localhost:3000/instituto/:${institute.name}`;
+        break;
+      case 'user':
+        redirectUrl = 'http://localhost:3000/';
+        break;
+      default:
+        redirectUrl = 'http://localhost:3000/';
+    }
 
-    res.cookie("token", token);
     return res.json({
       message: 'Inicio de sesión correcto, se redireccionará en unos momentos',
       role: existingUser.role,
       token,
+      redirectUrl,
       id: existingUser.id
-    });;
+    });
 
   } catch (error) {
     console.log(error);
@@ -111,7 +87,3 @@ export const authLogin = async (req, res) => {
   }
 };
 
-export const authLogout = (req, res) => {
-  res.clearCookie('token')
-  return res.sendStatus(200);
-}

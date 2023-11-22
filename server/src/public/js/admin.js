@@ -1,7 +1,7 @@
 const btnLogout = document.getElementById('btnLogout')
-btnLogout.addEventListener('click', async () => {
+btnLogout.addEventListener('click', () => {
     console.log('MESSI')
-    const result = await Swal.fire({
+    const result = Swal.fire({
         title: '¿Cerrar sesion?',
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
@@ -11,15 +11,11 @@ btnLogout.addEventListener('click', async () => {
     if (!result.isConfirmed) {
         return
     }
-    const response = await fetch('http://localhost:5000/api/logout')
-    if (response.ok) {
-        console.log('Sesion cerrada correctamente')
-        setTimeout(() => {
-            window.location.href = `http://localhost:5000/iniciar-sesion`
-        }, 0);
-    }
-    localStorage.removeItem('token');
-
+    console.log('Sesion cerrada correctamente')
+    setTimeout(() => {
+        localStorage.removeItem('token');
+        window.location.href = `http://localhost:3000/`
+    }, 0);
 })
 const eliminarReserva = async (e) => {
     const id = e.target.dataset.id;
