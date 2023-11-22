@@ -14,8 +14,13 @@ body {
   justify-content: space-around;
   background-color: rgb(238, 238, 238);
   border-radius: 10px;
+<<<<<<< HEAD
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 } */
+=======
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.167);
+}
+>>>>>>> 2c02abe37f8bd0e7f07b25c5f6a6d37e7cc8bc11
 
 nav {
   display: flex;

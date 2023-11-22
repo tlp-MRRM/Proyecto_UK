@@ -66,8 +66,13 @@ export const RegistroAdmin = () => {
 
     return (
         <>
+<<<<<<< HEAD
             <main className="container d-flex justify-content-center align-items-center" >
                 <form id="formRegister" className="registerForm p-2" onSubmit={handleSubmit} >
+=======
+            <main className="container d-flex justify-content-center align-items-center" style={{ width: '350px' }}>
+                <form id="formRegister" className="registerForm p-2 w-100" onSubmit={handleSubmit}>
+>>>>>>> 2c02abe37f8bd0e7f07b25c5f6a6d37e7cc8bc11
                     <div className="register">
                         <h2>Registrar un usuario</h2>
                         <label htmlFor="name" className="form-label">
@@ -130,7 +135,7 @@ export const RegistroAdmin = () => {
                             className="form-control mb-3"
                         />
 
-                        <div className="form-check form-switch mb-3 d-flex justify-content-end">
+                        <div className="form-check form-switch mb-3 d-flex flex-column align-items-end">
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
                                 isAdmin?
                             </label>

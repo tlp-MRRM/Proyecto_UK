@@ -108,6 +108,7 @@ export const Signup = () => {
 
     return (
         <>
+<<<<<<< HEAD
             <main>
                 <form
                     id="formRegister"
@@ -196,6 +197,93 @@ export const Signup = () => {
                             >
                                 Registrar
                             </button>
+=======
+            <div className="w-100 d-flex justify-content-center">
+                <main className="d-flex justify-content-center align-items-center p-4" style={{ width: 'fit-content' }}>
+                    <form id="formRegister" className="registerForm" style={{ width: '400px' }} onSubmit={handleSubmit}>
+                        <h2 className="mb-2">Regístrate</h2>
+                        <div className="register">
+                            <label htmlFor="name" className="form-label">
+                                Nombre
+                            </label>
+                            <input
+                                type="text"
+                                value={firstName}
+                                onChange={(e) => {
+                                    setName(e.target.value);
+                                }}
+                                id="name"
+                                name="name"
+                                required
+                                className="form-control mb-3"
+                            />
+                            <label htmlFor="text" className="form-label">
+                                Apellido
+                            </label>
+                            <input
+                                type="text"
+                                value={lastName}
+                                onChange={(e) => {
+                                    setLastName(e.target.value);
+                                }}
+                                id="lastName"
+                                name="lastName"
+                                required
+                                className="form-control mb-3"
+                            />
+                            <label htmlFor="email" className="form-label">
+                                Correo electrónico
+                            </label>
+                            <input
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                }}
+                                type="text"
+                                id="email"
+                                name="email"
+                                className="form-control mb-3"
+                                aria-describedby="emailHelp"
+                            />
+
+                            <label htmlFor="exampleInputPassword1" className="form-label">
+                                Contraseña
+                            </label>
+                            <input
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }}
+                                type="password"
+                                id="password"
+                                name="password"
+                                required
+                                className="form-control mb-3"
+                            />
+                            <label htmlFor="exampleInputPassword1" className="form-label">
+                                Confirme su contraseña
+                            </label>
+                            <input
+                                value={passwordComfirm}
+                                onChange={(e) => {
+                                    setPasswordComfirm(e.target.value);
+                                }}
+                                type="password"
+                                id="passwordComfirm"
+                                name="passwordComfirm"
+                                required
+                                className="form-control mb-4"
+                            />
+                            <div className="d-flex">
+                                <a href="/iniciar-sesion" className="btn btn-outline-primary w-100 me-1" style={{ fontWeight: 'bold', fontSize: '20px' }}>
+                                    Iniciar sesión
+                                </a>
+                                <button type="submit" className="btn btn-success w-100 ms-1" style={{ fontWeight: 'bold', fontSize: '20px' }}>
+                                    Registrarse
+                                </button>
+                            </div>
+
+>>>>>>> 2c02abe37f8bd0e7f07b25c5f6a6d37e7cc8bc11
                         </div>
 
                         <div className="d-flex flex-column justify-content-center align-items-center w-100">
