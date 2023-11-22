@@ -4,7 +4,7 @@ import { getInstituteById } from "../controllers/institute.controllers.js";
 import { eliminarUsuario, editarUsuario } from '../controllers/admin.controllers.js';
 import { validateToken } from '../middlewares/jsonwebtoken/validateToken.js';
 import { validateAdmin } from '../middlewares/jsonwebtoken/validateAdmin.js';
-import { registerUserSchema } from '../models/validations/registerUser.schema.js';
+import { registerUserSchema } from '../models/validations/signup.schema.js';
 import { validateSchema } from '../middlewares/express-validator/express-validator.js';
 import { registerAdmin } from '../controllers/register,controllers.js';
 
