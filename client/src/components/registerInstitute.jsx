@@ -14,10 +14,10 @@ export const RegisterInstitute = () => {
     category: "",
     province: "",
     locality: "",
-    postalCode: "",
+    postal_code: "",
     street: "",
     altitude: "",
-    mapLink: "",
+    map_link: "",
     mail: "",
     tel: "",
     webLink: "",
@@ -48,7 +48,7 @@ export const RegisterInstitute = () => {
   useEffect(() => {
     const getLocalities = async () => {
       try {
-        if(form.province === "") return setLocalities([]);
+        if (form.province === "") return setLocalities([]);
 
         const response = await fetch(
           `http://localhost:5000/api/provincia/${form.province}/localidades`,
@@ -71,10 +71,12 @@ export const RegisterInstitute = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/institutes", {
+      const token = localStorage.getItem("token");
+      const response = await fetch("http://localhost:5000/api/instituto", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(form),
       });
@@ -100,8 +102,15 @@ export const RegisterInstitute = () => {
       }
     } catch (error) {
       console.log(error);
+
+      Swal.fire({
+        title: "Error!",
+        text: "Ocurrió un error al registrar el instituto.",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
+
     }
-    
   };
 
   return (
@@ -215,7 +224,7 @@ export const RegisterInstitute = () => {
               </div>
             </div>
             <div id="map"></div>
-            <label htmlFor="postal_code" className="form-label">
+            <label htmlFor="postalCode" className="form-label">
               Código postal<span style={{ color: "red" }}>*</span>
             </label>
             <input
@@ -224,7 +233,7 @@ export const RegisterInstitute = () => {
               id="postal_code"
               placeholder="3600"
               name="postal_code"
-              value={form.postalCode}
+              value={form.postal_code}
               onChange={handleInputChange}
             />
 
@@ -254,7 +263,7 @@ export const RegisterInstitute = () => {
               onChange={handleInputChange}
             />
 
-            <label htmlFor="map_Link" className="form-label">
+            <label htmlFor="map_link" className="form-label">
               Google Maps Link<span style={{ color: "red" }}>*</span>
             </label>
             <input
@@ -263,7 +272,7 @@ export const RegisterInstitute = () => {
               id="map_link"
               placeholder="https://www.google.com/maps/place/..."
               name="map_link"
-              value={form.mapLink}
+              value={form.map_link}
               onChange={handleInputChange}
             />
           </div>
@@ -300,23 +309,23 @@ export const RegisterInstitute = () => {
             <input
               type="text"
               className="form-control"
-              id="web_link"
+              id="webLink"
               placeholder="https://..."
-              name="web_link"
+              name="webLink"
               value={form.webLink}
               onChange={handleInputChange}
             />
           </div>
           <div className="">
-            <label htmlFor="year_fundation" className="form-label">
-              Año de fundación{" "}
+            <label htmlFor="yearFundation" className="form-label">
+              Año de fundación
             </label>
             <input
               type="number"
               className="form-control"
-              id="year_fundation"
+              id="yearFundation"
               placeholder="2021"
-              name="year_fundation"
+              name="yearFundation"
               value={form.yearFundation}
               onChange={handleInputChange}
             />
