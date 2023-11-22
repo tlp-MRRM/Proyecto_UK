@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from '../../public/css/login.module.css'
 
 import Swal from "sweetalert2";
 
@@ -64,8 +65,8 @@ export const Login = () => {
 
     return (
         <>
-            <main className="container p-4 mb-5" style={{ width: 'fit-content' }}>
-                <div className="login">
+            <main className={styles.main}>
+                <div className={`${styles.login} p-4`}>
                     <h1 className="iniciarS">Iniciar sesión</h1>
 
                     <form id="login-form" onSubmit={handleSubmit}>

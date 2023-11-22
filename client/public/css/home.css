@@ -7,7 +7,7 @@ body {
   background-attachment: fixed;
 }
 
-main {
+/* main {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -15,7 +15,7 @@ main {
   background-color: rgb(238, 238, 238);
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-}
+} */
 
 nav {
   display: flex;
@@ -166,7 +166,7 @@ footer {
 }
 
 .formAgregarInstituto {
-  display: grid; 
+  display: grid;
   text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
