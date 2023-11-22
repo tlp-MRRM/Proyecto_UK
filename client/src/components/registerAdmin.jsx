@@ -15,7 +15,7 @@ export const RegistroAdmin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-
+        const token = localStorage.getItem('token');
 
         const role = isAdmin ? 'admin' : 'institute';
 
@@ -32,7 +32,8 @@ export const RegistroAdmin = () => {
             const response = await fetch(`http://localhost:5000/api/register-admin`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(newUser),
             })
@@ -65,8 +66,8 @@ export const RegistroAdmin = () => {
 
     return (
         <>
-            <main className="container d-flex justify-content-center align-items-center" style={{ width: 'fit-content' }}>
-                <form id="formRegister" className="registerForm p-2" onSubmit={handleSubmit}>
+            <main className="container d-flex justify-content-center align-items-center" >
+                <form id="formRegister" className="registerForm p-2" onSubmit={handleSubmit} >
                     <div className="register">
                         <h2>Registrar un usuario</h2>
                         <label htmlFor="name" className="form-label">

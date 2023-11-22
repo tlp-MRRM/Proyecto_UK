@@ -29,6 +29,7 @@ export const RegisterInstitute = () => {
   };
 
   useEffect(() => {
+
     const getProvinces = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/provincias", {
@@ -67,20 +68,22 @@ export const RegisterInstitute = () => {
     };
     getLocalities();
   }, [form.province]);
-
+  console.log(form)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
+      console.log(token)
       const response = await fetch("http://localhost:5000/api/instituto", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `${token}`,
         },
         body: JSON.stringify(form),
       });
       const data = await response.json();
+      console.log(data)
       if (response.status === 201) {
         Swal.fire({
           title: "Instituto registrado!",
@@ -95,7 +98,7 @@ export const RegisterInstitute = () => {
       } else {
         Swal.fire({
           title: "Error!",
-          text: data.message,
+          text: 'Verifica los campos remarcados',
           icon: "error",
           confirmButtonText: "Aceptar",
         });
@@ -121,6 +124,7 @@ export const RegisterInstitute = () => {
           noValidate
           id="formAgregarInstituto"
           onSubmit={handleSubmit}
+          style={{ backgroundColor: 'white' }}
         >
           <h2 className="">Registra tu institución</h2>
           <div className="nombres mb-3">
