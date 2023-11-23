@@ -1,0 +1,7 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}

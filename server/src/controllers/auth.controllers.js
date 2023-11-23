@@ -54,28 +54,13 @@ export const authLogin = async (req, res) => {
     const validPassword = await bcrypt.compare(password, existingUser.password);
     if (!validPassword) return res.status(400).json({ message: "Contraseña incorrecta" });
 
-    const token = jwt.sign({ id: existingUser.id, role: existingUser.role }, process.env.TOKEN_SECRET_KEY, { expiresIn: '1h' });
-    let redirectUrl;
-    switch (existingUser.role) {
-      case 'admin':
-        redirectUrl = 'http://localhost:3000/admin-user';
-        break;
-      case 'institute':
-        let institute = await Institute.findOne({ where: { userId: existingUser.id, id_institute: null } });
-        redirectUrl = `http://localhost:3000/instituto/:${institute.name}`;
-        break;
-      case 'user':
-        redirectUrl = 'http://localhost:3000/';
-        break;
-      default:
-        redirectUrl = 'http://localhost:3000/';
-    }
+    const token = jwt.sign({ id: existingUser.id, role: existingUser.role }, process.env.TOKEN_SECRET_KEY);
+
 
     return res.json({
       message: 'Inicio de sesión correcto, se redireccionará en unos momentos',
       role: existingUser.role,
       token,
-      redirectUrl,
       id: existingUser.id
     });
 
