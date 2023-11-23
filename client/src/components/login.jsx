@@ -21,7 +21,7 @@ export const Login = () => {
 
         const result = login(email, password)
 
-        /* const response = await fetch("http://localhost:5000/api/auth/login", {
+        const response = await fetch("http://localhost:5000/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -35,12 +35,12 @@ export const Login = () => {
             return Swal.fire('Error', message, 'error');
         }
 
-        const { message, token, id, role } = await response.json()
+        const { token, id} = await response.json()
 
 
-        localStorage.setItem('token', token); */
+        localStorage.setItem('token', token);
 
-        Swal.fire('Inicio de sesion exitoso', result.message, 'success');
+
         if (result.role == 'admin') {
             setTimeout(() => {
                 navigate('/admin-users');
@@ -62,6 +62,13 @@ export const Login = () => {
             }, 2000);
         }
         else {
+            Swal.fire({
+                title: 'Hecho!',
+                text: 'Inicio de sesión exitoso',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+                timer: 1500
+            })
             setTimeout(() => {
                 navigate('/')
             }, 2000)

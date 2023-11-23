@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import styles from '../../public/css/nav.module.css'
 import { useAuthContext } from '../contexts/AuthContexts';
+import { Link } from 'react-router-dom';
 
 export const Nav = () => {
 
@@ -14,28 +15,28 @@ export const Nav = () => {
             <header className='pb-2'>
                 <nav>
                     <div className="mt-4 mb-4">
-                        <a href="/" className="material-symbols-outlined">
+                        <Link to="/" className="material-symbols-outlined">
                             home
-                        </a>
+                        </Link>
                     </div>
 
                     <div>
-                        <a href="/preguntas-frecuentes" className="material-symbols-outlined">
+                        <Link to="/preguntas-frecuentes" className="material-symbols-outlined">
                             quiz
-                        </a>
+                        </Link>
                     </div>
 
                     <div>
-                        <a href="/buscador" className="material-symbols-outlined">
+                        <Link to="/buscador" className="material-symbols-outlined">
                             travel_explore
-                        </a>
+                        </Link>
                     </div>
                     {
                         !isLoggedIn ?
                             <div>
-                                <a href="/iniciar-sesion" className="material-symbols-outlined">
+                                <Link to="/iniciar-sesion" className="material-symbols-outlined">
                                     login
-                                </a>
+                                </Link>
                             </div> :
                             <div className={`${styles.perfil} nav-item dropdown`}>
                                 <button className="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,7 +48,7 @@ export const Nav = () => {
                                     </svg>
                                 </button>
                                 <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="/perfil">Perfil</a></li>
+                                    <li><Link className="dropdown-item" to="/perfil">Perfil</Link></li>
                                     <li><button className='btn' onClick={logout}>Cerrar sesion</button></li>
                                 </ul>
                             </div>
