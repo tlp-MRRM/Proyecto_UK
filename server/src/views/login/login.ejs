@@ -1,0 +1,40 @@
+<%- include('./partials/header.ejs'); %>
+
+
+  <body>
+    <main>
+      <div class="login">
+
+        <h1 class="iniciarS">Iniciar sesión</h1>
+
+        <form id="login-form">
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="text" name="email" required class="form-control" id="email" aria-describedby="emailHelp">
+            <div id="email" name="email" class="form-text">Nunca compartiremos tu información con nadie</div>
+          </div>
+
+          <div class="mb-1">
+            <label for="exampleInputPassword1" class="form-label col-">Contraseña</label>
+            <input type="password" name="password" required class="form-control" id="password">
+
+            <p id="validationErr"></p>
+          </div>
+          <div class="pb-3">
+            Olvidó su contraseña? Haga click <a href="restorePSW.html" class="aqui">aquí</a>
+          </div>
+          <div class="botones w-100 d-flex flex-column justify-content-end">
+            <button type="submit" class="btn boton">Iniciar sesión</button>
+            <div class="d-flex justify-content-center p-2 lineaSeparadora">
+              _________________________________________________________
+            </div>
+            <div class="d-flex justify-content-center">
+              <a href="/registrate" class="btn mt-3 btn-outline-success">Crear cuenta nueva</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <%- include('./partials/footer.ejs'); %>
