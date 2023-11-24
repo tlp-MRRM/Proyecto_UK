@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NotFoundPage } from "../pages/NotFound.page.jsx";
 import { UnauthorizedPage } from "../pages/Unauthorized.page.jsx";
 import { InstitutePage } from "../pages/Institute.page.jsx";
+import { EditInstitutePage } from "../pages/Institutes/editInstitute.page.jsx";
 
 
 export const Routers = () => {
@@ -19,6 +20,7 @@ export const Routers = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path='/mi-instituto' element={<EditInstitutePage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/preguntas-frecuentes" element={<FaqPage />} />
                 <Route path="/buscador" element={<SearchPage />} />
