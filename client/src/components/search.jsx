@@ -4,7 +4,7 @@ import { useForm } from "../hooks/useForm";
 import { searchInstitucion } from "../api/searchInstitucion";
 import { useState } from "react";
 import { InstituteCard } from "../pages/Institutes/components/InstituteCard";
-
+import swal from "sweetalert2";
 
 export const Search = () => {
   const [institutes, setInstitutes] = useState([]);
@@ -17,9 +17,28 @@ export const Search = () => {
     } catch (error) {
       console.log(error);
     }
+
+    if (values.name === "") {
+      swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Ingrese un nombre de institución",
+      });
+    }
+
+    if (institutes.length === 0) {
+      swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No se encontraron instituciones con ese nombre",
+      });
+    }
+
   };
 
   const { values, handleInputChange, reset } = useForm({ name: "" });
+
+  
 
   return (
     <>
