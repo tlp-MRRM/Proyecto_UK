@@ -7,12 +7,20 @@ export const loginRequest = async (email, password) => {
     body: JSON.stringify({ email, password }),
   });
   if (!response.ok) {
-      const  errors  = await response.json();
-      console.log(errors);
+    const errors = await response.json();
+    console.log(errors);
     throw new Error(errors);
-    
+
   }
   const data = await response.json();
+  if (data.role === "admin") {
+    history.push("/admin");
+  } else if (data.role === "user") {
+    history.push("/");
+  } else if (data.role === "institute") {
+    const response = await fetch(`http://localhost:5000/api/get-institutes-by-user/${data.id}`);
+    history.push("/institute");
+  }
   return data;
 };
 
