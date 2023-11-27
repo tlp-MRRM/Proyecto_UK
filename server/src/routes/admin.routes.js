@@ -15,7 +15,7 @@ adminRoutes.get('/api/get-all-institutes', getInstitutes);
 adminRoutes.get('/api/get-institute/:id', getInstituteById);
 
 // Registrar nuevo usuario para institución
-adminRoutes.post('/api/register-admin', validateToken, validateAdmin, registerUserSchema, validateSchema, registerAdmin);
+adminRoutes.post('/api/register-admin', registerUserSchema, validateSchema, registerAdmin);
 
 
 // Ruta para eliminar un usuario

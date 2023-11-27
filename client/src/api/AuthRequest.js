@@ -12,16 +12,7 @@ export const loginRequest = async (email, password) => {
     throw new Error(errors);
 
   }
-  const data = await response.json();
-  if (data.role === "admin") {
-    history.push("/admin");
-  } else if (data.role === "user") {
-    history.push("/");
-  } else if (data.role === "institute") {
-    const response = await fetch(`http://localhost:5000/api/get-institutes-by-user/${data.id}`);
-    history.push("/institute");
-  }
-  return data;
+  return await response.json()
 };
 
 export const registerRequest = async (name, email, password, role) => {

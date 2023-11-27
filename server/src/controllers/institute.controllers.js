@@ -3,18 +3,18 @@ import { Institute } from "../models/Institute.js";
 
 export const getMainInstituteByUser = async (req, res) => {
 
-  const { id_user } = req.params;
+  const { id } = req.params.id_user;
   try {
-    const hasInstitutes = await Institute.findAll({
+    const mainInsitute = await Institute.findAll({
       where: {
-        id_user: id_user,
+        id_user: id,
         id_institute: null
       }
     })
-    if (hasInstitutes.length == 0) {
+    if (mainInsitute.length == 0) {
       return res.sendStatus(404)
     }
-    return res.sendStatus(200)
+    return res.status(200).json(mainInsitute)
   } catch (error) {
     console.log('Error al obtener los institutos del usuario ', error)
   }
