@@ -1,18 +1,19 @@
-import styles from "../../../public/css/editInstitute.module.css";
-
 function InformationInstitute() {
   return (
-    <div className="row">
-      <div className="col-md-auto">
-        <img className="shadow p-3 mb-5 bg-body-tertiary border-rounded-1 " src={image} width="275px"  />
+    <div>
+    <div className="col-6">
+      <div className="col-md-auto align-item-center vector">
+        <a className="material-symbols-outlined"> call </a>
       </div>
-      <div className="col">
-        <h1>Nombre de la institución</h1>
-        <h5><a className="material-symbols-outlined">location_on</a> Ubicación</h5>
+      <div className="col bg-secondary">
+        <h1>Contacto</h1>
+        <p>Telefono: 370567891</p>
+        <p>Email: contacto@gmail.com</p>
+        <p>Web: http://www.google.com</p>
       </div>
     </div>
+  </div>
   )
 }
 
-const image = "https://robohash.org/21312"
 export default InformationInstitute

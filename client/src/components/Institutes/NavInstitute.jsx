@@ -1,7 +1,7 @@
 import styles from "../../../public/css/editInstitute.module.css";
 function NavInstitute() {
   return (
-    <nav className={styles.nav}>
+    <nav className  ={styles.nav}>
     <div>
       <a href="/" class="material-symbols-outlined"> home </a>
     </div>
