@@ -1,6 +1,6 @@
-import { About } from "../components/About";
-import { Footer } from "../components/Footer";
-import { Nav } from "../components/Nav";
+import { About } from "../pages/About";
+import { Footer } from "../pages/Footer";
+import { Nav } from "../pages/Nav";
 
 export const AboutPage = () => {
     return (

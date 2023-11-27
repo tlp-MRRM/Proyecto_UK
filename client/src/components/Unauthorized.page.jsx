@@ -1,5 +1,5 @@
 
-import { Unauthorized } from '../components/Unauthorized'
+import { Unauthorized } from '../pages/Unauthorized'
 
 export const UnauthorizedPage = () => {
     return (

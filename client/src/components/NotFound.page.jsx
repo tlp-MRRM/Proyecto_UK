@@ -1,5 +1,5 @@
 
-import { PageNotFound404 } from '../components/NotFound'
+import { PageNotFound404 } from '../pages/NotFound'
 
 export const NotFoundPage = () => {
     return (

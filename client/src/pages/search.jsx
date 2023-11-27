@@ -3,8 +3,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { useForm } from "../hooks/useForm";
 import { searchInstitucion } from "../api/searchInstitucion";
 import { useState } from "react";
-import { InstituteCard } from "../pages/Institutes/components/InstituteCard";
-import swal from "sweetalert2";
+import { InstituteCard } from "../components/Institutes/pages/InstituteCard";
+
 
 export const Search = () => {
   const [institutes, setInstitutes] = useState([]);

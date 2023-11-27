@@ -1,6 +1,6 @@
-import { RegistroAdmin } from "../components/RegisterAdmin";
-import { Nav } from "../components/Nav";
-import { Footer } from "../components/Footer";
+import { RegistroAdmin } from "../pages/RegisterAdmin";
+import { Nav } from "../pages/Nav";
+import { Footer } from "../pages/Footer";
 
 export const RegisterAdminPage = () => {
     return (

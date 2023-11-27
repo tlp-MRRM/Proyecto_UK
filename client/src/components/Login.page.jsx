@@ -1,7 +1,7 @@
 
-import { Nav } from "../components/Nav";
-import { Footer } from "../components/Footer";
-import { Login } from "../components/Login";
+import { Nav } from "../pages/Nav";
+import { Footer } from "../pages/Footer";
+import { Login } from "../pages/Login";
 
 export const LoginPage = () => {
     return (

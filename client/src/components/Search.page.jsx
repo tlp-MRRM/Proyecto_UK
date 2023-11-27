@@ -1,6 +1,6 @@
-import { Search } from "../components/Search";
-import { Footer } from "../components/Footer";
-import { Nav } from "../components/Nav";
+import { Search } from "../pages/Search";
+import { Footer } from "../pages/Footer";
+import { Nav } from "../pages/Nav";
 
 export const SearchPage = () => {
     return (

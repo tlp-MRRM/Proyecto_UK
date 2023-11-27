@@ -1,41 +1,38 @@
-import { HomePage } from "../pages/Home.page.jsx";
-import { AboutPage } from "../pages/About.page.jsx";
-import { FaqPage } from "../pages/Faq.page.jsx";
-import { SearchPage } from "../pages/Search.page.jsx";
-import { LoginPage } from "../pages/Login.page.jsx";
-import { SignupPage } from "../pages/signup.page.jsx";
-import { RegisterInstitutePage } from "../pages/RegisterInsti.page.jsx";
-import { RegisterAdminPage } from "../pages/RegisterAdmin.page.jsx";
-import { RegisterCareerPage } from "../pages/registerCareer.page.jsx";
-import { WorkWithUsPage } from "../pages/WorkWithUs.page.jsx";
+import { HomePage } from "../components/Home.page.jsx";
+import { AboutPage } from "../components/About.page.jsx";
+import { FaqPage } from "../components/Faq.page.jsx";
+import { SearchPage } from "../components/Search.page.jsx";
+import { LoginPage } from "../components/Login.page.jsx";
+import { SignupPage } from "../components/signup.page.jsx";
+import { RegisterInstitutePage } from "../components/RegisterInsti.page.jsx";
+import { RegisterAdminPage } from "../components/RegisterAdmin.page.jsx";
+import { RegisterCareerPage } from "../components/registerCareer.page.jsx";
+import { WorkWithUsPage } from "../components/WorkWithUs.page.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { NotFoundPage } from "../pages/NotFound.page.jsx";
-import { UnauthorizedPage } from "../pages/Unauthorized.page.jsx";
-import { InstitutePage } from "../pages/Institute.page.jsx";
-import { EditInstitutePage } from "../pages/Institutes/editInstitute.page.jsx";
-
+import { NotFoundPage } from "../components/NotFound.page.jsx";
+import { UnauthorizedPage } from "../components/Unauthorized.page.jsx";
+import { InstitutePage } from "../components/Institute.page.jsx";
+import { EditInstitutePage } from "../components/Institutes/editInstitute.page.jsx";
 
 export const Routers = () => {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path='/mi-instituto' element={<EditInstitutePage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/preguntas-frecuentes" element={<FaqPage />} />
-                <Route path="/buscador" element={<SearchPage />} />
-                <Route path="/registrate" element={<SignupPage />} />
-                <Route path="/iniciar-sesion" element={<LoginPage />} />
-                <Route path="/registro/admin" element={<RegisterAdminPage />} />
-                <Route path="/registro/carrera" element={<RegisterCareerPage />} />
-                <Route path="/registro/instituto" element={<RegisterInstitutePage />} />
-                <Route path="/trabaja-con-nosotros" element={<WorkWithUsPage />} />
-                <Route path="/unauthorized" element={<UnauthorizedPage />} />
-                <Route path="/instituto/:id" element={<InstitutePage />} />
-                <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-        </BrowserRouter>
-    )
-}
-
-
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/mi-instituto" element={<EditInstitutePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/preguntas-frecuentes" element={<FaqPage />} />
+        <Route path="/buscador" element={<SearchPage />} />
+        <Route path="/registrate" element={<SignupPage />} />
+        <Route path="/iniciar-sesion" element={<LoginPage />} />
+        <Route path="/registro/admin" element={<RegisterAdminPage />} />
+        <Route path="/registro/carrera" element={<RegisterCareerPage />} />
+        <Route path="/registro/instituto" element={<RegisterInstitutePage />} />
+        <Route path="/trabaja-con-nosotros" element={<WorkWithUsPage />} />
+        <Route path="/unauthorized" element={<UnauthorizedPage />} />
+        <Route path="/instituto/:id" element={<InstitutePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};

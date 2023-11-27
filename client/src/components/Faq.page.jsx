@@ -1,6 +1,6 @@
-import { Faq } from "../components/Faq";
-import { Footer } from "../components/Footer";
-import { Nav } from "../components/Nav";
+import { Faq } from "../pages/Faq";
+import { Footer } from "../pages/Footer";
+import { Nav } from "../pages/Nav";
 
 export const FaqPage = () => {
     return (

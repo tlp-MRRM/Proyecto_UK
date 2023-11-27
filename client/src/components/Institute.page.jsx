@@ -1,6 +1,6 @@
-import { PageInstitute } from "../components/pageInstitute";
-import { Nav } from "../components/nav";
-import { Footer } from "../components/footer";
+import { PageInstitute } from "../pages/pageInstitute";
+import { Nav } from "../pages/Nav";
+import { Footer } from "../pages/Footer";
 
 
 export const InstitutePage = () => {
