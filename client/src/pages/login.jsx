@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../contexts/AuthContexts";
+import styles from '../../public/css/login.module.css'
 
 import Swal from "sweetalert2";
 
 export const Login = () => {
     const navigate = useNavigate();
+
+    const { login } = useAuthContext();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,6 +18,8 @@ export const Login = () => {
             email,
             password
         };
+
+        const result = login(email, password)
 
         const response = await fetch("http://localhost:5000/api/auth/login", {
             method: "POST",
@@ -29,17 +35,17 @@ export const Login = () => {
             return Swal.fire('Error', message, 'error');
         }
 
-        const { message, token, id, role } = await response.json()
+        const { token, id} = await response.json()
 
 
         localStorage.setItem('token', token);
 
-        Swal.fire('Inicio de sesion exitoso', message, 'success');
-        if (role == 'admin') {
+
+        if (result.role == 'admin') {
             setTimeout(() => {
                 navigate('/admin-users');
             }, 2000);
-        } else if (role == 'institute') {
+        } else if (result.role == 'institute') {
             setTimeout(async () => {
                 const responseInstitutes = await fetch('http://localhost:5000/api/get-institutes-by-user', {
                     method: "POST",
@@ -56,6 +62,13 @@ export const Login = () => {
             }, 2000);
         }
         else {
+            Swal.fire({
+                title: 'Hecho!',
+                text: 'Inicio de sesión exitoso',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+                timer: 1500
+            })
             setTimeout(() => {
                 navigate('/')
             }, 2000)
@@ -64,11 +77,11 @@ export const Login = () => {
 
     return (
         <>
-            <main className="container p-4 mb-5" style={{ width: 'fit-content' }}>
-                <div className="login">
+            <main className={styles.main}>
+                <div className={`${styles.login} p-4`}>
                     <h1 className="iniciarS">Iniciar sesión</h1>
 
-                    <form id="login-form" onSubmit={handleSubmit}>
+                    <form id="login-form" onSubmit={handleSubmit} style={{ width: '400px' }}>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">
                                 Correo electrónico

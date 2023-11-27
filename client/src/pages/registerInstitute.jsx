@@ -11,24 +11,30 @@ export const RegisterInstitute = () => {
   const [form, setForm] = useState({
     name: "",
     abbreviation: "",
-    category: "",
+    id_category: "",
     province: "",
-    locality: "",
+    id_locality: "",
     postal_code: "",
     street: "",
-    altitude: "",
+    altitude: 0,
     map_link: "",
     mail: "",
     tel: "",
-    webLink: "",
-    yearFundation: "",
+    web_link: "",
+    year_fundation: 0,
     description: "",
   });
   const handleInputChange = (e) => {
+    if (e.target.name === 'altitude') {
+      e.target.value = Number(e.target.value)
+    }
     setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(form.id_category)
+
   };
 
   useEffect(() => {
+
     const getProvinces = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/provincias", {
@@ -72,15 +78,17 @@ export const RegisterInstitute = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
+      console.log(token)
       const response = await fetch("http://localhost:5000/api/instituto", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `${token}`,
         },
         body: JSON.stringify(form),
       });
       const data = await response.json();
+      console.log(data)
       if (response.status === 201) {
         Swal.fire({
           title: "Instituto registrado!",
@@ -95,7 +103,7 @@ export const RegisterInstitute = () => {
       } else {
         Swal.fire({
           title: "Error!",
-          text: data.message,
+          text: 'Verifica los campos remarcados',
           icon: "error",
           confirmButtonText: "Aceptar",
         });
@@ -121,6 +129,7 @@ export const RegisterInstitute = () => {
           noValidate
           id="formAgregarInstituto"
           onSubmit={handleSubmit}
+          style={{ backgroundColor: 'white' }}
         >
           <h2 className="">Registra tu institución</h2>
           <div className="nombres mb-3">
@@ -157,14 +166,14 @@ export const RegisterInstitute = () => {
             </div>
           </div>
           <div className="mb-3">
-            <label htmlFor="category" className="form-label">
+            <label htmlFor="id_category" className="form-label">
               Categoría<span style={{ color: "red" }}>*</span>
             </label>
             <select
               className="form-select selectTipoCarrera"
-              id="category"
-              name="category"
-              value={form.category}
+              id="id_category"
+              name="id_category"
+              value={form.id_category}
               onChange={handleInputChange}
             >
               <option value="" disabled>
@@ -202,14 +211,14 @@ export const RegisterInstitute = () => {
                 </select>
               </div>
               <div className="w-50">
-                <label htmlFor="locality" className="form-label">
+                <label htmlFor="id_locality" className="form-label">
                   Localidad<span style={{ color: "red" }}>*</span>
                 </label>
                 <select
                   className="form-select mb-3"
-                  id="locality"
-                  name="locality"
-                  value={form.locality}
+                  id="id_locality"
+                  name="id_locality"
+                  value={form.id_locality}
                   onChange={handleInputChange}
                 >
                   <option value="" disabled>
@@ -254,7 +263,7 @@ export const RegisterInstitute = () => {
               Altura<span style={{ color: "red" }}>*</span>
             </label>
             <input
-              type="text"
+              type="number"
               className="form-control mb-3"
               id="altitude"
               placeholder="3000"
@@ -303,30 +312,30 @@ export const RegisterInstitute = () => {
               onChange={handleInputChange}
             />
 
-            <label htmlFor="webLink" className="form-label">
+            <label htmlFor="web_link" className="form-label">
               Página Web<span style={{ color: "red" }}>*</span>
             </label>
             <input
               type="text"
               className="form-control"
-              id="webLink"
+              id="web_link"
               placeholder="https://..."
-              name="webLink"
-              value={form.webLink}
+              name="web_link"
+              value={form.web_link}
               onChange={handleInputChange}
             />
           </div>
           <div className="">
-            <label htmlFor="yearFundation" className="form-label">
+            <label htmlFor="year_fundation" className="form-label">
               Año de fundación
             </label>
             <input
               type="number"
               className="form-control"
-              id="yearFundation"
+              id="year_fundation"
               placeholder="2021"
-              name="yearFundation"
-              value={form.yearFundation}
+              name="year_fundation"
+              value={form.year_fundation}
               onChange={handleInputChange}
             />
           </div>

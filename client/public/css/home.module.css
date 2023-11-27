@@ -1,0 +1,21 @@
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.home {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  width: 80%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+section {
+  width: 50%;
+  height: 100%;
+}

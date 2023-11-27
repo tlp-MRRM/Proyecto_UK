@@ -3,7 +3,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { useForm } from "../hooks/useForm";
 import { searchInstitucion } from "../api/searchInstitucion";
 import { useState } from "react";
-import { InstituteCard } from "../pages/Institutes/components/InstituteCard";
+import { InstituteCard } from "../components/Institutes/pages/InstituteCard";
 
 
 export const Search = () => {
@@ -13,13 +13,32 @@ export const Search = () => {
     try {
       const institutes = await searchInstitucion(values.name);
       console.log(institutes);
-        setInstitutes(institutes);
+      setInstitutes(institutes);
     } catch (error) {
       console.log(error);
     }
+
+    // if (values.name === "") {
+    //   swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: "Ingrese un nombre de institución",
+    //   });
+    // }
+
+    // if (institutes.length === 0) {
+    //   swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: "No se encontraron instituciones con ese nombre",
+    //   });
+    // }
+
   };
 
   const { values, handleInputChange, reset } = useForm({ name: "" });
+
+
 
   return (
     <>
@@ -47,16 +66,16 @@ export const Search = () => {
 
             <div id="results">
 
-                {institutes.map((institute) => {
-                    return (
-        
-                        <InstituteCard institute={institute}/> 
-                        
-            
-                    )
-                })}
+              {institutes.map((institute) => {
+                return (
 
-                
+                  <InstituteCard institute={institute} />
+
+
+                )
+              })}
+
+
 
             </div>
 

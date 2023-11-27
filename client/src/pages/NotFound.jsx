@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 
 export const PageNotFound404 = () => {
@@ -17,7 +18,7 @@ export const PageNotFound404 = () => {
                         </svg>
                     </div>
                     <p className='text-center'>La pagina a la que intentas acceder no existe o se ha movido</p>
-                    <div className='d-flex justify-content-center w-100'><a className='btn' style={{ backgroundColor: '#88afca', color: 'white', fontWeight: 'bold' }} href='/'>Volver al inicio</a></div>
+                    <div className='d-flex justify-content-center w-100'><Link className='btn' style={{ backgroundColor: '#88afca', color: 'white', fontWeight: 'bold' }} to='/'>Volver al inicio</Link></div>
 
                 </div>
             </main>

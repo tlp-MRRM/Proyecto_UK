@@ -1,6 +1,6 @@
-import { RegisterInstitute } from "../components/registerInstitute";
-import { Footer } from "../components/Footer";
-import { Nav } from "../components/Nav";
+import { RegisterInstitute } from "../pages/registerInstitute";
+import { Footer } from "../pages/Footer";
+import { Nav } from "../pages/Nav";
 
 export const RegisterInstitutePage = () => {
     return (

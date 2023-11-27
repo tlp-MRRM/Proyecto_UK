@@ -3,7 +3,7 @@ import { Institute } from "../models/Institute.js";
 
 export const getMainInstituteByUser = async (req, res) => {
 
-  const { id_user } = req.body;
+  const { id_user } = req.params;
   try {
     const hasInstitutes = await Institute.findAll({
       where: {

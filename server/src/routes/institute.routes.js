@@ -1,6 +1,3 @@
-//=============================
-//ARCHIVO COMENTADO DE MOMENTO=
-//=============================
 
 // import { Router } from 'express';
 // import {
