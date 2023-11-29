@@ -25,16 +25,14 @@ export const RegisterInstitute = () => {
     description: "",
   });
   const handleInputChange = (e) => {
-    if (e.target.name === 'altitude') {
-      e.target.value = Number(e.target.value)
+    if (e.target.name === "altitude") {
+      e.target.value = Number(e.target.value);
     }
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form.id_category)
-
+    console.log(form.id_category);
   };
 
   useEffect(() => {
-
     const getProvinces = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/provincias", {
@@ -78,7 +76,7 @@ export const RegisterInstitute = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      console.log(token)
+      console.log(token);
       const response = await fetch("http://localhost:5000/api/instituto", {
         method: "POST",
         headers: {
@@ -88,7 +86,7 @@ export const RegisterInstitute = () => {
         body: JSON.stringify(form),
       });
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       if (response.status === 201) {
         Swal.fire({
           title: "Instituto registrado!",
@@ -97,13 +95,13 @@ export const RegisterInstitute = () => {
           confirmButtonText: "Aceptar",
         }).then((result) => {
           if (result.isConfirmed) {
-            navigate("/");
+            navigate(`/instituto/${data.id_institute}`);
           }
         });
       } else {
         Swal.fire({
           title: "Error!",
-          text: 'Verifica los campos remarcados',
+          text: "Verifica los campos remarcados",
           icon: "error",
           confirmButtonText: "Aceptar",
         });
@@ -117,7 +115,6 @@ export const RegisterInstitute = () => {
         icon: "error",
         confirmButtonText: "Aceptar",
       });
-
     }
   };
 
@@ -129,7 +126,7 @@ export const RegisterInstitute = () => {
           noValidate
           id="formAgregarInstituto"
           onSubmit={handleSubmit}
-          style={{ backgroundColor: 'white' }}
+          style={{ backgroundColor: "white" }}
         >
           <h2 className="">Registra tu institución</h2>
           <div className="nombres mb-3">

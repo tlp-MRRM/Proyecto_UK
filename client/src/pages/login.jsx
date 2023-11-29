@@ -1,17 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContexts";
 import styles from "../../public/css/login.module.css";
-
 export const Login = () => {
-  const { login } = useAuthContext();
-
+  const { loginFunction } = useAuthContext();
+  let navigate = useNavigate();
+  const [redirectTo, setRedirectTo] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (redirectTo) {
+      setTimeout(() => {
+        navigate(redirectTo);
+      }, 1000);
+    }
+  }, [redirectTo]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    login(email, password);
+    const data = await loginFunction(email, password);
+    console.log("DATA DE LOGIN ABAJO");
+    console.log(data);
+
+    if (data.redirectTo) {
+      setRedirectTo(data.redirectTo);
+    }
   };
 
   return (

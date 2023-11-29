@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { loginRequest, registerRequest } from "../api/AuthRequest";
-
+import { Navigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const useAuthContext = () => useContext(AuthContext);
@@ -21,18 +21,21 @@ export const AuthProvider = ({ children }) => {
     return token !== null && token !== undefined && token !== "";
   };
   // Función para iniciar sesión
+  const loginFunction = async (email, password) => {
+    let redirectTo = null;
 
-  const login = async (email, password) => {
     try {
       const data = await loginRequest(email, password);
+
       if (data.token) {
         localStorage.setItem("token", data.token);
         setToken(data.token);
+
         if (data.role === "admin") {
-          window.location.href = "/admin";
+          redirectTo = "/admin";
         } else if (data.role === "institute") {
-          const institute = await fetch(
-            `http://localhost:5000/api/get-institute-main-institute/${data.id}`,
+          const response = await fetch(
+            `http://localhost:5000/api/get-main-institute/${data.id}`,
             {
               method: "GET",
               headers: {
@@ -41,13 +44,16 @@ export const AuthProvider = ({ children }) => {
               },
             }
           );
-          if (institute.status === 200) {
-            window.location.href = `/instituto/${institute.id}`;
-          } else if (institute.status === 404) {
-            window.location.href = `/registro/instituto`;
+
+          const institute = await response.json();
+
+          if (response.status === 200) {
+            redirectTo = `/instituto/${institute.id}`;
+          } else {
+            redirectTo = "/registro/instituto";
           }
         } else {
-          window.location.href = "/";
+          redirectTo = "/";
         }
       } else {
         setToken(null);
@@ -58,9 +64,9 @@ export const AuthProvider = ({ children }) => {
         text: "Logged in successfully!",
         icon: "success",
       });
-
-      console.log(data);
-      return data;
+      console.log("REDIRECT TO ABAJO");
+      console.log(redirectTo);
+      return { data, redirectTo };
     } catch (error) {
       console.log(error);
 
@@ -100,7 +106,7 @@ export const AuthProvider = ({ children }) => {
   // Valor del contexto
   const authContextValue = {
     isAuthenticated,
-    login,
+    loginFunction,
     logout,
     register,
     token,

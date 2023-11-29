@@ -3,7 +3,7 @@ import { Institute } from "../models/Institute.js";
 
 export const getMainInstituteByUser = async (req, res) => {
 
-  const { id } = req.params.id_user;
+  const id = req.params.id;
   try {
     const mainInsitute = await Institute.findAll({
       where: {
@@ -11,8 +11,10 @@ export const getMainInstituteByUser = async (req, res) => {
         id_institute: null
       }
     })
-    if (mainInsitute.length == 0) {
-      return res.sendStatus(404)
+    console.log('INSTITUTO:')
+    console.log(mainInsitute)
+    if (mainInsitute.length === 0) {
+      return res.status(404).json({ message: 'Not Found' })
     }
     return res.status(200).json(mainInsitute)
   } catch (error) {

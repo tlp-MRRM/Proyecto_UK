@@ -4,49 +4,54 @@ import { useForm } from "../hooks/useForm";
 import { searchInstitucion } from "../api/searchInstitucion";
 import { useState } from "react";
 import { InstituteCard } from "../components/Institutes/pages/InstituteCard";
-
-
+import swal from "sweetalert2";
+import styles from "../../public/css/search.module.css";
 export const Search = () => {
   const [institutes, setInstitutes] = useState([]);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (values.name === "") {
+      swal.fire({
+        toast: true,
+        icon: "error",
+        position: "top-start",
+        title: "Oops...",
+        text: "Ingrese un nombre de institución",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+      return;
+    }
     try {
       const institutes = await searchInstitucion(values.name);
       console.log(institutes);
       setInstitutes(institutes);
+
+      if (institutes.length === 0) {
+        swal.fire({
+          toast: true,
+          icon: "error",
+          position: "top-start",
+          title: "Oops...",
+          text: "No se encontraron instituciones con ese nombre",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
-
-    // if (values.name === "") {
-    //   swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: "Ingrese un nombre de institución",
-    //   });
-    // }
-
-    // if (institutes.length === 0) {
-    //   swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: "No se encontraron instituciones con ese nombre",
-    //   });
-    // }
-
   };
 
   const { values, handleInputChange, reset } = useForm({ name: "" });
 
-
-
   return (
     <>
-      <main className="container py-5">
-        <section className="row justify-content-center text-light">
-          <div className="col-lg-8 col-md-10 col-sm-12">
-            <form id="search-input" className="mb-5" onSubmit={handleSubmit}>
-              <h2 className="mb-4 text-center text-black">
+      <main>
+        <section className="container w-100 text-light">
+          <div className={` ${styles.searchContainer}`}>
+            <form id="search-input" className="mb-3" onSubmit={handleSubmit}>
+              <h2 className="text-center text-black">
                 Buscar Instituto/Universidad
               </h2>
               <div className="input-group">
@@ -64,78 +69,12 @@ export const Search = () => {
               </div>
             </form>
 
-            <div id="results">
-
-              {institutes.map((institute) => {
-                return (
-
+            <div id="results" className="row">
+              {institutes.map((institute, index) => (
+                <div key={index} className="col-md-4">
                   <InstituteCard institute={institute} />
-
-
-                )
-              })}
-
-
-
-            </div>
-
-            <div className="mb-1 m-5">
-              <h3 className="text-black">Noticias destacadas</h3>
-            </div>
-
-            <div
-              id="carouselExampleAutoplaying"
-              className="carousel slide carrusel"
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img
-                    src="../public/img/laCuencaDelPlata.jpg"
-                    className="d-block w-100"
-                    alt="La cuenca del plata"
-                  />
                 </div>
-                <div className="carousel-item">
-                  <img
-                    src="../public/img/siglo21.png"
-                    className="d-block w-100"
-                    alt="Siglo 21"
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    src="../public/img/UNAF.jpg"
-                    className="d-block w-100"
-                    alt="UNAF"
-                  />
-                </div>
-              </div>
-
-              <button
-                className="carousel-control-prev btn-next"
-                type="button"
-                data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next btn-next"
-                type="button"
-                data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
+              ))}
             </div>
           </div>
         </section>

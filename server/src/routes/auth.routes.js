@@ -13,7 +13,6 @@ authRoutes.post('/api/auth/login', authLogin);
 
 authRoutes.post('/api/auth/signup', registerSchema, validateSchema, authRegister);
 
-authRoutes.get('/api/get-institutes-by-user/:id_user', getMainInstituteByUser)
-
+authRoutes.get('/api/get-main-institute/:id', getMainInstituteByUser)
 
 export default authRoutes
