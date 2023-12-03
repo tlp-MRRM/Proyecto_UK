@@ -9,7 +9,7 @@ export const InstituteCard = ({ institute }) => {
             <h5 className="card-title">{institute.name}</h5>
             <p className="card-text">{institute.description}</p>
             <div className="card-footer d-flex justify-content-end align-items-center p-0">
-              <Link to="/" className="btn btn-primary p-1">
+              <Link to={`/instituto/${institute.id}`} className="btn btn-primary p-1">
                 Ver más
               </Link>
             </div>
