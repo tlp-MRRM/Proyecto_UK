@@ -1,14 +1,14 @@
 import { Category } from "../models/Category.js";
 import { Contact } from "../models/Contact.js";
 import { Institute } from "../models/Institute.js";
-import { Locality } from "../models/Locality.js";
+import { Locality } from "../models/locality.js";
 import { Modality } from "../models/Modality.js";
 import { Province } from "../models/Province.js";
 import { TimeUnit } from "../models/TimeUnit.js";
 import { TypeCareer } from "../models/TypeCareer.js";
-import { Ubication } from "../models/Ubication.js";
+import { Ubication } from "../models/ubication.js";
 import { User } from "../models/User.js";
-import { Career } from "../models/Careers.js";
+import { Career } from "../models/careers.js";
 import { sequelize } from "./db.js";
 export const createTablesAndRelations = async () => {
     Institute.belongsTo(Category, { foreignKey: 'id_category' });
@@ -23,7 +23,7 @@ export const createTablesAndRelations = async () => {
     Province.hasMany(Locality, { foreignKey: 'id_province' })
     Locality.belongsTo(Province, { foreignKey: 'id_province' });
     Ubication.belongsTo(Locality, { foreignKey: 'id_locality' });
-    Locality.hasOne(Ubication, { foreignKey: 'id_locality' });
+    Locality.hasMany(Ubication, { foreignKey: 'id_locality' });
 
 
     Institute.hasMany(Career, { foreignKey: 'id_institute' })

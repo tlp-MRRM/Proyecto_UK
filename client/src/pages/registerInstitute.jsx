@@ -118,37 +118,74 @@ export const RegisterInstitute = () => {
     }
   };
 
-  return (
-    <>
-      <main className="container d-flex justify-content-center align-items-center">
-        <form
-          className="formAgregarInstituto p-3 needs-validation"
-          noValidate
-          id="formAgregarInstituto"
-          onSubmit={handleSubmit}
-          style={{ backgroundColor: "white" }}
-        >
-          <h2 className="">Registra tu institución</h2>
-          <div className="nombres mb-3">
-            <div className="nombre me-3">
-              <label htmlFor="name" className="form-label">
-                Nombre de la institución
-              </label>
-              <input
-                type="text"
-                placeholder="Instituto politecnico"
-                className="form-control"
-                name="name"
-                value={form.name}
-                onChange={handleInputChange}
-              />
-              <div className="valid-feedback">Looks good!</div>
-            </div>
-            <div>
-              <label htmlFor="abbreviation" className="form-label">
-                Abreviatura
-              </label>
-              <div className="">
+  const [step, setStep] = useState(1);
+
+  const handleNextStep = () => {
+    if (step === 1) {
+      if (
+        form.name &&
+        form.abbreviation &&
+        form.year_fundation &&
+        form.id_category &&
+        form.description
+      ) {
+        setStep(step + 1);
+      } else {
+        // Display an error message or prevent advancing
+        alert("Please complete all fields");
+      }
+    } else if (step === 2) {
+      if (
+        form.province &&
+        form.id_locality &&
+        form.postal_code &&
+        form.street &&
+        form.altitude &&
+        form.map_link
+      ) {
+        setStep(step + 1);
+      } else {
+        // Display an error message or prevent advancing
+        alert("Please complete all fields");
+      }
+    } else if (step === 3) {
+      if (form.mail && form.tel && form.web_link) {
+        setStep(step + 1);
+      } else {
+        // Display an error message or prevent advancing
+        alert("Please complete all fields");
+      }
+    }
+  };
+
+  const handlePreviousStep = () => {
+    setStep(step - 1);
+  };
+
+  const renderStep = () => {
+    switch (step) {
+      case 1:
+        return (
+          <div className="inicio mb-3">
+            <div className="nombreYAbreviatura d-flex flex-row">
+              <div className="nombre d-flex flex-column w-75 pe-2 align-items-start">
+                <label htmlFor="name" className="form-label">
+                  Nombre de la institución
+                </label>
+                <input
+                  type="text"
+                  placeholder="Instituto politecnico"
+                  className="form-control"
+                  name="name"
+                  value={form.name}
+                  onChange={handleInputChange}
+                />
+                <div className="valid-feedback">Looks good!</div>
+              </div>
+              <div className="w-25 ps-2">
+                <label htmlFor="abbreviation" className="form-label">
+                  Abreviatura
+                </label>
                 <input
                   type="text"
                   className="form-control needs-validation"
@@ -158,33 +195,64 @@ export const RegisterInstitute = () => {
                   value={form.abbreviation}
                   onChange={handleInputChange}
                 />
-                <div className="valid-feedback"></div>
               </div>
             </div>
+            <div className="d-flex flex-row align-items-start">
+              <div className="w-50 pe-2">
+                <label htmlFor="year_fundation" className="form-label">
+                  Año de fundación
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="year_fundation"
+                  placeholder="2021"
+                  name="year_fundation"
+                  value={form.year_fundation}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="w-50 category ps-2">
+                <label htmlFor="id_category" className="form-label">
+                  Categoría<span style={{ color: "red" }}>*</span>
+                </label>
+                <select
+                  className="form-select selectTipoCarrera"
+                  id="id_category"
+                  name="id_category"
+                  value={form.id_category}
+                  onChange={handleInputChange}
+                >
+                  <option value="" disabled>
+                    Seleccione la categoría *
+                  </option>
+                  <option value="1" id="1">
+                    Publico
+                  </option>
+                  <option value="2" id="2">
+                    Privado
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div className="mt-3 mb-3">
+              <label htmlFor="description" className="form-label">
+                Descripción breve de la institucion (max. 255 caracteres)
+              </label>
+              <textarea
+                name="description"
+                id="description"
+                className="form-control"
+                value={form.description}
+                onChange={handleInputChange}
+              ></textarea>
+            </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="id_category" className="form-label">
-              Categoría<span style={{ color: "red" }}>*</span>
-            </label>
-            <select
-              className="form-select selectTipoCarrera"
-              id="id_category"
-              name="id_category"
-              value={form.id_category}
-              onChange={handleInputChange}
-            >
-              <option value="" disabled>
-                Seleccione la categoría *
-              </option>
-              <option value="1" id="1">
-                Publico
-              </option>
-              <option value="2" id="2">
-                Privado
-              </option>
-            </select>
-          </div>
-          <div className="mb-3">
+        );
+      case 2:
+        return (
+          <div className="mb-3 ubicacion d-flex flex-column align-items-start">
+            <h4>Ubicación</h4>
             <div className="d-flex flex-row w-100">
               <div className="w-50 me-3">
                 <label htmlFor="province" className="form-label">
@@ -282,7 +350,11 @@ export const RegisterInstitute = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-3">
+        );
+      case 3:
+        return (
+          <div className="mb-3 contacto d-flex flex-column align-items-start">
+            <h4>Contacto</h4>
             <label htmlFor="mail" className="form-label">
               Correo electrónico<span style={{ color: "red" }}>*</span>
             </label>
@@ -322,40 +394,57 @@ export const RegisterInstitute = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="">
-            <label htmlFor="year_fundation" className="form-label">
-              Año de fundación
-            </label>
-            <input
-              type="number"
-              className="form-control"
-              id="year_fundation"
-              placeholder="2021"
-              name="year_fundation"
-              value={form.year_fundation}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="mt-3 mb-3">
-            <label htmlFor="description" className="form-label">
-              Descripción breve de la institucion (max. 255 caracteres)
-            </label>
-            <input
-              type="text"
-              name="description"
-              id="description"
-              className="form-control"
-              value={form.description}
-              onChange={handleInputChange}
-            />
-          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <>
+      <main className="container d-flex justify-content-center align-items-center">
+        <form
+          className="p-3 needs-validation "
+          noValidate
+          id="formAgregarInstituto"
+          onSubmit={handleSubmit}
+          style={{
+            backgroundColor: "white",
+            width: "600px",
+            borderRadius: "10px",
+          }}
+        >
+          <h2 className="">Registra tu institución</h2>
+          {renderStep()}
           <div className="d-flex justify-content-end">
-            <a className="btn btn-danger me-2" href="/">
-              Cancelar
-            </a>
-            <button type="submit" className="btn btn-success" id="btnRegistrar">
-              Registrar
-            </button>
+            {step > 1 && (
+              <button
+                type="button"
+                className="btn btn-secondary me-2"
+                onClick={handlePreviousStep}
+              >
+                Anterior
+              </button>
+            )}
+            {step < 3 ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleNextStep}
+              >
+                Siguiente
+              </button>
+            ) : (
+              step === 3 && (
+                <button
+                  type="submit"
+                  className="btn btn-success"
+                  id="btnRegistrar"
+                >
+                  Registrar
+                </button>
+              )
+            )}
           </div>
         </form>
       </main>

@@ -1,5 +1,8 @@
 import { Institute } from "../models/Institute.js";
-
+import { Sequelize } from 'sequelize';
+import { Ubication } from "../models/ubication.js";
+import { Locality } from "../models/locality.js";
+import { Career } from "../models/careers.js";
 
 export const getMainInstituteByUser = async (req, res) => {
 
@@ -42,5 +45,52 @@ export const getInstituteById = async (req, res) => {
 };
 
 
+export const searchInstitutes = async (req, res) => {
+  const { name } = req.query; // Utiliza el nombre correcto de la columna
 
+  try {
+    const institutes = await Institute.findAll({
+      where: {
+        [Sequelize.Op.or]: [
+          { name: { [Sequelize.Op.like]: `%${name}%` } },
+          { abbreviation: { [Sequelize.Op.like]: `%${name}%` } }
+        ]
+      },
+      include: {
+        model: Ubication,
+        attributes: ['street', 'altitude'],
+        include: {
+          model: Locality,
+          attributes: ['locality']
+        }
+      }
+    });
+    console.log(institutes)
+    res.json(institutes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
+}
+export const searchCareers = async (req, res) => {
+  const { name } = req.query;
 
+  try {
+    const careers = await Career.findAll({
+      where: {
+        [Sequelize.Op.or]:
+          { name: { [Sequelize.Op.like]: `%${name}%` } }
+      },
+      include: [{
+        model: Institute,
+        attributes: ['name'],
+
+      }]
+    });
+    console.log(careers);
+    res.json(careers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
+}
