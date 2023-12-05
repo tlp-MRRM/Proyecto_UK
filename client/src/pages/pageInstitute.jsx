@@ -1,130 +1,71 @@
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
+
+//header autorization token
 export const PageInstitute = () => {
+  const { id } = useParams();
 
-    return (
-        <>
+  const [institute, setInstitute] = useState([]);   
 
-            <main className="conteiner p-3">
-                <article>
-                    <div className="row">
-                        <div className="col-md-auto">
-                            <img className="shadow p-3 mb-5 bg-body-tertiary border-rounded-1 " src="/img/home/UNAF.jpg" width="275px" />
-                        </div>
-                        <div className="col">
-                            <h1>Nombre de la institución</h1>
-                            <h5><a className="material-symbols-outlined text-black text-black">location_on</a> Ubicación</h5>
-                        </div>
-                    </div>
+  useEffect(() => {
+    try {
+      const getInstitute = async () => {
+        const token = localStorage.getItem("token");
+        const response = await fetch(`http://localhost:5000/institute/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        });
+        const data = await response.json();
+        console.log(data.Contact);
+        setInstitute(data);
+      };
+      getInstitute(); 
+    } catch (error) {
+      console.log("Error al obtener instituto", error);
+    }
+  }, [id]);
 
-                    <br />
-
-                    <h3>Estadisticas del perfil</h3>
-                    <div className="row">
-                        <div className="col-3">
-                            <div className="bg-secondary">
-                                <div className="vector">
-                                    <a className="material-symbols-outlined text-black"> check </a>
-                                </div>
-                                <p className="card-text">Estudiantes Activos.</p>
-                            </div>
-                        </div>
-
-                        <div className="col-3">
-                            <div className="vector">
-                                <a className="material-symbols-outlined text-black"> visibility </a>
-                            </div>
-                            <div className="bg-secondary">
-                                <p className="card-text">Visualizaciones en los ultimos 7 dias.</p>
-                            </div>
-                        </div>
-
-                        <div className="col-3">
-                            <div className="vector">
-                                <a className="material-symbols-outlined text-black"> bookmark </a>
-                            </div>
-                            <div className="bg-secondary">
-                                <p className="card-text">ofertas academicas</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br />
-                    <h3>Información Básica</h3>
-
-                    <div>
-                        <div className="col-6">
-                            <div className="col-md-auto align-item-center vector">
-                                <a className="material-symbols-outlined text-black"> pin_drop </a>
-                            </div>
-                            <div className="col bg-secondary">
-                                <h1>Ubicación</h1>
-                                <p>Formosa, Formosa, Argentina, Ruta Nac. 81 km. 1190</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br />
-                    <div>
-                        <div className="col-6">
-                            <div className="col-md-auto align-item-center vector">
-                                <a className="material-symbols-outlined text-black"> call </a>
-                            </div>
-                            <div className="col bg-secondary">
-                                <h1>Contacto</h1>
-                                <p>Telefono: 370567891</p>
-                                <p>Email: contacto@gmail.com</p>
-                                <p>Web: http://www.google.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article>
-                    <h3>Facultades</h3>
-
-                    <div className="mt-5 mb-5">
-                        <h5>
-                            <a className="edit material-symbols-outlined text-black bg-zinc"> edit </a>
-                            <a className="material-symbols-outlined text-black"> delete </a> Nombre de una carrera
-                        </h5>
-                        <h5>
-                            <a className="edit material-symbols-outlined text-black bg-zinc"> edit </a>
-                            <a className="material-symbols-outlined text-black"> delete </a> Nombre de una carrera
-                        </h5>
-                        <h5>
-                            <a className="edit material-symbols-outlined text-black bg-zinc"> edit </a>
-                            <a className="material-symbols-outlined text-black"> delete </a> Nombre de una carrera
-                        </h5>
-                    </div>
-                    <button>Ver todas</button>
-
-                    <h3>Carreras</h3>
-                    <div className="mt-5 mb-5">
-                        <h5>
-                            <a className="edit material-symbols-outlined text-black bg-zinc"> edit </a>
-                            <a className="material-symbols-outlined text-black"> delete </a> Nombre de una carrera
-                        </h5>
-                        <h5>
-                            <a className="edit material-symbols-outlined text-black bg-zinc"> edit </a>
-                            <a className="material-symbols-outlined text-black"> delete </a> Nombre de una carrera
-                        </h5>
-                        <h5>
-                            <a className="edit material-symbols-outlined text-black bg-zinc"> edit </a>
-                            <a className="material-symbols-outlined text-black"> delete </a> Nombre de una carrera
-                        </h5>
-                    </div>
-                    <button>Ver todas</button>
-
-                    <h3>Galeria de imagenes</h3>
-                    <img src="..." className="img-thumbnail" alt="..." />
-                    <img src="..." className="img-thumbnail" alt="..." />
-                    <img src="..." className="img-thumbnail" alt="..." />
-                    <img src="..." className="img-thumbnail" alt="..." />
-                    <img src="..." className="img-thumbnail" alt="..." />
-                    <button>Ver todas</button>
-                </article>
-            </main>
-
-        </>
-    )
-}
+  return (
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <div className="card mt-5">
+              <div className="card-body">
+                <h3 className="card-title text-center">{institute?.name}  </h3>
+                <hr />
+                <div className="row">
+                  <div className="col-12 col-md-6">
+                    <img
+                      src="https://www.ieslasencinas.es/wp-content/uploads/2020/03/LOGO-IES-LAS-ENCINAS.png"
+                      alt="logo"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="col-12 col-md-6">
+                    <h5 className="card-title">Abreviación:</h5>
+                    <p className="card-text">{institute?.name}</p>
+                    <h5 className="card-title">Dirección:</h5>
+                    <p className="card-text">{institute.Contact?.mail}</p>
+                    <h5 className="card-title">Teléfono</h5>
+                    <p className="card-text">{institute.Contact?.tel}</p>
+                    <h5 className="card-title">Descripcion:</h5>
+                    <p className="card-text">{institute?.description}</p>
+                    <h5 className="card-title">Ubicacion</h5>
+                    <Link to = {institute.Ubication?.map_link} target="_blank" className="btn btn-primary p-1">Ver ubicación</Link>       
+                    <h5 className="card-title">Pagina web</h5>       
+                    <Link to = {institute.Contact?.web_link} target="_blank" className="btn btn-primary p-1">Sitio oficial</Link>       
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};

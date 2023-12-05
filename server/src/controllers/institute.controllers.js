@@ -1,8 +1,9 @@
 import { Institute } from "../models/Institute.js";
-import { Sequelize } from 'sequelize';
-import { Ubication } from "../models/ubication.js";
-import { Locality } from "../models/locality.js";
-import { Career } from "../models/careers.js";
+import { Category } from "../models/Category.js";
+import { Contact } from "../models/Contact.js";
+import { Ubication } from "../models/Ubication.js";
+
+
 
 export const getMainInstituteByUser = async (req, res) => {
 
@@ -36,10 +37,13 @@ export const getAllInstitutes = async (req, res) => {
 
 export const getInstituteById = async (req, res) => {
   try {
-    const institut = await Institute.findById(req.params.id);
-
-    res.status(200).json(institut);
+    const institute = await Institute.findByPk(req.params.id, {
+      include: [Category, Ubication, Contact],
+    });
+    res.status(200).json(institute)
+    console.log(institute)
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };
