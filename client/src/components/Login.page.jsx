@@ -1,7 +1,10 @@
 
 import { Nav } from "../pages/Nav";
 import { Footer } from "../pages/Footer";
-import { Login } from "../pages/Login";
+import { Login } from "../pages/login";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContexts";
+import { Navigate } from "react-router-dom";
 
 export const LoginPage = () => {
     return (

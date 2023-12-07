@@ -5,15 +5,15 @@ import styles from "../../public/css/login.module.css";
 export const Login = () => {
   const { loginFunction } = useAuthContext();
   let navigate = useNavigate();
-  const [redirectTo, setRedirectTo] = useState(null);
+  const [redirectTo, setRedirectTo] = useState('/');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (redirectTo) {
-      setTimeout(() => {
-        navigate(redirectTo);
-      }, 1000);
+
+      return navigate(redirectTo);
+
     }
   }, [redirectTo]);
 

@@ -3,6 +3,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { getLocalities, getProvinces } from "../api/getProvinces";
+
 
 export const RegisterInstitute = () => {
   const navigate = useNavigate();
@@ -32,8 +34,9 @@ export const RegisterInstitute = () => {
     console.log(form.id_category);
   };
 
+
   useEffect(() => {
-    const getProvinces = async () => {
+    const getProvincesData = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/provincias", {
           method: "GET",
@@ -47,34 +50,28 @@ export const RegisterInstitute = () => {
         console.log(error);
       }
     };
-    getProvinces();
-  }, []);
-  useEffect(() => {
-    const getLocalities = async () => {
-      try {
-        if (form.province === "") return setLocalities([]);
 
-        const response = await fetch(
-          `http://localhost:5000/api/provincia/${form.province}/localidades`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const data = await response.json();
-        setLocalities(data);
+    getProvincesData();
+  }, []); // Make sure to pass an empty dependency array
+
+  useEffect(() => {
+    const fetchLocalities = async () => {
+      try {
+        const localitiesData = await getLocalities(form);
+        setLocalities(localitiesData);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
-    getLocalities();
-  }, [form.province]);
 
+    if (form.province) {
+      fetchLocalities();
+    }
+  }, [form.province]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(step)
       const token = localStorage.getItem("token");
       console.log(token);
       const response = await fetch("http://localhost:5000/api/instituto", {
@@ -407,12 +404,12 @@ export const RegisterInstitute = () => {
           className="p-3 needs-validation "
           noValidate
           id="formAgregarInstituto"
-          onSubmit={handleSubmit}
           style={{
             backgroundColor: "white",
             width: "600px",
             borderRadius: "10px",
           }}
+          onSubmit={(e) => { e.preventDefault(); }}
         >
           <h2 className="">Registra tu institución</h2>
           {renderStep()}
@@ -437,9 +434,10 @@ export const RegisterInstitute = () => {
             ) : (
               step === 3 && (
                 <button
-                  type="submit"
-                  className="btn btn-success"
+                  type="button"
+                  className="btn btn-sucscess"
                   id="btnRegistrar"
+                  onClick={handleSubmit}
                 >
                   Registrar
                 </button>

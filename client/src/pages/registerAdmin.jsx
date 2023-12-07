@@ -67,7 +67,7 @@ export const RegistroAdmin = () => {
     return (
         <>
             <main className="container d-flex justify-content-center align-items-center" style={{ width: '350px' }}>
-                <form id="formRegister" className="registerForm p-2 w-100" onSubmit={handleSubmit}>
+                <form id="formRegister" className="registerForm p-3 w-100" style={{ backgroundColor: 'white', borderRadius: '15px' }} onSubmit={handleSubmit}>
                     <div className="register">
                         <h2>Registrar un usuario</h2>
                         <label htmlFor="name" className="form-label">
@@ -142,7 +142,7 @@ export const RegistroAdmin = () => {
                                 onChange={handleCheckboxChange}
                             />
                         </div>
-                        <div className="d-flex justify-content-end mb-2">
+                        <div className="d-flex justify-content-end">
                             <button type="submit" className="btn btn-primary">
                                 Registrar
                             </button>

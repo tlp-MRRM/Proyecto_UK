@@ -4,19 +4,25 @@
   cursor: pointer;
   height: auto;
   margin-bottom: 20px;
-  height: 250px;
+  height: 23em;
 }
 
 .cardBody {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 1;
 }
 
 .cardInterior {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   height: 100%;
+}
+.careerCard {
+  width: auto;
+  position: relative;
+  cursor: pointer;
+  height: auto;
+  margin-bottom: 20px;
+  height: 15em;
 }

@@ -2,8 +2,9 @@ import { Institute } from "../models/Institute.js";
 import { Category } from "../models/Category.js";
 import { Contact } from "../models/Contact.js";
 import { Ubication } from "../models/Ubication.js";
-
-
+import { Sequelize } from "sequelize";
+import { Career } from "../models/Careers.js";
+import { Locality } from '../models/Locality.js';
 
 export const getMainInstituteByUser = async (req, res) => {
 
@@ -15,7 +16,7 @@ export const getMainInstituteByUser = async (req, res) => {
         id_institute: null
       }
     })
-    console.log('INSTITUTO:')
+    console.log('Main institute abajo')
     console.log(mainInsitute)
     if (mainInsitute.length === 0) {
       return res.status(404).json({ message: 'Not Found' })
@@ -63,10 +64,12 @@ export const searchInstitutes = async (req, res) => {
       include: {
         model: Ubication,
         attributes: ['street', 'altitude'],
-        include: {
-          model: Locality,
-          attributes: ['locality']
-        }
+        include: [
+          {
+            model: Locality,
+            attributes: ['locality']
+          }
+        ]
       }
     });
     console.log(institutes)
@@ -85,11 +88,10 @@ export const searchCareers = async (req, res) => {
         [Sequelize.Op.or]:
           { name: { [Sequelize.Op.like]: `%${name}%` } }
       },
-      include: [{
+      include: {
         model: Institute,
-        attributes: ['name'],
-
-      }]
+        attributes: ['name', 'id'],
+      }
     });
     console.log(careers);
     res.json(careers);

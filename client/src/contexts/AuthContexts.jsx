@@ -18,15 +18,14 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   const isAuthenticated = () => {
-    return token !== null && token !== undefined && token !== "";
-  };
-  // Función para iniciar sesión
-  const loginFunction = async (email, password) => {
-    let redirectTo = null;
+    return token != null;
+  }
 
+  const loginFunction = async (email, password) => {
     try {
       const data = await loginRequest(email, password);
-
+      console.log(data)
+      let redirectTo = null;
       if (data.token) {
         localStorage.setItem("token", data.token);
         setToken(data.token);
@@ -44,11 +43,11 @@ export const AuthProvider = ({ children }) => {
               },
             }
           );
+          console.log(response)
 
           const institute = await response.json();
-
           if (response.status === 200) {
-            redirectTo = `/instituto/${institute.id}`;
+            redirectTo = `/instituto/${institute[0].id}`;
           } else {
             redirectTo = "/registro/instituto";
           }
@@ -64,12 +63,9 @@ export const AuthProvider = ({ children }) => {
         text: "Logged in successfully!",
         icon: "success",
       });
-      console.log("REDIRECT TO ABAJO");
-      console.log(redirectTo);
+
       return { data, redirectTo };
     } catch (error) {
-      console.log(error);
-
       Swal.fire({
         title: "Error",
         text: error,
@@ -77,7 +73,9 @@ export const AuthProvider = ({ children }) => {
       });
     }
   };
-  // Función para cerrar sesión
+
+
+
 
   const logout = () => {
     Swal.fire({
@@ -103,7 +101,6 @@ export const AuthProvider = ({ children }) => {
     }
     setToken(null);
   };
-  // Valor del contexto
   const authContextValue = {
     isAuthenticated,
     loginFunction,

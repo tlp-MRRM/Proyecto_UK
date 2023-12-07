@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export const PageInstitute = () => {
   const { id } = useParams();
 
-  const [institute, setInstitute] = useState([]);   
+  const [institute, setInstitute] = useState([]);
 
   useEffect(() => {
     try {
@@ -23,7 +23,7 @@ export const PageInstitute = () => {
         console.log(data.Contact);
         setInstitute(data);
       };
-      getInstitute(); 
+      getInstitute();
     } catch (error) {
       console.log("Error al obtener instituto", error);
     }
@@ -48,7 +48,7 @@ export const PageInstitute = () => {
                   </div>
                   <div className="col-12 col-md-6">
                     <h5 className="card-title">Abreviación:</h5>
-                    <p className="card-text">{institute?.name}</p>
+                    <p className="card-text">{institute?.abbreviation}</p>
                     <h5 className="card-title">Dirección:</h5>
                     <p className="card-text">{institute.Contact?.mail}</p>
                     <h5 className="card-title">Teléfono</h5>
@@ -56,9 +56,9 @@ export const PageInstitute = () => {
                     <h5 className="card-title">Descripcion:</h5>
                     <p className="card-text">{institute?.description}</p>
                     <h5 className="card-title">Ubicacion</h5>
-                    <Link to = {institute.Ubication?.map_link} target="_blank" className="btn btn-primary p-1">Ver ubicación</Link>       
-                    <h5 className="card-title">Pagina web</h5>       
-                    <Link to = {institute.Contact?.web_link} target="_blank" className="btn btn-primary p-1">Sitio oficial</Link>       
+                    <Link to={institute.Ubication?.map_link} target="_blank" className="btn btn-primary p-1">Ver ubicación</Link>
+                    <h5 className="card-title">Pagina web</h5>
+                    <Link to={institute.Contact?.web_link} target="_blank" className="btn btn-primary p-1">Sitio oficial</Link>
                   </div>
                 </div>
               </div>

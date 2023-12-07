@@ -13,25 +13,28 @@ import { NotFoundPage } from "../components/NotFound.page.jsx";
 import { UnauthorizedPage } from "../components/Unauthorized.page.jsx";
 import { InstitutePage } from "../components/Institute.page.jsx";
 import { EditInstitutePage } from "../components/Institutes/editInstitute.page.jsx";
+import { PrivateRoutes } from "./PrivateRoutes.jsx";
 
 export const Routers = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/mi-instituto" element={<EditInstitutePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/preguntas-frecuentes" element={<FaqPage />} />
         <Route path="/buscador" element={<SearchPage />} />
         <Route path="/registrate" element={<SignupPage />} />
         <Route path="/iniciar-sesion" element={<LoginPage />} />
-        <Route path="/registro/admin" element={<RegisterAdminPage />} />
-        <Route path="/registro/carrera" element={<RegisterCareerPage />} />
-        <Route path="/registro/instituto" element={<RegisterInstitutePage />} />
         <Route path="/trabaja-con-nosotros" element={<WorkWithUsPage />} />
         <Route path="/unauthorized" element={<UnauthorizedPage />} />
         <Route path="/instituto/:id" element={<InstitutePage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={<PrivateRoutes />}>
+          <Route path="/mi-instituto" element={<EditInstitutePage />} />
+          <Route path="/registro/admin" element={<RegisterAdminPage />} />
+          <Route path="/registro/carrera" element={<RegisterCareerPage />} />
+          <Route path="/registro/instituto" element={<RegisterInstitutePage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
